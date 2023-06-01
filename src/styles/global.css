@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
+
+* {
+  --font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-family);
+}
+
+:root {
+  --background-color: #f6f8fa;
+  --foreground-color: #1e1e1e;
+  --font-size: 14px;
+
+  font-size: var(--font-size);
+}
+
+[data-theme=dark] {
+  --background-color: #323335;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--foreground-color);
+  padding: 2rem;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48;
+
+  font-size: 22px;
+}
+
+.me-1 {
+  margin-right: 1rem;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.mt-3 {
+  margin-top: 4rem;
+}

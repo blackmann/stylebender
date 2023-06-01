@@ -1,0 +1,13 @@
+.logo {
+  align-items: center;
+  border-radius: 8px;
+  color: #585858;
+  display: inline-flex;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+}
+
+:global(.material-symbols-outlined) {
+  font-size: 26px;
+}
