@@ -1,6 +1,6 @@
-import Navbar from '../app/components/Navbar'
+import Navbar from './components/Navbar'
 import styles from './Stylebender.module.css'
-import { StylebenderProvider } from './StylebenderContext'
+import { StylebenderProvider } from './contexts/StylebenderContext'
 
 function Stylebender() {
   return (
