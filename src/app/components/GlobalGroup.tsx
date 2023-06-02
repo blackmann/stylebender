@@ -1,6 +1,7 @@
-import Section from './Section'
 import styles from './GlobalGroup.module.css'
 import ColorSection from './ColorSection'
+import BodySection from './BodySection'
+import TypographySection from './TypographySection'
 
 function GlobalGroup() {
   return (
@@ -8,6 +9,8 @@ function GlobalGroup() {
       <header className={styles.title}>Globals</header>
 
       <ColorSection />
+      <BodySection />
+      <TypographySection />
     </section>
   )
 }

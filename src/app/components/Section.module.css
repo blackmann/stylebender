@@ -7,6 +7,10 @@
   justify-content: space-between;
 }
 
+.section + .section {
+  margin-top: 3rem;
+}
+
 .nav-side {
   width: 12rem;
 }

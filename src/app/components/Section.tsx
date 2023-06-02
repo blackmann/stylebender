@@ -13,7 +13,7 @@ function Section({ children, config, id, name }: Props) {
   const hash = useHash()
 
   return (
-    <section className={styles.section} id={id}>
+    <div className={styles.section} id={id}>
       <div className={styles['nav-side']}>
         <LinkButton
           className={clsx('plain', { checked: hash === `#${id}` })}
@@ -26,7 +26,7 @@ function Section({ children, config, id, name }: Props) {
       <div className={styles.preview}>{children}</div>
 
       <div className={styles.config}>{config}</div>
-    </section>
+    </div>
   )
 }
 
