@@ -19,6 +19,10 @@
   transition: background-color var(--button-animation-duration) ease-out;
 }
 
+a.button {
+  text-decoration: none;
+}
+
 .button:hover {
   --button-background: red;
 }
@@ -29,7 +33,7 @@
 
 :global(.plain) {
   --button-background: transparent;
-  --button-color: #545454;
+  --button-color: #2e4965b3;
 }
 
 :global(.plain):hover {

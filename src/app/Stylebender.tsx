@@ -1,12 +1,12 @@
 import Navbar from './components/Navbar'
-import styles from './Stylebender.module.css'
-import { StylebenderProvider } from './contexts/StylebenderContext'
+import GlobalGroup from './components/GlobalGroup'
 
 function Stylebender() {
   return (
-    <StylebenderProvider>
+    <>
       <Navbar />
-    </StylebenderProvider>
+      <GlobalGroup />
+    </>
   )
 }
 

@@ -1,0 +1,17 @@
+.config {
+  width: 20rem;
+}
+
+.section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-side {
+  width: 12rem;
+}
+
+.preview {
+  flex: 1;
+  margin: 0 3rem;
+}

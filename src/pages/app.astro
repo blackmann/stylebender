@@ -1,8 +1,17 @@
 ---
-import Stylebender from '../fragments/Stylebender'
+import Stylebender from '../app/Stylebender'
 import RootLayout from '../layouts/RootLayout.astro'
+import '@simonwep/pickr/dist/themes/nano.min.css'
 ---
 
 <RootLayout title="App">
-  <Stylebender client:only />
+  <main>
+    <Stylebender client:only />
+  </main>
 </RootLayout>
+
+<style>
+  main {
+    min-height: 100vh;
+  }
+</style>
