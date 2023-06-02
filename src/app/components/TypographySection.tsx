@@ -41,7 +41,7 @@ function Config() {
       <header className="medium text-secondary">typography</header>
 
       <Fieldset label="Font family">
-        <TextInput />
+        <TextInput value="DM Sans, sans-serif" />
       </Fieldset>
 
       <Fieldset label="Font weight">
