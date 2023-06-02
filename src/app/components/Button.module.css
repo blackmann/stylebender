@@ -19,6 +19,10 @@
   transition: background-color var(--button-animation-duration) ease-out;
 }
 
+.button:global(.checked) {
+  background-color: var(--button-background-checked);
+}
+
 a.button {
   text-decoration: none;
 }
@@ -31,15 +35,16 @@ a.button {
   cursor: pointer;
 }
 
-:global(.plain) {
+.button:global(.plain) {
   --button-background: transparent;
+  --button-background-checked: #dfe7eeb8;
   --button-color: #2e4965b3;
 }
 
-:global(.plain):hover {
+.button:global(.plain):hover {
   --button-background: #dfe7eeb8;
 }
 
-[data-theme='dark'] :global(.plain) {
+[data-theme='dark'] button:global(.plain) {
   --button-color: #ddd;
 }

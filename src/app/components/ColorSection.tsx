@@ -17,6 +17,14 @@ function Preview() {
     }))
   }
 
+  function handleShadesUpdate(which: ColorTypes, value: string[]) {
+    const key = `${which}Shades`
+    setStyle((style) => ({
+      ...style,
+      colors: { ...style.colors, [key]: value },
+    }))
+  }
+
   const { primary, secondary, tertiary } = style.colors
 
   return (
@@ -36,7 +44,11 @@ function Preview() {
           />
         </div>
 
-        <Shades className={styles.shades} color={primary} />
+        <Shades
+          className={styles.shades}
+          color={primary}
+          inform={(shades) => handleShadesUpdate('primary', shades)}
+        />
       </div>
 
       <div className={styles.baseColor}>
@@ -48,7 +60,11 @@ function Preview() {
           />
         </div>
 
-        <Shades className={styles.shades} color={secondary} />
+        <Shades
+          className={styles.shades}
+          color={secondary}
+          inform={(shades) => handleShadesUpdate('secondary', shades)}
+        />
       </div>
 
       <div className={styles.baseColor}>
@@ -60,7 +76,11 @@ function Preview() {
           />
         </div>
 
-        <Shades className={styles.shades} color={tertiary} />
+        <Shades
+          className={styles.shades}
+          color={tertiary}
+          inform={(shades) => handleShadesUpdate('tertiary', shades)}
+        />
       </div>
     </div>
   )

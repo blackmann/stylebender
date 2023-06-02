@@ -5,6 +5,9 @@ const lightTheme = atom({
     primary: '#ff89aa',
     secondary: '#ababab',
     tertiary: 'green',
+    primaryShades: [],
+    secondaryShades: [],
+    tertiaryShades: []
   },
 })
 
