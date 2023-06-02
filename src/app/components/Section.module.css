@@ -2,6 +2,11 @@
   width: 20rem;
 }
 
+.config > :first-child {
+  position: absolute;
+  width: inherit;
+}
+
 .section {
   display: flex;
   justify-content: space-between;

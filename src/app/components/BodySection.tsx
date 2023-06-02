@@ -1,4 +1,9 @@
+import Card from './Card'
+import ColorPicker from './ColorPicker'
+import Fieldset from './Fieldset'
 import Section from './Section'
+import TextInput from './TextInput'
+import UnitInput from './UnitInput'
 
 function Preview() {
   return (
@@ -12,10 +17,39 @@ function Preview() {
   )
 }
 
+function Config() {
+  return (
+    <Card>
+      <header className="medium text-secondary">body</header>
+
+      <Fieldset label="Background">
+        <ColorPicker onChange={() => {}} value="#f6f8fa" />
+      </Fieldset>
+
+      <Fieldset label="Foreground">
+        <ColorPicker onChange={() => {}} value="#181818" />
+      </Fieldset>
+
+      <Fieldset label="Font family">
+        <TextInput />
+      </Fieldset>
+
+      <small className="text-secondary">
+        Every element gets this font. You can override fonts for specific
+        components
+      </small>
+
+      <Fieldset label="Font size">
+        <UnitInput />
+      </Fieldset>
+    </Card>
+  )
+}
+
 function BodySection() {
   return (
     <Section
-      config={<></>}
+      config={<Config />}
       id="body"
       name={
         <>

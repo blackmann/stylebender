@@ -5,6 +5,7 @@
 * {
   --font-family: 'DM Sans', sans-serif;
   font-family: var(--font-family);
+  box-sizing: border-box;
 }
 
 :root {
@@ -12,8 +13,10 @@
   --foreground-color: #38393c;
   --secondary-color: #2e4965b3;
   --font-size: 14px;
+  --border-radius: 1rem;
 
   font-size: var(--font-size);
+
 }
 
 [data-theme=dark] {
@@ -24,6 +27,11 @@ body {
   background-color: var(--background-color);
   color: var(--foreground-color);
   padding: 2rem;
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
 }
 
 .material-symbols-outlined {
