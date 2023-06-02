@@ -2,11 +2,12 @@ import Pickr from '@simonwep/pickr'
 import React from 'react'
 
 interface Props {
-  onChange: (value: string) => void
-  value: string
+  clear?: boolean
+  onChange?: (value: string) => void
+  value?: string
 }
 
-function initializePickr(el: HTMLElement, { value, onChange }: Props) {
+function initializePickr(el: HTMLElement, { clear, value, onChange }: Props) {
   const pickr = Pickr.create({
     el,
     position: 'bottom-middle',
@@ -18,13 +19,16 @@ function initializePickr(el: HTMLElement, { value, onChange }: Props) {
       opacity: true,
       palette: true,
       preview: true,
-      interaction: { hex: true, input: true },
+      interaction: {
+        clear,
+        hex: true,
+        input: true,
+      },
     },
   })
 
-
   pickr.on('change', (hsv: any) => {
-    onChange(hsv.toHEXA().toString())
+    onChange?.(hsv.toHEXA().toString())
     pickr.applyColor()
   })
 }

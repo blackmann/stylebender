@@ -8,6 +8,7 @@ function Stylebender() {
       <Navbar />
       <GlobalGroup />
       <ComponentsGroup />
+      <div style={{height: '30vh'}} />
     </>
   )
 }

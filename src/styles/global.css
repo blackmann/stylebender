@@ -4,8 +4,14 @@
 
 * {
   --font-family: 'DM Sans', sans-serif;
+
   font-family: var(--font-family);
   box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+:target {
+  scroll-margin-top: 10rem;
 }
 
 :root {
@@ -16,7 +22,6 @@
   --border-radius: 1rem;
 
   font-size: var(--font-size);
-
 }
 
 [data-theme=dark] {

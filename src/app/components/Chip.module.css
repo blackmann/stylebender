@@ -1,0 +1,12 @@
+.chip {
+  background-color: var(--background-color);
+  border-radius: 0.75rem;
+  color: var(--secondary-color);
+  display: inline-flex;
+  margin-bottom: 0.2rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.chip:not(:last-child) {
+  margin-right: 0.5rem;
+}

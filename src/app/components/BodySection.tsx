@@ -13,6 +13,13 @@ function Preview() {
         Everyone has the right to rest and leisure, including reasonable
         limitation of working hours and periodic holidays with pay.
       </p>
+
+      <header className="text-secondary medium mt-2">secondary text</header>
+      <p>
+        No one shall be subjected to arbitrary interference with his privacy,
+        family, home or correspondence, nor to attacks upon his honour and
+        reputation.
+      </p>
     </>
   )
 }
