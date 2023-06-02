@@ -1,4 +1,9 @@
+import Card from './Card'
+import ColorPicker from './ColorPicker'
+import Fieldset from './Fieldset'
 import Section from './Section'
+import TextInput from './TextInput'
+import UnitInput from './UnitInput'
 
 function Preview() {
   return (
@@ -30,14 +35,38 @@ function Preview() {
   )
 }
 
+function Config() {
+  return (
+    <Card>
+      <header className="medium text-secondary">typography</header>
+
+      <Fieldset label="Font family">
+        <TextInput />
+      </Fieldset>
+
+      <Fieldset label="Font weight">
+        <TextInput />
+      </Fieldset>
+
+      <Fieldset label="Font size">
+        <UnitInput />
+      </Fieldset>
+
+      <Fieldset label="Color">
+        <ColorPicker onChange={() => {}} value="#484848" />
+      </Fieldset>
+    </Card>
+  )
+}
+
 function TypographySection() {
   return (
     <Section
-      config={null}
+      config={<Config />}
       id="typography"
       name={
         <>
-          <span className="material-symbols-outlined me-1">text_fields</span>{' '}
+          <span className="material-symbols-outlined me-1">title</span>{' '}
           Typography
         </>
       }
