@@ -17,10 +17,21 @@
 }
 
 .nav-side {
+  margin-top: 1rem;
   width: 12rem;
 }
 
 .preview {
+  --font-size: 14px;
+  background: var(--background-color);
+  color: var(--foreground-color);
+  border-radius: 1rem;
   flex: 1;
-  margin: 0 3rem;
+  font-size: var(--font-size);
+  margin: 0 1rem;
+  padding: 1rem 3rem;
+}
+
+.preview :global(header) {
+  font-size: 1rem;
 }

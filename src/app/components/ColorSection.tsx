@@ -29,11 +29,11 @@ function Preview() {
 
   return (
     <div className={styles.preview}>
-      <div className={styles.shadeIndices}>
+      <header className={styles.shadeIndices}>
         {Array.from({ length: 8 }).map((_, index) => (
           <div key={index}>{(index + 1) * 100}</div>
         ))}
-      </div>
+      </header>
 
       <div className={styles.baseColor}>
         <div>

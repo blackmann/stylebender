@@ -1,3 +1,4 @@
+import useStyleConfig from '../hooks/use-style-config'
 import Card from './Card'
 import ColorPicker from './ColorPicker'
 import Fieldset from './Fieldset'
@@ -5,7 +6,11 @@ import Section from './Section'
 import TextInput from './TextInput'
 import UnitInput from './UnitInput'
 
+import '../../styles/body.css'
+
 function Preview() {
+  const [{ body }] = useStyleConfig()
+
   return (
     <>
       <header className="text-secondary medium">body</header>
@@ -15,7 +20,10 @@ function Preview() {
       </p>
 
       <header className="text-secondary medium mt-2">secondary text</header>
-      <p>
+      <p
+        className="text-secondary"
+        style={{ '--secondary-color': body.secondaryColor }}
+      >
         No one shall be subjected to arbitrary interference with his privacy,
         family, home or correspondence, nor to attacks upon his honour and
         reputation.
@@ -25,20 +33,48 @@ function Preview() {
 }
 
 function Config() {
+  const [{ body }, setStyle] = useStyleConfig()
+
+  function handleChange<T>(field: string, value: T) {
+    setStyle((style) => ({ ...style, body: { ...style.body, [field]: value } }))
+  }
+
   return (
     <Card>
       <header className="medium text-secondary">body</header>
 
       <Fieldset label="Background">
-        <ColorPicker onChange={() => {}} value="#f6f8fa" />
+        <ColorPicker
+          onChange={(value) => {
+            handleChange('background', value)
+          }}
+          value={body.background}
+        />
       </Fieldset>
 
       <Fieldset label="Foreground">
-        <ColorPicker onChange={() => {}} value="#181818" />
+        <ColorPicker
+          onChange={(value) => {
+            handleChange('foreground', value)
+          }}
+          value={body.foreground}
+        />
+      </Fieldset>
+
+      <Fieldset label="Secondary color">
+        <ColorPicker
+          onChange={(value) => {
+            handleChange('secondaryColor', value)
+          }}
+          value={body.secondaryColor}
+        />
       </Fieldset>
 
       <Fieldset label="Font family">
-        <TextInput />
+        <TextInput
+          onChange={(e) => handleChange('fontFamily', e.target.value)}
+          value={body.fontFamily}
+        />
       </Fieldset>
 
       <small className="text-secondary">
@@ -47,7 +83,10 @@ function Config() {
       </small>
 
       <Fieldset label="Font size">
-        <UnitInput />
+        <UnitInput
+          onChange={(e) => handleChange('fontSize', e.target.value)}
+          value={body.fontSize}
+        />
       </Fieldset>
     </Card>
   )
