@@ -29,7 +29,12 @@
   flex: 1;
   font-size: var(--font-size);
   margin: 0 1rem;
+  max-width: 60rem;
   padding: 1rem 3rem;
+}
+
+.preview > *:not(:global(header)) {
+  font-family: var(--font-family);
 }
 
 .preview :global(header) {

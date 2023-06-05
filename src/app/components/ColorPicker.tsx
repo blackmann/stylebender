@@ -7,7 +7,7 @@ interface Props {
   value?: string
 }
 
-function initializePickr(el: HTMLElement, { clear, value, onChange }: Props) {
+function initializePickr(el: HTMLElement, { clear, value }: Props) {
   const pickr = Pickr.create({
     el,
     position: 'bottom-middle',
@@ -27,20 +27,41 @@ function initializePickr(el: HTMLElement, { clear, value, onChange }: Props) {
     },
   })
 
-  pickr.on('change', (hsv: any) => {
-    onChange?.(hsv.toHEXA().toString())
-    pickr.applyColor()
-  })
+  return pickr
 }
 
-function ColorPicker(props: Props) {
-  const pickrRef = React.useRef<HTMLDivElement>(null)
+function ColorPicker({ clear, onChange, value }: Props) {
+  const pickrElRef = React.useRef<HTMLDivElement>(null)
+  const pickrRef = React.useRef<Pickr>()
 
   React.useEffect(() => {
-    initializePickr(pickrRef.current!, props)
-  }, [])
+    // voilating react hook rules here, `value` should be a dependency
+    const pickr = initializePickr(pickrElRef.current!, { clear, value })
+    pickrRef.current = pickr
 
-  return <div style={{ marginLeft: '10rem' }} ref={pickrRef}></div>
+    return () => {
+      pickr.destroy()
+      pickrRef.current = undefined
+    }
+  }, [clear])
+
+  React.useEffect(() => {
+    if (!pickrRef.current) return
+    const pickr = pickrRef.current
+
+    const handleChange = (hsv: any) => {
+      onChange?.(hsv.toHEXA().toString())
+      pickr.applyColor()
+    }
+
+    pickr.on('change', handleChange)
+
+    return () =>  {
+      pickrRef.current?.off('change', handleChange)
+    }
+  }, [onChange])
+
+  return <div style={{ marginLeft: '10rem' }} ref={pickrElRef}></div>
 }
 
 export default ColorPicker

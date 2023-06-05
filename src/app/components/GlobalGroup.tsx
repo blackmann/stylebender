@@ -5,13 +5,13 @@ import TypographySection from './TypographySection'
 
 function GlobalGroup() {
   return (
-    <section id="globals">
+    <div id="globals">
       <header className={styles.title}>Globals</header>
 
       <ColorSection />
       <BodySection />
       <TypographySection />
-    </section>
+    </div>
   )
 }
 

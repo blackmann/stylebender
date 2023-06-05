@@ -39,6 +39,8 @@ function Config() {
     setStyle((style) => ({ ...style, body: { ...style.body, [field]: value } }))
   }
 
+  console.log('body', body)
+
   return (
     <Card>
       <header className="medium text-secondary">body</header>

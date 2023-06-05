@@ -28,7 +28,9 @@ function Section({ children, config, id, name }: Props) {
       <div
         className={styles.preview}
         style={{
+          // @ts-ignore
           '--background-color': body.background,
+          '--font-family': body.fontFamily,
           '--font-size': body.fontSize,
           '--foreground-color': body.foreground
         }}
