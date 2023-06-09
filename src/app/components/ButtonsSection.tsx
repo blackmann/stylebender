@@ -82,7 +82,7 @@ function Config({
         </div>
       </header>
 
-      <div>
+      <div style={{ marginTop: '-1rem' }}>
         <Button className="plain small" onClick={toggleModes}>
           <span className="material-symbols-outlined me-1">
             {previewMode ? 'edit' : 'play_arrow'}
@@ -90,6 +90,28 @@ function Config({
           {previewMode ? 'Enter edit mode' : 'Preview'}
         </Button>
       </div>
+
+      <Fieldset label="Font family">
+        <TextInput />
+      </Fieldset>
+
+      <Fieldset label="Font size">
+        <UnitInput />
+      </Fieldset>
+
+      <Fieldset label="Font weight">
+        <UnitInput />
+      </Fieldset>
+
+      <Fieldset label="Radius">
+        <UnitInput />
+      </Fieldset>
+
+      <Fieldset label="Padding">
+        <UnitInput />
+      </Fieldset>
+
+      <div className="text-secondary medium mt-1">State overrides</div>
 
       <div className={clsx(styles.states, 'mt-1')}>
         {states.map((state) => (
@@ -114,28 +136,8 @@ function Config({
         <ColorPicker value="black" />
       </Fieldset>
 
-      <Fieldset label="Font family">
-        <TextInput />
-      </Fieldset>
-
-      <Fieldset label="Font size">
-        <UnitInput />
-      </Fieldset>
-
-      <Fieldset label="Font weight">
-        <UnitInput />
-      </Fieldset>
-
       <Fieldset label="Border">
         <BorderInput />
-      </Fieldset>
-
-      <Fieldset label="Radius">
-        <UnitInput />
-      </Fieldset>
-
-      <Fieldset label="Padding">
-        <UnitInput />
       </Fieldset>
     </Card>
   )
@@ -145,6 +147,18 @@ function Preview({ mode, state }: { mode: Mode; state: State }) {
   const [{ buttons, body, colors }] = useStyleConfig()
 
   function getVariables(variant: Variant) {
+    const normalConfig = buttons[variant]['normal']
+
+    // these values don't change between states
+    const base = {
+      '--button-font-family': normalConfig.fontFamily || body.fontFamily,
+      '--button-font-size': normalConfig.fontSize,
+      '--button-font-weight': normalConfig.fontWeight,
+      '--button-vertical-padding': normalConfig.verticalPadding,
+      '--button-horizontal-padding': normalConfig.horizontalPadding,
+      '--button-border-radius': normalConfig.borderRadius,
+    }
+
     const config = buttons[variant][state]
 
     if (mode === 'edit') {
@@ -159,34 +173,22 @@ function Preview({ mode, state }: { mode: Mode; state: State }) {
           return isHover ? colors.primaryShades[0] : 'transparent'
         }
 
-        return isHover
-          ? colors[`${variant}Shades`][4]
-          : colors[variant]
+        return isHover ? colors[`${variant}Shades`][4] : colors[variant]
       })()
 
       return {
+        ...base,
         '--button-background': isHover ? hoverBackground : config.background,
-        '--button-border-radius': config.borderRadius,
         '--button-foreground-color': config.color,
-        '--button-font-size': config.fontSize,
-        '--button-font-weight': config.fontWeight,
-        '--button-vertical-padding': config.verticalPadding,
-        '--button-horizontal-padding': config.horizontalPadding,
-        '--button-font-family': config.fontFamily || body.fontFamily,
         '--button-hover-background': hoverBackground,
       } as React.CSSProperties
     }
 
     const variantConfig = buttons[variant]
     return {
+      ...base,
       '--button-background': variantConfig.normal.background,
-      '--button-border-radius': variantConfig.normal.borderRadius,
       '--button-foreground-color': variantConfig.normal.color,
-      '--button-font-size': variantConfig.normal.fontSize,
-      '--button-font-weight': variantConfig.normal.fontWeight,
-      '--button-vertical-padding': variantConfig.normal.verticalPadding,
-      '--button-horizontal-padding': variantConfig.normal.horizontalPadding,
-      '--button-font-family': variantConfig.normal.fontFamily || body.fontFamily,
       '--button-hover-background': variantConfig.hover.background,
     } as React.CSSProperties
   }
