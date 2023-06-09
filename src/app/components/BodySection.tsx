@@ -21,8 +21,7 @@ function Preview() {
 
       <header className="text-secondary medium mt-2">secondary text</header>
       <p
-        className="text-secondary"
-        style={{ '--secondary-color': body.secondaryColor }}
+        style={{ color: body.secondaryColor }}
       >
         No one shall be subjected to arbitrary interference with his privacy,
         family, home or correspondence, nor to attacks upon his honour and

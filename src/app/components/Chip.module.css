@@ -1,7 +1,7 @@
 .chip {
-  background-color: var(--background-color);
+  background-color: var(--app-background-color);
   border-radius: 0.75rem;
-  color: var(--secondary-color);
+  color: var(--app-secondary-color);
   display: inline-flex;
   margin-bottom: 0.2rem;
   padding: 0.25rem 0.5rem;
@@ -21,6 +21,6 @@
 }
 
 .checked {
-  background-color: var(--secondary-color);
+  background-color: var(--app-secondary-color);
   color: white;
 }

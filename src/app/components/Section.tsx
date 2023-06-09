@@ -49,6 +49,7 @@ function Section({ children, config, id, name }: Props) {
           '--font-family': body.fontFamily,
           '--font-size': body.fontSize,
           '--foreground-color': body.foreground,
+          '--secondary-color': body.secondaryColor,
           ...colorVariables
         }}
         data-preview="true"

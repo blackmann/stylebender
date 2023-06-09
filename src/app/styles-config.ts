@@ -11,8 +11,8 @@ const buttonStates = {
 const light = atom({
   colors: {
     primary: '#3B8BFF',
-    secondary: '#FFC632',
-    tertiary: '#34E74C',
+    secondary: '#68818D',
+    tertiary: '#C19049',
     primaryShades: [],
     secondaryShades: [],
     tertiaryShades: [],

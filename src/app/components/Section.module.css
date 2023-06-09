@@ -27,6 +27,7 @@
   color: var(--foreground-color);
   border-radius: 1rem;
   flex: 1;
+  font-family: var(--font-family);
   font-size: var(--font-size);
   margin: 0 1rem;
   max-width: 60rem;
@@ -37,6 +38,7 @@
   font-family: var(--font-family);
 }
 
-.preview :global(header) {
+.preview :global(header), .preview :global(.app) {
   font-size: 1rem;
+  font-family: var(--app-font-family);
 }
