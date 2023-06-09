@@ -14,7 +14,7 @@ function Preview() {
   function handleColorSelect(which: ColorTypes, value: string) {
     setStyle((style) => ({
       ...style,
-      colors: { ...style.colors, [which]: value }
+      colors: { ...style.colors, [which]: value },
     }))
   }
 
@@ -22,7 +22,7 @@ function Preview() {
     const key = `${which}Shades`
     setStyle((style) => ({
       ...style,
-      colors: { ...style.colors, [key]: value }
+      colors: { ...style.colors, [key]: value },
     }))
   }
 
@@ -116,10 +116,10 @@ function ColorSection() {
           Randomize
         </Button>
       }
-      id='colors'
+      id="colors"
       name={
         <>
-          <span className='material-symbols-outlined me-1'>palette</span>
+          <span className="material-symbols-outlined me-1">palette</span>
           Colors
         </>
       }
