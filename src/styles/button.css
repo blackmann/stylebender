@@ -5,7 +5,7 @@
   color: var(--button-foreground-color, var(--foreground-color));
   cursor: pointer;
   font-family: var(--button-font-family, var(--font-family));
-  font-size: var(--button-font-size, 0.85em);
+  font-size: var(--button-font-size, 0.9em);
   font-weight: var(--button-font-weight, 500);
   padding: var(--button-vertical-padding, 0.5rem) var(--button-horizontal-padding, 1rem);
   transition: background-color 240ms ease-out;

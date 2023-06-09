@@ -264,4 +264,40 @@ function ButtonsSection() {
   )
 }
 
+interface StyledButtonProps extends React.PropsWithChildren {
+  variant?: Variant
+}
+
+function StyledButton({ children, variant = "primary" }: StyledButtonProps) {
+  const [{ buttons, body, colors }] = useStyleConfig()
+
+  function getVariables(variant: Variant) {
+    const normalConfig = buttons[variant]['normal']
+
+    const base = {
+      '--button-font-family': normalConfig.fontFamily || body.fontFamily,
+      '--button-font-size': normalConfig.fontSize,
+      '--button-font-weight': normalConfig.fontWeight,
+      '--button-vertical-padding': normalConfig.verticalPadding,
+      '--button-horizontal-padding': normalConfig.horizontalPadding,
+      '--button-border-radius': normalConfig.borderRadius,
+    }
+
+    const variantConfig = buttons[variant]
+    return {
+      ...base,
+      '--button-background': variantConfig.normal.background,
+      '--button-foreground-color': variantConfig.normal.color,
+      '--button-hover-background': variantConfig.hover.background,
+    } as React.CSSProperties
+  }
+
+  return (
+    <button className={clsx('button', variant)} style={getVariables(variant)}>
+      {children}
+    </button>
+  )
+}
+
 export default ButtonsSection
+export { StyledButton }

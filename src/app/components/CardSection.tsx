@@ -1,8 +1,13 @@
+import '../../styles/card.css'
 import Card from './Card'
 import Section from './Section'
 import cs from './Common.module.css'
-import '../../styles/card.css'
 import Avatar from 'boring-avatars'
+import { StyledButton } from './ButtonsSection'
+import Fieldset from './Fieldset'
+import BorderInput from './BorderInput'
+import ColorPicker from './ColorPicker'
+import UnitInput from './UnitInput'
 import useStyleConfig from '../hooks/use-style-config'
 
 function Config() {
@@ -11,6 +16,22 @@ function Config() {
       <header className={cs.configHeader}>
         <div className="text-secondary medium">card</div>
       </header>
+
+      <Fieldset label="Background">
+        <ColorPicker />
+      </Fieldset>
+
+      <Fieldset label="Border">
+        <BorderInput />
+      </Fieldset>
+
+      <Fieldset label="Border radius">
+        <UnitInput />
+      </Fieldset>
+
+      <Fieldset label="Padding">
+        <UnitInput />
+      </Fieldset>
     </Card>
   )
 }
@@ -42,6 +63,11 @@ function Preview() {
 
       <div className="mt-1">
         No one shall be subjected to arbitrary interference with his privacy…
+      </div>
+
+      <div className="mt-2">
+        <StyledButton>Continue</StyledButton>
+        <StyledButton variant="plain">Share…</StyledButton>
       </div>
     </div>
   )

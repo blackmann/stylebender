@@ -1,26 +1,27 @@
 .button {
-  --button-border-radius: 0.5rem;
-  --button-font-size: 1rem;
-  --button-background: blue;
-  --button-padding-vertical: 0.5rem;
-  --button-padding-horizontal: 1rem;
-  --button-animation-duration: 240ms;
-  --button-font-weight: 500;
-  --button-color: #ffffff;
-  background-color: var(--button-background);
+  --app-button-border-radius: 0.5rem;
+  --app-button-font-size: 1rem;
+  --app-button-background: blue;
+  --app-button-padding-vertical: 0.5rem;
+  --app-button-padding-horizontal: 1rem;
+  --app-button-animation-duration: 240ms;
+  --app-button-font-weight: 500;
+  --app-button-color: #ffffff;
+  background-color: var(--app-button-background);
   border: 0;
-  border-radius: var(--button-border-radius);
-  color: var(--button-color);
+  border-radius: var(--app-button-border-radius);
+  color: var(--app-button-color);
   display: inline-flex;
   align-items: center;
-  font-size: var(--button-font-size);
-  font-weight: var(--button-font-weight);
-  padding: var(--button-padding-vertical) var(--button-padding-horizontal);
-  transition: background-color var(--button-animation-duration) ease-out;
+  font-family: var(--app-font-family);
+  font-size: var(--app-button-font-size);
+  font-weight: var(--app-button-font-weight);
+  padding: var(--app-button-padding-vertical) var(--app-button-padding-horizontal);
+  transition: background-color var(--app-button-animation-duration) ease-out;
 }
 
 .button:global(.checked) {
-  background-color: var(--button-background-checked);
+  background-color: var(--app-button-background-checked);
 }
 
 a.button {
@@ -28,7 +29,7 @@ a.button {
 }
 
 .button:hover {
-  --button-background: red;
+  --app-button-background: red;
 }
 
 .button:not(:disabled) {
@@ -36,13 +37,13 @@ a.button {
 }
 
 .button:global(.plain) {
-  --button-background: transparent;
-  --button-background-checked: #dfe7eeb8;
-  --button-color: #2e4965b3;
+  --app-button-background: transparent;
+  --app-button-background-checked: #dfe7eeb8;
+  --app-button-color: #2e4965b3;
 }
 
 .button:global(.plain):hover {
-  --button-background: #dfe7eeb8;
+  --app-button-background: #dfe7eeb8;
 }
 
 .button:global(.small) {
@@ -55,5 +56,5 @@ a.button {
 }
 
 [data-theme='dark'] button:global(.plain) {
-  --button-color: #ddd;
+  --app-button-color: #ddd;
 }
