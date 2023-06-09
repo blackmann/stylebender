@@ -14,7 +14,7 @@ function Preview() {
   function handleColorSelect(which: ColorTypes, value: string) {
     setStyle((style) => ({
       ...style,
-      colors: { ...style.colors, [which]: value },
+      colors: { ...style.colors, [which]: value }
     }))
   }
 
@@ -22,7 +22,7 @@ function Preview() {
     const key = `${which}Shades`
     setStyle((style) => ({
       ...style,
-      colors: { ...style.colors, [key]: value },
+      colors: { ...style.colors, [key]: value }
     }))
   }
 
@@ -87,28 +87,32 @@ function Preview() {
   )
 }
 
+function generateColor() {
+  return `#${Math.floor(Math.random() * 0xFFFFFF).toString(16).padStart(6, '0')}`
+}
+
 function ColorSection() {
-  const [style , setStyle] = useStyleConfig();
-  const generateColor = () => `#${Math.floor(Math.random() * 0xFFFFFF).toString(16).padStart(6,'0')}`;
+  const [style, setStyle] = useStyleConfig()
+
   function handleRandomizeColors() {
     setStyle(style => ({
       ...style,
-      colors:  {...style.colors, primary: generateColor(), secondary: generateColor(), tertiary: generateColor() }
+      colors: { ...style.colors, primary: generateColor(), secondary: generateColor(), tertiary: generateColor() }
     }))
   }
 
   return (
     <Section
       config={
-        <Button className="plain" onClick={handleRandomizeColors}>`
-          <span className="material-symbols-outlined me-1">shuffle</span>{' '}
+        <Button className='plain' onClick={handleRandomizeColors}>`
+          <span className='material-symbols-outlined me-1'>shuffle</span>{' '}
           Randomize
         </Button>
       }
-      id="colors"
+      id='colors'
       name={
         <>
-          <span className="material-symbols-outlined me-1">palette</span>
+          <span className='material-symbols-outlined me-1'>palette</span>
           Colors
         </>
       }
