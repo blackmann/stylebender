@@ -1,4 +1,5 @@
 import { atom } from 'jotai'
+import { atomWithStorage } from 'jotai/utils'
 
 const buttonStates = {
   normal: {},
@@ -8,6 +9,7 @@ const buttonStates = {
   hover: {},
 }
 
+const theme = atomWithStorage('theme', 'light')
 const light = atom({
   colors: {
     primary: '#3B8BFF',
@@ -40,6 +42,8 @@ const light = atom({
   },
 })
 
-const dark = atom({})
+const dark = atom({body: {
+    background: '#323335'
+  }})
 
-export { light, dark }
+export { light, dark , theme}
