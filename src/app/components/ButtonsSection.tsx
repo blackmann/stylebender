@@ -1,4 +1,3 @@
-import { AnimatePresence, motion } from 'framer-motion'
 import BorderInput from './BorderInput'
 import Button from './Button'
 import Card from './Card'
@@ -12,6 +11,7 @@ import TextInput from './TextInput'
 import UnitInput from './UnitInput'
 import clsx from 'clsx'
 import cs from './Common.module.css'
+import { motion } from 'framer-motion'
 import styles from './ButtonsSection.module.css'
 import useStyleConfig from '../hooks/use-style-config'
 import '../../styles/button.css'
@@ -38,6 +38,10 @@ function Config({
   const [{ buttons, colors }, setStyle] = useStyleConfig()
 
   function handleChange(property: string, value: string) {
+    if (mode === 'preview') {
+      return
+    }
+
     setStyle((style) => ({
       ...style,
       buttons: {
@@ -138,19 +142,52 @@ function Config({
 }
 
 function Preview({ mode, state }: { mode: Mode; state: State }) {
-  const [{ buttons }] = useStyleConfig()
+  const [{ buttons, body, colors }] = useStyleConfig()
 
   function getVariables(variant: Variant) {
     const config = buttons[variant][state]
 
+    if (mode === 'edit') {
+      const isHover = state === 'hover'
+      // by default :hover uses the 500 shade for hover, `:<state>` uses
+      // the base color (by default)
+
+      const hoverBackground = (() => {
+        if (config.background) return config.background
+
+        if (variant === 'plain') {
+          return isHover ? colors.primaryShades[0] : 'transparent'
+        }
+
+        return isHover
+          ? colors[`${variant}Shades`][4]
+          : colors[variant]
+      })()
+
+      return {
+        '--button-background': isHover ? hoverBackground : config.background,
+        '--button-border-radius': config.borderRadius,
+        '--button-foreground-color': config.color,
+        '--button-font-size': config.fontSize,
+        '--button-font-weight': config.fontWeight,
+        '--button-vertical-padding': config.verticalPadding,
+        '--button-horizontal-padding': config.horizontalPadding,
+        '--button-font-family': config.fontFamily || body.fontFamily,
+        '--button-hover-background': hoverBackground,
+      } as React.CSSProperties
+    }
+
+    const variantConfig = buttons[variant]
     return {
-      '--button-background': config.background,
-      '--button-border-radius': config.borderRadius,
-      '--button-foreground-color': config.color,
-      '--button-font-size': config.fontSize,
-      '--button-font-weight': config.fontWeight,
-      '--button-vertical-padding': config.verticalPadding,
-      '--button-horizontal-padding': config.horizontalPadding,
+      '--button-background': variantConfig.normal.background,
+      '--button-border-radius': variantConfig.normal.borderRadius,
+      '--button-foreground-color': variantConfig.normal.color,
+      '--button-font-size': variantConfig.normal.fontSize,
+      '--button-font-weight': variantConfig.normal.fontWeight,
+      '--button-vertical-padding': variantConfig.normal.verticalPadding,
+      '--button-horizontal-padding': variantConfig.normal.horizontalPadding,
+      '--button-font-family': variantConfig.normal.fontFamily || body.fontFamily,
+      '--button-hover-background': variantConfig.hover.background,
     } as React.CSSProperties
   }
 
@@ -174,38 +211,31 @@ function Preview({ mode, state }: { mode: Mode; state: State }) {
       </div>
 
       <footer className={clsx('app text-secondary mt-3', styles.footer)}>
-        {previewMode && (
-          <AnimatePresence mode="wait">
-            <motion.small
-              initial={{ y: -10 }}
-              animate={{ y: 0 }}
-              exit={{ opacity: 0, transition: { duration: 0.1 } }}
-              className={styles.notice}
-              key={'edit'}
-            >
-              <span className="material-symbols-outlined small me-1">edit</span>
-              <span>
-                Enter edit mode to be able to configure the buttons in their
-                respective states.
-              </span>
-            </motion.small>
-          </AnimatePresence>
-        )}
-        {!previewMode && (
-          <AnimatePresence>
-            <motion.small
-              initial={{ y: -10 }}
-              animate={{ y: 0 }}
-              exit={{ opacity: 0, transition: { duration: 0.1 } }}
-              className={styles.notice}
-              key={'preview'}
-            >
-              <span className="material-symbols-outlined small me-1">
-                play_arrow
-              </span>
-              <span>Toggle Preview mode to see and try results.</span>
-            </motion.small>
-          </AnimatePresence>
+        {previewMode ? (
+          <motion.div
+            initial={{ y: -10 }}
+            animate={{ y: 0 }}
+            className={styles.notice}
+            key={'edit'}
+          >
+            <span className="material-symbols-outlined small me-1">edit</span>
+            <span>
+              Enter edit mode to be able to configure the buttons in their
+              respective states.
+            </span>
+          </motion.div>
+        ) : (
+          <motion.div
+            initial={{ y: -10 }}
+            animate={{ y: 0 }}
+            className={styles.notice}
+            key={'preview'}
+          >
+            <span className="material-symbols-outlined small me-1">
+              play_arrow
+            </span>
+            <span>Toggle Preview mode to see and try results.</span>
+          </motion.div>
         )}
       </footer>
     </>

@@ -2,15 +2,16 @@
   background-color: var(--button-background, transparent);
   border: 0;
   border-radius: var(--button-border-radius, 0.5rem);
-  color: var(--button-foreground-color ,--foreground-color);
+  color: var(--button-foreground-color, var(--foreground-color));
   cursor: pointer;
-  font-size: var(--button-font-size, 1em);
+  font-family: var(--button-font-family, var(--font-family));
+  font-size: var(--button-font-size, 0.85em);
   font-weight: var(--button-font-weight, 500);
   padding: var(--button-vertical-padding, 0.5rem) var(--button-horizontal-padding, 1rem);
   transition: background-color 240ms ease-out;
 }
 
-[data-preview="true"] .button + .button {
+[data-preview="true"] .button+.button {
   margin-left: 0.5em;
 }
 
@@ -18,24 +19,24 @@
   background-color: var(--button-hover-background, var(--primary-color-100));
 }
 
-.button.primary {
+[data-preview="true"] .button.primary {
   --button-foreground-color: #fff;
   --button-background: var(--primary-color);
   --button-hover-background: var(--primary-color-500);
 }
 
-.button.secondary {
+[data-preview="true"] .button.secondary {
   --button-foreground-color: #fff;
   --button-background: var(--secondary-color);
   --button-hover-background: var(--secondary-color-500);
 }
 
-.button.tertiary {
+[data-preview="true"] .button.tertiary {
   --button-foreground-color: #fff;
   --button-background: var(--tertiary-color);
   --button-hover-background: var(--tertiary-color-500);
 }
 
-.button.plain {
+[data-preview="true"] .button.plain {
   --button-foreground-color: var(--primary-color-500);
 }

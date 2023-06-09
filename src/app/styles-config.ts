@@ -20,7 +20,7 @@ const light = atom({
   body: {
     background: '#f6f8fa',
     fontFamily: 'Inter, sans-serif',
-    fontSize: '16px',
+    fontSize: '14px',
     foreground: '#38393c',
     secondaryColor: '#2e4965b3',
   },

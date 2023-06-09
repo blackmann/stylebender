@@ -26,6 +26,10 @@
   font-size: var(--font-size);
 }
 
+.app {
+  font-size: 14px;
+}
+
 [data-theme=dark] {
   --background-color: #323335;
 }
