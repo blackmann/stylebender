@@ -88,10 +88,19 @@ function Preview() {
 }
 
 function ColorSection() {
+  const [style , setStyle] = useStyleConfig();
+  const generateColor = () => `#${Math.floor(Math.random() * 0xFFFFFF).toString(16).padStart(6,'0')}`;
+  function handleRandomizeColors() {
+    setStyle(style => ({
+      ...style,
+      colors:  {...style.colors, primary: generateColor(), secondary: generateColor(), tertiary: generateColor() }
+    }))
+  }
+
   return (
     <Section
       config={
-        <Button className="plain">
+        <Button className="plain" onClick={handleRandomizeColors}>`
           <span className="material-symbols-outlined me-1">shuffle</span>{' '}
           Randomize
         </Button>
