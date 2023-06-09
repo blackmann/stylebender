@@ -1,8 +1,10 @@
 import React from 'react'
 import Button from './Button'
+import { useAtom } from 'jotai'
+import theme from '../theme'
 
 function ThemeSwitch() {
-  const [theme, setTheme] = React.useState('light')
+  const [currentTheme, setTheme] = useAtom(theme)
 
   function handleThemeSwitch() {
     const currentTheme =
@@ -13,19 +15,15 @@ function ThemeSwitch() {
   }
 
   React.useEffect(() => {
-    const theme = localStorage.getItem('theme') ?? 'light'
-    setTheme(theme)
-  }, [])
-
-  React.useEffect(() => {
-    document.querySelector('html')?.setAttribute('data-theme', theme)
-    localStorage.setItem('theme', theme)
-  }, [theme])
+    document.querySelector('html')?.setAttribute('data-theme', currentTheme)
+  }, [currentTheme])
 
   return (
     <Button className="plain" onClick={handleThemeSwitch}>
-      <span className="material-symbols-outlined me-1">dark_mode</span>
-      Dark mode
+      <span className="material-symbols-outlined me-1">
+        {currentTheme === 'light' ? 'dark_mode' : 'light_mode'}
+      </span>
+      {currentTheme === 'light' ? 'Dark mode' : 'Light mode'}
     </Button>
   )
 }

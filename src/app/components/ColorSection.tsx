@@ -87,12 +87,32 @@ function Preview() {
   )
 }
 
+function generateColor() {
+  return `#${Math.floor(Math.random() * 0xffffff)
+    .toString(16)
+    .padStart(6, '0')}`
+}
+
 function ColorSection() {
+  const [style, setStyle] = useStyleConfig()
+
+  function handleRandomizeColors() {
+    setStyle((style) => ({
+      ...style,
+      colors: {
+        ...style.colors,
+        primary: generateColor(),
+        secondary: generateColor(),
+        tertiary: generateColor(),
+      },
+    }))
+  }
+
   return (
     <Section
       config={
-        <Button className="plain">
-          <span className="material-symbols-outlined me-1">shuffle</span>{' '}
+        <Button className="plain" onClick={handleRandomizeColors}>
+          `<span className="material-symbols-outlined me-1">shuffle</span>{' '}
           Randomize
         </Button>
       }
