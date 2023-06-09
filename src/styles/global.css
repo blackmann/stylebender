@@ -2,10 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
 
-* :not([data-preview="true"] > :not(header), .material-symbols-outlined) {
+* :not([data-preview="true"] > :not(header), .material-symbols-outlined), .app {
   --font-family: 'DM Sans', sans-serif;
-
   font-family: var(--font-family);
+}
+
+* {
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
@@ -66,9 +68,14 @@ fieldset {
 }
 
 .text-secondary {
-  color: var(--secondary-color)
+  --app-secondary-color: #2e4965b3;
+  color: var(--app-secondary-color, --secondary-color);
 }
 
 .medium {
   font-weight: 500;
+}
+
+.material-symbols-outlined.small {
+  font-size: 1.3rem;
 }

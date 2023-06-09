@@ -17,7 +17,6 @@
 
 .shadeIndices > * {
   flex: 1;
-  color: var(--secondary-color);
 }
 
 .shades {

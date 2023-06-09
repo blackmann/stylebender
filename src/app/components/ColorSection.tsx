@@ -4,6 +4,7 @@ import styles from './ColorSection.module.css'
 import Button from './Button'
 import Shades from './Shades'
 import useStyleConfig from '../hooks/use-style-config'
+import clsx from 'clsx'
 
 type ColorTypes = 'primary' | 'secondary' | 'tertiary'
 
@@ -29,7 +30,7 @@ function Preview() {
 
   return (
     <div className={styles.preview}>
-      <header className={styles.shadeIndices}>
+      <header className={clsx(styles.shadeIndices, 'text-secondary')}>
         {Array.from({ length: 8 }).map((_, index) => (
           <div key={index}>{(index + 1) * 100}</div>
         ))}

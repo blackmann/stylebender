@@ -30,12 +30,13 @@ function initializePickr(el: HTMLElement, { clear, value }: Props) {
   return pickr
 }
 
-function ColorPicker({ clear, onChange, value }: Props) {
+function ColorPicker({ clear, onChange, value = 'black' }: Props) {
   const pickrElRef = React.useRef<HTMLDivElement>(null)
   const pickrRef = React.useRef<Pickr>()
 
   React.useEffect(() => {
     // voilating react hook rules here, `value` should be a dependency
+    // .setColor should work, but that's not the case.
     const pickr = initializePickr(pickrElRef.current!, { clear, value })
     pickrRef.current = pickr
 
@@ -56,7 +57,7 @@ function ColorPicker({ clear, onChange, value }: Props) {
 
     pickr.on('change', handleChange)
 
-    return () =>  {
+    return () => {
       pickrRef.current?.off('change', handleChange)
     }
   }, [onChange])

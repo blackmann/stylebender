@@ -5,8 +5,22 @@
   display: inline-flex;
   margin-bottom: 0.2rem;
   padding: 0.25rem 0.5rem;
+  transition: filter 240ms ease-out;
 }
 
 .chip:not(:last-child) {
   margin-right: 0.5rem;
+}
+
+.interactive {
+  cursor: pointer;
+}
+
+.interactive:hover {
+  filter: brightness(0.95)
+}
+
+.checked {
+  background-color: var(--secondary-color);
+  color: white;
 }

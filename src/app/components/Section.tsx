@@ -12,10 +12,26 @@ interface Props extends React.PropsWithChildren {
 }
 
 function Section({ children, config, id, name }: Props) {
-  const [{ body }] = useStyleConfig()
+  const [{ body, colors }] = useStyleConfig()
 
   const hash = useHash()
   const checked = hash === `#${id}`
+
+  const colorVariables: Record<string, string> = {
+    '--primary-color': colors.primary,
+    '--secondary-color': colors.secondary,
+    '--tertiary-color': colors.tertiary,
+  }
+
+  for (const [type, shades] of [
+    ['primary', colors.primaryShades],
+    ['secondary', colors.secondaryShades],
+    ['tertiary', colors.tertiaryShades],
+  ] as const) {
+    for (const [i, shade] of shades.entries()) {
+      colorVariables[`--${type}-color-${(i + 1) * 100}`] = shade
+    }
+  }
 
   return (
     <div className={styles.section} id={id}>
@@ -32,7 +48,8 @@ function Section({ children, config, id, name }: Props) {
           '--background-color': body.background,
           '--font-family': body.fontFamily,
           '--font-size': body.fontSize,
-          '--foreground-color': body.foreground
+          '--foreground-color': body.foreground,
+          ...colorVariables
         }}
         data-preview="true"
       >

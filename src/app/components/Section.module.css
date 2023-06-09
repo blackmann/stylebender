@@ -33,7 +33,7 @@
   padding: 1rem 3rem;
 }
 
-.preview > *:not(:global(header)) {
+.preview {
   font-family: var(--font-family);
 }
 

@@ -1,5 +1,13 @@
 import { atom } from 'jotai'
 
+const buttonStates = {
+  normal: {},
+  active: {},
+  disabled: {},
+  checked: {},
+  hover: {},
+}
+
 const light = atom({
   colors: {
     primary: '#3B8BFF',
@@ -15,6 +23,12 @@ const light = atom({
     fontSize: '16px',
     foreground: '#38393c',
     secondaryColor: '#2e4965b3',
+  },
+  buttons: {
+    primary: { ...structuredClone(buttonStates) },
+    secondary: { ...structuredClone(buttonStates) },
+    tertiary: { ...structuredClone(buttonStates) },
+    plain: { ...structuredClone(buttonStates) },
   },
   typography: {
     h1: {},
