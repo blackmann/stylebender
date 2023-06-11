@@ -6,30 +6,30 @@ const buttonStates = {
   active: {},
   disabled: {},
   checked: {},
-  hover: {}
+  hover: {},
 }
 
-const light = atom({
+const config = {
   colors: {
     primary: '#3B8BFF',
     secondary: '#68818D',
     tertiary: '#C19049',
     primaryShades: [],
     secondaryShades: [],
-    tertiaryShades: []
+    tertiaryShades: [],
   },
   body: {
     background: '#f6f8fa',
     fontFamily: 'Inter, sans-serif',
     fontSize: '14px',
     foreground: '#38393c',
-    secondaryColor: '#2e4965b3'
+    secondaryColor: '#2e4965b3',
   },
   buttons: {
     primary: { ...structuredClone(buttonStates) },
     secondary: { ...structuredClone(buttonStates) },
     tertiary: { ...structuredClone(buttonStates) },
-    plain: { ...structuredClone(buttonStates) }
+    plain: { ...structuredClone(buttonStates) },
   },
   typography: {
     h1: {},
@@ -37,14 +37,20 @@ const light = atom({
     h3: {},
     h4: {},
     h5: {},
-    h6: {}
-  }
-})
+    h6: {},
+  },
+}
+
+const light = atom(config)
 
 const dark = atom({
+  ...config,
   body: {
-    background: '#323335'
-  }
+    ...config.body,
+    background: '#1A1A1A',
+    foreground: '#F5F4F4',
+    secondaryColor: '#A0A1AA',
+  },
 })
 
 export { light, dark }

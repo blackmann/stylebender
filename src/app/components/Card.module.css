@@ -1,14 +1,19 @@
 .card {
-		--card-background: #fff;
-		--card-border-color: #dfe7eeb8;
-		--card-border-radius: 16px;
-		--card-border-width: 1px;
-		--card-padding: 1rem;
+  --card-background: #fff;
+  --card-border-color: #dfe7eeb8;
+  --card-border-radius: 16px;
+  --card-border-width: 1px;
+  --card-padding: 1rem;
 
-    background-color: var(--card-background);
-		border-color: var(--card-border-color);
-		border-width: var(--card-border-width);
-		border-radius: var(--card-border-radius);
-		border-style: solid;
-		padding: var(--card-padding);
-	}
+  background-color: var(--card-background);
+  border-color: var(--card-border-color);
+  border-width: var(--card-border-width);
+  border-radius: var(--card-border-radius);
+  border-style: solid;
+  padding: var(--card-padding);
+}
+
+[data-theme='dark'] .card {
+  --card-background: #212121;
+  --card-border-color: #d4d4d833;
+}
