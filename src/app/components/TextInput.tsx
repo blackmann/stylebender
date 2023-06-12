@@ -3,8 +3,8 @@ import styles from './TextInput.module.css'
 
 interface Props extends React.ComponentProps<'input'> {}
 
-function TextInput({ className, ...props }: Props) {
-  return <input className={clsx(styles.input, className)} {...props} />
+function TextInput({ className, id, ...props }: Props) {
+  return <input className={clsx(styles.input, className)} id={id} {...props} />
 }
 
 export default TextInput
