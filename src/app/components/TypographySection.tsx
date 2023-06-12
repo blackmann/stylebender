@@ -134,7 +134,7 @@ function Config() {
         />
       </Fieldset>
 
-      <Fieldset label="Color" inputId="color">
+      <Fieldset label="Color">
         <ColorPicker
           onChange={(value) => {
             handleChange('color', value)
