@@ -9,7 +9,7 @@ function BorderInput() {
         <ColorPicker />
       </div>
 
-      <UnitInput />
+      <UnitInput id="border-input" />
     </div>
   )
 }

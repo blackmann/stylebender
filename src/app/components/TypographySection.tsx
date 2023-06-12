@@ -106,17 +106,19 @@ function Config() {
         </Select>
       </header>
 
-      <Fieldset label="Font family">
+      <Fieldset label="Font family" inputId="font-family">
         <TextInput
+          id="font-family"
           onChange={(e) => handleChange('fontFamily', e.target.value)}
           value={fontFamily}
         />
       </Fieldset>
 
-      <Fieldset label="Font weight">
+      <Fieldset label="Font weight" inputId="font-weight">
         <Select
           onChange={(e) => handleChange('fontWeight', e.target.value)}
           value={fontWeight}
+          id="font-weight"
         >
           <option value="400">Regular</option>
           <option value="500">Medium</option>
@@ -124,14 +126,15 @@ function Config() {
         </Select>
       </Fieldset>
 
-      <Fieldset label="Font size">
+      <Fieldset label="Font size" inputId="font-size">
         <UnitInput
+          id="font-size"
           onChange={(e) => handleChange('fontSize', e.target.value)}
           value={fontSize}
         />
       </Fieldset>
 
-      <Fieldset label="Color">
+      <Fieldset label="Color" inputId="color">
         <ColorPicker
           onChange={(value) => {
             handleChange('color', value)

@@ -70,6 +70,7 @@ function Config({
 
         <div>
           <Select
+            id="button-variant"
             onChange={(e) => setVariant(e.target.value as Variant)}
             value={variant}
           >
@@ -91,24 +92,24 @@ function Config({
         </Button>
       </div>
 
-      <Fieldset label="Font family">
-        <TextInput />
+      <Fieldset label="Font family" inputId="font-family">
+        <TextInput id="font-family" />
       </Fieldset>
 
-      <Fieldset label="Font size">
-        <UnitInput />
+      <Fieldset label="Font size" inputId="font-size">
+        <UnitInput id="font-size" />
       </Fieldset>
 
-      <Fieldset label="Font weight">
-        <UnitInput />
+      <Fieldset label="Font weight" inputId="font-weight">
+        <UnitInput id="font-weight" />
       </Fieldset>
 
-      <Fieldset label="Radius">
-        <UnitInput />
+      <Fieldset label="Radius" inputId="radius">
+        <UnitInput id="radius" />
       </Fieldset>
 
-      <Fieldset label="Padding">
-        <UnitInput />
+      <Fieldset label="Padding" inputId="padding">
+        <UnitInput id="padding" />
       </Fieldset>
 
       <div className="text-secondary medium mt-1">State overrides</div>
@@ -125,14 +126,14 @@ function Config({
         ))}
       </div>
 
-      <Fieldset label="Background">
+      <Fieldset label="Background" inputId="background">
         <ColorPicker
           onChange={(value) => handleChange('background', value)}
           value="black"
         />
       </Fieldset>
 
-      <Fieldset label="Color">
+      <Fieldset label="Color" inputId="color">
         <ColorPicker value="black" />
       </Fieldset>
 
@@ -268,7 +269,7 @@ interface StyledButtonProps extends React.PropsWithChildren {
   variant?: Variant
 }
 
-function StyledButton({ children, variant = "primary" }: StyledButtonProps) {
+function StyledButton({ children, variant = 'primary' }: StyledButtonProps) {
   const [{ buttons, body, colors }] = useStyleConfig()
 
   function getVariables(variant: Variant) {
