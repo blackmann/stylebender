@@ -85,7 +85,7 @@ function Config({
       <div style={{ marginTop: '-1rem' }}>
         <Button className="plain small" onClick={toggleModes}>
           <span className="material-symbols-outlined me-1">
-            {previewMode ? 'edit' : 'play_arrow'}
+            {previewMode ? 'edit' : 'visibility'}
           </span>
           {previewMode ? 'Enter edit mode' : 'Preview'}
         </Button>
@@ -213,10 +213,30 @@ function Preview({ mode, state }: { mode: Mode; state: State }) {
       </div>
 
       <footer className={clsx('app text-secondary mt-3', styles.footer)}>
+        {previewMode && (
+          <motion.div
+            animate={{
+              y: [-10, 0],
+              opacity: [0, 1],
+              transition: { duration: 0.25 },
+            }}
+            className={clsx('text-secondary mb-1', styles.notice)}
+          >
+            <span className="material-symbols-outlined small me-1">
+              visibility
+            </span>
+
+            <span>Preview mode</span>
+          </motion.div>
+        )}
+
         {previewMode ? (
           <motion.div
-            initial={{ y: -10 }}
-            animate={{ y: 0 }}
+            animate={{
+              y: [-10, 0],
+              opacity: [0, 1],
+              transition: { duration: 0.25 },
+            }}
             className={styles.notice}
             key={'edit'}
           >
@@ -228,13 +248,16 @@ function Preview({ mode, state }: { mode: Mode; state: State }) {
           </motion.div>
         ) : (
           <motion.div
-            initial={{ y: -10 }}
-            animate={{ y: 0 }}
+            animate={{
+              y: [-10, 0],
+              opacity: [0, 1],
+              transition: { duration: 0.25 },
+            }}
             className={styles.notice}
             key={'preview'}
           >
             <span className="material-symbols-outlined small me-1">
-              play_arrow
+              visibility
             </span>
             <span>Toggle Preview mode to see and try results.</span>
           </motion.div>
@@ -268,7 +291,7 @@ interface StyledButtonProps extends React.PropsWithChildren {
   variant?: Variant
 }
 
-function StyledButton({ children, variant = "primary" }: StyledButtonProps) {
+function StyledButton({ children, variant = 'primary' }: StyledButtonProps) {
   const [{ buttons, body, colors }] = useStyleConfig()
 
   function getVariables(variant: Variant) {
