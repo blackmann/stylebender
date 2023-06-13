@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
 
-
 * {
   box-sizing: border-box;
   scroll-behavior: smooth;
@@ -26,7 +25,7 @@
   font-size: 14px;
 }
 
-[data-theme=dark] {
+[data-theme='dark'] {
   --app-background-color: #323335;
 }
 
@@ -44,11 +43,7 @@ fieldset {
 }
 
 .material-symbols-outlined {
-  font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 48;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
 
   font-size: 22px;
 }
@@ -67,6 +62,10 @@ fieldset {
 
 .mt-3 {
   margin-top: 4rem;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
 }
 
 .text-secondary {
