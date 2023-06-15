@@ -5,7 +5,7 @@
   display: inline-flex;
   margin-bottom: 0.2rem;
   padding: 0.25rem 0.5rem;
-  transition: filter 240ms ease-out;
+  transition: filter 240ms ease-out, background 240ms ease-out;
 }
 
 .chip:not(:last-child) {

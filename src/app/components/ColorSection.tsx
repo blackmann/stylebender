@@ -9,7 +9,7 @@ import clsx from 'clsx'
 type ColorTypes = 'primary' | 'secondary' | 'tertiary'
 
 function Preview() {
-  const [style, setStyle] = useStyleConfig()
+  const [style, setStyle, base, _s] = useStyleConfig()
 
   function handleColorSelect(which: ColorTypes, value: string) {
     setStyle((style) => ({
@@ -26,7 +26,7 @@ function Preview() {
     }))
   }
 
-  const { primary, secondary, tertiary } = style.colors
+  const { primary, secondary, tertiary } = _s('colors')
 
   return (
     <div className={styles.preview}>

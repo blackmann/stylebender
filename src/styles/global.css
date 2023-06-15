@@ -3,7 +3,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
 
-
 * {
   box-sizing: border-box;
   scroll-behavior: smooth;
@@ -28,8 +27,14 @@
   font-size: 14px;
 }
 
-[data-theme=dark] {
-  --app-background-color: #323335;
+[data-theme='dark'] {
+  --app-background-color: #212121;
+  --app-foreground-color: #f4f5f5;
+  --app-secondary-color: #b5babfb7;
+}
+
+[data-theme='dark'] .text-secondary {
+  color: #a0a1aa;
 }
 
 body {
@@ -52,12 +57,12 @@ code {
   padding: 0 0.25rem 0.125rem;
 }
 
+[data-theme="dark"] code {
+  background-color: var(--app-background-color);
+}
+
 .material-symbols-outlined {
-  font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 48;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
 
   font-size: 22px;
 }

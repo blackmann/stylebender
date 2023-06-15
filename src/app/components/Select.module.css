@@ -9,3 +9,7 @@
   font-size: 1rem;
   padding: 0.35rem 1.75rem 0.35rem 0.75rem;
 }
+
+[data-theme='dark'] .select {
+  color: #a0a1aa;
+}

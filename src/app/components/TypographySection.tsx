@@ -22,13 +22,13 @@ enum Level {
 }
 
 function Preview() {
-  const [{ body, typography }] = useStyleConfig()
+  const [,,, _s] = useStyleConfig()
 
   function getProps(level: `${Level}`) {
-    const levelTypography = typography[level]
+    const levelTypography = _s(`typography.${level}`)
 
     return {
-      '--font-family': levelTypography.fontFamily || body.fontFamily,
+      '--font-family': levelTypography.fontFamily || _s('body.fontFamily'),
       [`--${level}-font-size`]: levelTypography.fontSize,
       [`--${level}-font-weight`]: levelTypography.fontWeight,
       [`--${level}-color`]: levelTypography.color,
@@ -72,15 +72,15 @@ function Preview() {
 }
 
 function Config() {
-  const [{ body, typography }, setStyle] = useStyleConfig()
+  const [, setStyle,, _s] = useStyleConfig()
   const [level, setLevel] = React.useState<`${Level}`>('h1')
 
-  const levelTypography = typography[level]
+  const levelTypography = _s(`typography.${level}`)
 
-  const fontFamily = levelTypography.fontFamily || body.fontFamily
+  const fontFamily = levelTypography.fontFamily || _s('body.fontFamily')
   const fontSize = levelTypography.fontSize || ''
   const fontWeight = levelTypography.fontWeight || '700'
-  const color = levelTypography.color || body.foreground
+  const color = levelTypography.color || _s('body.foreground')
 
   function handleChange<T>(property: string, value: T) {
     setStyle((style) => ({

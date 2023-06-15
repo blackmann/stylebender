@@ -37,14 +37,16 @@ const light = atom({
     h3: {},
     h4: {},
     h5: {},
-    h6: {}
-  }
+    h6: {},
+  },
 })
 
 const dark = atom({
   body: {
-    background: '#323335'
-  }
+    background: '#1A1A1A',
+    foreground: '#F5F4F4',
+    secondaryColor: '#A0A1AA',
+  },
 })
 
 export { light, dark }
