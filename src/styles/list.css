@@ -1,0 +1,29 @@
+.list {
+  --list-horizontal-padding: 0;
+  --list-vertical-padding: 0;
+  list-style: disc;
+  max-width: 18rem;
+  padding: var(--list-vertical-padding, 0px) var(--list-horizontal-padding, 0px);
+}
+
+.list li {
+  padding: 0.5rem 0;
+}
+
+.list.interactive {
+  list-style: none;
+}
+
+.list.interactive li {
+  border-radius: var(--list-border-radius, 0.5em);
+  color: var(--list-item-color, var(--secondary-color));
+  cursor: pointer;
+  padding: var(--list-item-vertical-padding, 0.5rem) var(--list-item-horizontal-padding, 1rem);
+  transition: background-color 240ms ease-out;
+}
+
+.list.interactive li:hover {
+  background-color: var(--list-item-hover-background, #dfe7eeb8);
+}
+
+.list.interactive li.checked {}

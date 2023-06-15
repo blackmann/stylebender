@@ -212,7 +212,16 @@ function Preview({ mode, state }: { mode: Mode; state: State }) {
         </button>
       </div>
 
-      <footer className={clsx('app text-secondary mt-3', styles.footer)}>
+      <div className={clsx('mt-3 text-secondary app', styles.notice)}>
+        <span className="material-symbols-outlined small me-1">code</span>
+        <span>
+          Use <code>.primary</code>, <code>.secondary</code>,{' '}
+          <code>.tertiary</code> or
+          <code>.plain</code> to achieve the respective styling.
+        </span>
+      </div>
+
+      <footer className={clsx('app text-secondary mt-1', styles.footer)}>
         {previewMode ? (
           <motion.div
             initial={{ y: -10 }}
@@ -268,7 +277,7 @@ interface StyledButtonProps extends React.PropsWithChildren {
   variant?: Variant
 }
 
-function StyledButton({ children, variant = "primary" }: StyledButtonProps) {
+function StyledButton({ children, variant = 'primary' }: StyledButtonProps) {
   const [{ buttons, body, colors }] = useStyleConfig()
 
   function getVariables(variant: Variant) {

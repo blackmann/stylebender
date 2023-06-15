@@ -94,7 +94,7 @@ function generateColor() {
 }
 
 function ColorSection() {
-  const [style, setStyle] = useStyleConfig()
+  const [_, setStyle] = useStyleConfig()
 
   function handleRandomizeColors() {
     setStyle((style) => ({
@@ -112,7 +112,7 @@ function ColorSection() {
     <Section
       config={
         <Button className="plain" onClick={handleRandomizeColors}>
-          `<span className="material-symbols-outlined me-1">shuffle</span>{' '}
+          <span className="material-symbols-outlined me-1">shuffle</span>{' '}
           Randomize
         </Button>
       }
