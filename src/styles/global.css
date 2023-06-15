@@ -30,6 +30,7 @@
 [data-theme='dark'] {
   --app-background-color: #212121;
   --app-foreground-color: #f4f5f5;
+  --app-secondary-color: #b5babfb7;
 }
 
 [data-theme='dark'] .text-secondary {
@@ -54,6 +55,10 @@ code {
   background-color: var(--app-secondary-color-light);
   border-radius: 0.25rem;
   padding: 0 0.25rem 0.125rem;
+}
+
+[data-theme="dark"] code {
+  background-color: var(--app-background-color);
 }
 
 .material-symbols-outlined {

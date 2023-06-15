@@ -2,6 +2,8 @@
   --app-button-border-radius: 0.5rem;
   --app-button-font-size: 1rem;
   --app-button-background: blue;
+  --app-button-background-checked: blue;
+  --app-button-background-hover: blue;
   --app-button-padding-vertical: 0.5rem;
   --app-button-padding-horizontal: 1rem;
   --app-button-animation-duration: 240ms;
@@ -30,7 +32,7 @@ a.button {
 }
 
 .button:hover {
-  --app-button-background: red;
+  background-color: var(--app-button-background-hover);
 }
 
 .button:not(:disabled) {
@@ -40,6 +42,7 @@ a.button {
 .button:global(.plain) {
   --app-button-background: transparent;
   --app-button-background-checked: #dfe7eeb8;
+  --app-button-background-hover: #dfe7eeb8;
   --app-button-color: #2e4965b3;
 }
 
@@ -58,4 +61,6 @@ a.button {
 
 [data-theme='dark'] .button:global(.plain) {
   --app-button-color: #ddd;
+  --app-button-background-checked: #363636;
+  --app-button-background-hover: #363636;
 }

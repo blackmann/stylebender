@@ -9,7 +9,7 @@ const buttonStates = {
   hover: {}
 }
 
-const config = {
+const light = atom({
   colors: {
     primary: '#3B8BFF',
     secondary: '#68818D',
@@ -39,14 +39,10 @@ const config = {
     h5: {},
     h6: {},
   },
-}
-
-const light = atom(config)
+})
 
 const dark = atom({
-  ...config,
   body: {
-    ...config.body,
     background: '#1A1A1A',
     foreground: '#F5F4F4',
     secondaryColor: '#A0A1AA',

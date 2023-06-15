@@ -14,6 +14,6 @@
 }
 
 [data-theme='dark'] .card {
-  --card-background: #212121;
-  --card-border-color: #d4d4d833;
+  --card-background: #1a1a1a;
+  --card-border-color: #3a3a3a;
 }
