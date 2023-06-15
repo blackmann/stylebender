@@ -51,7 +51,7 @@ function Preview() {
           />
         </div>
         <div>
-          <div>@stimulus</div>
+          <div className="medium">@stimulus</div>
           <div style={{ color: body.secondaryColor }}>Posted 23rd May</div>
         </div>
       </div>
