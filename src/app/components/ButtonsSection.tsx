@@ -144,7 +144,7 @@ function Config({
 }
 
 function Preview({ mode, state }: { mode: Mode; state: State }) {
-  const [,,,_s] = useStyleConfig()
+  const [, , , _s] = useStyleConfig()
 
   function getVariables(variant: Variant) {
     const normalConfig = _s(`buttons.${variant}.normal`)
@@ -173,7 +173,9 @@ function Preview({ mode, state }: { mode: Mode; state: State }) {
           return isHover ? _s('colors').primaryShades[0] : 'transparent'
         }
 
-        return isHover ? _s(`colors.${variant}Shades`)[4] : _s(`colors.${variant}`)
+        return isHover
+          ? _s(`colors.${variant}Shades`)[4]
+          : _s(`colors.${variant}`)
       })()
 
       return {
@@ -230,16 +232,15 @@ function Preview({ mode, state }: { mode: Mode; state: State }) {
           </motion.div>
         )}
 
-      <div className={clsx('mt-3 text-secondary app', styles.notice)}>
-        <span className="material-symbols-outlined small me-1">code</span>
-        <span>
-          Use <code>.primary</code>, <code>.secondary</code>,{' '}
-          <code>.tertiary</code> or
-          <code>.plain</code> to achieve the respective styling.
-        </span>
-      </div>
+        <div className={clsx('mt-3 text-secondary app', styles.notice)}>
+          <span className="material-symbols-outlined small me-1">code</span>
+          <span>
+            Use <code>.primary</code>, <code>.secondary</code>,{' '}
+            <code>.tertiary</code> or
+            <code>.plain</code> to achieve the respective styling.
+          </span>
+        </div>
 
-      <footer className={clsx('app text-secondary mt-1', styles.footer)}>
         {previewMode ? (
           <motion.div
             animate={{
@@ -302,14 +303,10 @@ interface StyledButtonProps extends React.PropsWithChildren {
 }
 
 function StyledButton({ children, variant = 'primary' }: StyledButtonProps) {
-<<<<<<< HEAD
-  const [{ buttons, body, colors }] = useStyleConfig()
-=======
-  const [,,,_s] = useStyleConfig()
->>>>>>> master
+  const [, , , _s] = useStyleConfig()
 
   function getVariables(variant: Variant) {
-    const normalConfig =  _s(`buttons.${variant}.normal`)
+    const normalConfig = _s(`buttons.${variant}.normal`)
 
     const base = {
       '--button-font-family': normalConfig.fontFamily || _s('body.fontFamily'),
