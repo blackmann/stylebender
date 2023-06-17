@@ -91,60 +91,66 @@ function Config({
         </Button>
       </div>
 
-      <Fieldset label="Font family">
-        <TextInput />
-      </Fieldset>
+      <div
+        className={clsx(
+          previewMode ? styles.inputGuardDisabled : styles.inputGuard
+        )}
+      >
+        <Fieldset label="Font family">
+          <TextInput />
+        </Fieldset>
 
-      <Fieldset label="Font size">
-        <UnitInput />
-      </Fieldset>
+        <Fieldset label="Font size">
+          <UnitInput />
+        </Fieldset>
 
-      <Fieldset label="Font weight">
-        <UnitInput />
-      </Fieldset>
+        <Fieldset label="Font weight">
+          <UnitInput />
+        </Fieldset>
 
-      <Fieldset label="Radius">
-        <UnitInput />
-      </Fieldset>
+        <Fieldset label="Radius">
+          <UnitInput />
+        </Fieldset>
 
-      <Fieldset label="Padding">
-        <UnitInput />
-      </Fieldset>
+        <Fieldset label="Padding">
+          <UnitInput />
+        </Fieldset>
 
-      <div className="text-secondary medium mt-1">State overrides</div>
+        <div className="text-secondary medium mt-1">State overrides</div>
 
-      <div className={clsx(styles.states, 'mt-1')}>
-        {states.map((state) => (
-          <Chip
-            checked={state === selectedState}
-            key={state}
-            onClick={() => setState(state)}
-          >
-            :{state}
-          </Chip>
-        ))}
+        <div className={clsx(styles.states, 'mt-1')}>
+          {states.map((state) => (
+            <Chip
+              checked={state === selectedState}
+              key={state}
+              onClick={() => setState(state)}
+            >
+              :{state}
+            </Chip>
+          ))}
+        </div>
+
+        <Fieldset label="Background">
+          <ColorPicker
+            onChange={(value) => handleChange('background', value)}
+            value="black"
+          />
+        </Fieldset>
+
+        <Fieldset label="Color">
+          <ColorPicker value="black" />
+        </Fieldset>
+
+        <Fieldset label="Border">
+          <BorderInput />
+        </Fieldset>
       </div>
-
-      <Fieldset label="Background">
-        <ColorPicker
-          onChange={(value) => handleChange('background', value)}
-          value="black"
-        />
-      </Fieldset>
-
-      <Fieldset label="Color">
-        <ColorPicker value="black" />
-      </Fieldset>
-
-      <Fieldset label="Border">
-        <BorderInput />
-      </Fieldset>
     </Card>
   )
 }
 
 function Preview({ mode, state }: { mode: Mode; state: State }) {
-  const [,,,_s] = useStyleConfig()
+  const [, , , _s] = useStyleConfig()
 
   function getVariables(variant: Variant) {
     const normalConfig = _s(`buttons.${variant}.normal`)
@@ -173,7 +179,9 @@ function Preview({ mode, state }: { mode: Mode; state: State }) {
           return isHover ? _s('colors').primaryShades[0] : 'transparent'
         }
 
-        return isHover ? _s(`colors.${variant}Shades`)[4] : _s(`colors.${variant}`)
+        return isHover
+          ? _s(`colors.${variant}Shades`)[4]
+          : _s(`colors.${variant}`)
       })()
 
       return {
@@ -278,10 +286,10 @@ interface StyledButtonProps extends React.PropsWithChildren {
 }
 
 function StyledButton({ children, variant = 'primary' }: StyledButtonProps) {
-  const [,,,_s] = useStyleConfig()
+  const [, , , _s] = useStyleConfig()
 
   function getVariables(variant: Variant) {
-    const normalConfig =  _s(`buttons.${variant}.normal`)
+    const normalConfig = _s(`buttons.${variant}.normal`)
 
     const base = {
       '--button-font-family': normalConfig.fontFamily || _s('body.fontFamily'),
