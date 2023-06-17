@@ -37,22 +37,22 @@ function Config() {
 }
 
 function Preview() {
-  const [{ body, colors }] = useStyleConfig()
+  const [,,,_s] = useStyleConfig()
 
   return (
-    <div style={{ '--font-family': body.fontFamily }} className="card">
+    <div style={{ '--font-family': _s('body.fontFamily') }} className="card">
       <div className="card-header">
         <div className="avatar me-1">
           <Avatar
             size={40}
-            colors={[colors.primary, colors.secondary, colors.tertiary]}
+            colors={[_s('colors.primary'), _s('colors.secondary'), _s('colors.tertiary')]}
             variant="beam"
             name="N"
           />
         </div>
         <div>
-          <div>@stimulus</div>
-          <div style={{ color: body.secondaryColor }}>Posted 23rd May</div>
+          <div className="medium">@stimulus</div>
+          <div style={{ color: _s('body.secondaryColor') }}>Posted 23rd May</div>
         </div>
       </div>
 

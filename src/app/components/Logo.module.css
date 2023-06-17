@@ -10,3 +10,7 @@
 :global(.material-symbols-outlined) {
   font-size: 26px;
 }
+
+[data-theme="dark"] .logo {
+  color: #f5f5f5;
+}

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
 
 * {
@@ -15,6 +16,7 @@
   --app-background-color: #f6f8fa;
   --app-foreground-color: #38393c;
   --app-secondary-color: #2e4965b3;
+  --app-secondary-color-light: #dfe7eeb8;
   --app-font-size: 14px;
   --app-border-radius: 1rem;
 
@@ -27,6 +29,12 @@
 
 [data-theme='dark'] {
   --app-background-color: #323335;
+  --app-foreground-color: #f4f5f5;
+  --app-secondary-color: #b5babfb7;
+}
+
+[data-theme='dark'] .text-secondary {
+  color: #a0a1aa;
 }
 
 body {
@@ -40,6 +48,17 @@ body {
 fieldset {
   border: 0;
   padding: 0;
+}
+
+code {
+  font-family: 'Roboto Mono', monospace;
+  background-color: var(--app-secondary-color-light);
+  border-radius: 0.25rem;
+  padding: 0 0.25rem 0.125rem;
+}
+
+[data-theme='dark'] code {
+  background-color: var(--app-background-color);
 }
 
 .material-symbols-outlined {
@@ -71,6 +90,11 @@ fieldset {
 .text-secondary {
   --app-secondary-color: #2e4965b3;
   color: var(--app-secondary-color);
+}
+
+.flex-center-vertical {
+  align-items: center;
+  display: flex;
 }
 
 .medium {
