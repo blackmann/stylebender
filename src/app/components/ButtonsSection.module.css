@@ -2,6 +2,14 @@
   display: flex;
 }
 
+.inputGuard {
+  pointer-events: all;
+}
+
+.inputGuardDisabled {
+  pointer-events: none;
+}
+
 .footer {
   min-height: 5rem;
 }
