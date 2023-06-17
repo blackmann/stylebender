@@ -232,7 +232,7 @@ function Preview({ mode, state }: { mode: Mode; state: State }) {
           </motion.div>
         )}
 
-        <div className={clsx('mt-3 text-secondary app', styles.notice)}>
+        <div className={clsx('mb-1 text-secondary app', styles.notice)}>
           <span className="material-symbols-outlined small me-1">code</span>
           <span>
             Use <code>.primary</code>, <code>.secondary</code>,{' '}
