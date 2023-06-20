@@ -100,7 +100,7 @@ function Config({
         <UnitInput id="buttons-font-size" />
       </Fieldset>
 
-      <Fieldset label="Font weight" inputId="butttons-font-weight">
+      <Fieldset label="Font weight" inputId="buttons-font-weight">
         <UnitInput id="buttons-font-weight" />
       </Fieldset>
 
