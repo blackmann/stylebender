@@ -87,64 +87,63 @@ function Config({
           <span className="material-symbols-outlined me-1">
             {previewMode ? 'edit' : 'play_arrow'}
           </span>
-          {previewMode ? 'Enter edit mode' : 'Preview'}
+          {previewMode ? 'Enter edit mode' : 'Enter preview mode'}
         </Button>
       </div>
 
+      <Fieldset disabled={previewMode} label="Font family">
+        <TextInput />
+      </Fieldset>
+
+      <Fieldset disabled={previewMode} label="Font size">
+        <UnitInput />
+      </Fieldset>
+
+      <Fieldset disabled={previewMode} label="Font weight">
+        <UnitInput />
+      </Fieldset>
+
+      <Fieldset disabled={previewMode} label="Radius">
+        <UnitInput />
+      </Fieldset>
+
+      <Fieldset disabled={previewMode} label="Padding">
+        <UnitInput />
+      </Fieldset>
+
+      <div className="text-secondary medium mt-1">State overrides</div>
+
       <div
         className={clsx(
-          previewMode ? styles.inputGuardDisabled : styles.inputGuard
+          previewMode ? styles.statesDisabled : styles.states,
+          'mt-1'
         )}
       >
-        <Fieldset label="Font family">
-          <TextInput />
-        </Fieldset>
-
-        <Fieldset label="Font size">
-          <UnitInput />
-        </Fieldset>
-
-        <Fieldset label="Font weight">
-          <UnitInput />
-        </Fieldset>
-
-        <Fieldset label="Radius">
-          <UnitInput />
-        </Fieldset>
-
-        <Fieldset label="Padding">
-          <UnitInput />
-        </Fieldset>
-
-        <div className="text-secondary medium mt-1">State overrides</div>
-
-        <div className={clsx(styles.states, 'mt-1')}>
-          {states.map((state) => (
-            <Chip
-              checked={state === selectedState}
-              key={state}
-              onClick={() => setState(state)}
-            >
-              :{state}
-            </Chip>
-          ))}
-        </div>
-
-        <Fieldset label="Background">
-          <ColorPicker
-            onChange={(value) => handleChange('background', value)}
-            value="black"
-          />
-        </Fieldset>
-
-        <Fieldset label="Color">
-          <ColorPicker value="black" />
-        </Fieldset>
-
-        <Fieldset label="Border">
-          <BorderInput />
-        </Fieldset>
+        {states.map((state) => (
+          <Chip
+            checked={state === selectedState}
+            key={state}
+            onClick={() => setState(state)}
+          >
+            :{state}
+          </Chip>
+        ))}
       </div>
+
+      <Fieldset disabled={previewMode} label="Background">
+        <ColorPicker
+          onChange={(value) => handleChange('background', value)}
+          value="black"
+        />
+      </Fieldset>
+
+      <Fieldset disabled={previewMode} label="Color">
+        <ColorPicker value="black" />
+      </Fieldset>
+
+      <Fieldset disabled={previewMode} label="Border">
+        <BorderInput />
+      </Fieldset>
     </Card>
   )
 }

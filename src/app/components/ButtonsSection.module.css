@@ -2,11 +2,11 @@
   display: flex;
 }
 
-.inputGuard {
+.states {
   pointer-events: all;
 }
 
-.inputGuardDisabled {
+.statesDisabled {
   pointer-events: none;
 }
 
