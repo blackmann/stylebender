@@ -22,7 +22,7 @@ enum Level {
 }
 
 function Preview() {
-  const [,,, _s] = useStyleConfig()
+  const [, , , _s] = useStyleConfig()
 
   function getProps(level: `${Level}`) {
     const levelTypography = _s(`typography.${level}`)
@@ -72,7 +72,7 @@ function Preview() {
 }
 
 function Config() {
-  const [, setStyle,, _s] = useStyleConfig()
+  const [, setStyle, , _s] = useStyleConfig()
   const [level, setLevel] = React.useState<`${Level}`>('h1')
 
   const levelTypography = _s(`typography.${level}`)
@@ -106,19 +106,19 @@ function Config() {
         </Select>
       </header>
 
-      <Fieldset label="Font family" inputId="font-family">
+      <Fieldset label="Font family" inputId="typography-font-family">
         <TextInput
-          id="font-family"
+          id="typography-font-family"
           onChange={(e) => handleChange('fontFamily', e.target.value)}
           value={fontFamily}
         />
       </Fieldset>
 
-      <Fieldset label="Font weight" inputId="font-weight">
+      <Fieldset label="Font weight" inputId="typography-font-weight">
         <Select
           onChange={(e) => handleChange('fontWeight', e.target.value)}
           value={fontWeight}
-          id="font-weight"
+          id="typography-font-weight"
         >
           <option value="400">Regular</option>
           <option value="500">Medium</option>
@@ -126,9 +126,9 @@ function Config() {
         </Select>
       </Fieldset>
 
-      <Fieldset label="Font size" inputId="font-size">
+      <Fieldset label="Font size" inputId="typography-font-size">
         <UnitInput
-          id="font-size"
+          id="typography-font-size"
           onChange={(e) => handleChange('fontSize', e.target.value)}
           value={fontSize}
         />

@@ -92,24 +92,24 @@ function Config({
         </Button>
       </div>
 
-      <Fieldset label="Font family" inputId="font-family">
-        <TextInput id="font-family" />
+      <Fieldset label="Font family" inputId="buttons-font-family">
+        <TextInput id="buttons-font-family" />
       </Fieldset>
 
-      <Fieldset label="Font size" inputId="font-size">
-        <UnitInput id="font-size" />
+      <Fieldset label="Font size" inputId="buttons-font-size">
+        <UnitInput id="buttons-font-size" />
       </Fieldset>
 
-      <Fieldset label="Font weight" inputId="font-weight">
-        <UnitInput id="font-weight" />
+      <Fieldset label="Font weight" inputId="butttons-font-weight">
+        <UnitInput id="buttons-font-weight" />
       </Fieldset>
 
-      <Fieldset label="Radius" inputId="radius">
-        <UnitInput id="radius" />
+      <Fieldset label="Radius" inputId="buttons-radius">
+        <UnitInput id="buttons-radius" />
       </Fieldset>
 
-      <Fieldset label="Padding" inputId="padding">
-        <UnitInput id="padding" />
+      <Fieldset label="Padding" inputId="buttons-padding">
+        <UnitInput id="buttons-padding" />
       </Fieldset>
 
       <div className="text-secondary medium mt-1">State overrides</div>
@@ -126,19 +126,19 @@ function Config({
         ))}
       </div>
 
-      <Fieldset label="Background" inputId="background">
+      <Fieldset label="Background">
         <ColorPicker
           onChange={(value) => handleChange('background', value)}
           value="black"
         />
       </Fieldset>
 
-      <Fieldset label="Color" inputId="color">
+      <Fieldset label="Color">
         <ColorPicker value="black" />
       </Fieldset>
 
-      <Fieldset label="Border">
-        <BorderInput />
+      <Fieldset label="Border" inputId="buttons-border">
+        <BorderInput id="buttons-border" />
       </Fieldset>
     </Card>
   )
