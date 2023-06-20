@@ -97,7 +97,10 @@ function Config() {
       <header className={clsx('medium text-secondary', cs.configHeader)}>
         <div>typography</div>
 
-        <Select onChange={(e) => setLevel(e.target.value as Level)}>
+        <Select
+          id="typography-level-select"
+          onChange={(e) => setLevel(e.target.value as Level)}
+        >
           {Object.values(Level).map((level) => (
             <option key={level} value={level}>
               {level}
