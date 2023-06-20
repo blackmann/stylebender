@@ -1,5 +1,6 @@
 
 .title {
-  color: var(--secondary-color);
+  color: var(--app-secondary-color);
+  font-weight: 500;
   margin: 1rem 0;
 }

@@ -48,11 +48,17 @@ function ColorPicker({ clear, onChange, value = 'black' }: Props) {
 
   React.useEffect(() => {
     if (!pickrRef.current) return
+    pickrRef.current.setColor(value)
+  }, [value])
+
+  React.useEffect(() => {
+    if (!pickrRef.current) return
     const pickr = pickrRef.current
 
     const handleChange = (hsv: any) => {
-      onChange?.(hsv.toHEXA().toString())
+      const newColor = hsv.toHEXA().toString()
       pickr.applyColor()
+      onChange?.(newColor)
     }
 
     pickr.on('change', handleChange)

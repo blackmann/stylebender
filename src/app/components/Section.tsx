@@ -12,21 +12,21 @@ interface Props extends React.PropsWithChildren {
 }
 
 function Section({ children, config, id, name }: Props) {
-  const [{ body, colors }] = useStyleConfig()
+  const [,,, _s] = useStyleConfig()
 
   const hash = useHash()
   const checked = hash === `#${id}`
 
-  const colorVariables: Record<string, string> = {
-    '--primary-color': colors.primary,
-    '--secondary-color': colors.secondary,
-    '--tertiary-color': colors.tertiary,
+  const colorVariables: Record<string, string | undefined> = {
+    '--primary-color': _s('colors.primary'),
+    '--secondary-color': _s('colors.secondary'),
+    '--tertiary-color': _s('colors.tertiary'),
   }
 
   for (const [type, shades] of [
-    ['primary', colors.primaryShades],
-    ['secondary', colors.secondaryShades],
-    ['tertiary', colors.tertiaryShades],
+    ['primary', _s('colors.primaryShades')],
+    ['secondary', _s('colors.secondaryShades')],
+    ['tertiary', _s('colors.tertiaryShades')],
   ] as const) {
     for (const [i, shade] of shades.entries()) {
       colorVariables[`--${type}-color-${(i + 1) * 100}`] = shade
@@ -45,11 +45,11 @@ function Section({ children, config, id, name }: Props) {
         className={styles.preview}
         style={{
           // @ts-ignore
-          '--background-color': body.background,
-          '--font-family': body.fontFamily,
-          '--font-size': body.fontSize,
-          '--foreground-color': body.foreground,
-          '--secondary-color': body.secondaryColor,
+          '--background-color': _s('body.background'),
+          '--font-family': _s('body.fontFamily'),
+          '--font-size': _s('body.fontSize'),
+          '--foreground-color': _s('body.foreground'),
+          '--secondary-color': _s('body.secondaryColor'),
           ...colorVariables
         }}
         data-preview="true"

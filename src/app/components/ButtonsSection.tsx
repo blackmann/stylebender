@@ -35,7 +35,7 @@ function Config({
   setState: React.Dispatch<React.SetStateAction<State>>
 }) {
   const [variant, setVariant] = React.useState<Variant>('primary')
-  const [{ buttons, colors }, setStyle] = useStyleConfig()
+  const [, setStyle] = useStyleConfig()
 
   function handleChange(property: string, value: string) {
     if (mode === 'preview') {
@@ -145,14 +145,14 @@ function Config({
 }
 
 function Preview({ mode, state }: { mode: Mode; state: State }) {
-  const [{ buttons, body, colors }] = useStyleConfig()
+  const [, , , _s] = useStyleConfig()
 
   function getVariables(variant: Variant) {
-    const normalConfig = buttons[variant]['normal']
+    const normalConfig = _s(`buttons.${variant}.normal`)
 
     // these values don't change between states
     const base = {
-      '--button-font-family': normalConfig.fontFamily || body.fontFamily,
+      '--button-font-family': normalConfig.fontFamily || _s('body.fontFamily'),
       '--button-font-size': normalConfig.fontSize,
       '--button-font-weight': normalConfig.fontWeight,
       '--button-vertical-padding': normalConfig.verticalPadding,
@@ -160,7 +160,7 @@ function Preview({ mode, state }: { mode: Mode; state: State }) {
       '--button-border-radius': normalConfig.borderRadius,
     }
 
-    const config = buttons[variant][state]
+    const config = _s(`buttons.${variant}.${state}`)
 
     if (mode === 'edit') {
       const isHover = state === 'hover'
@@ -171,10 +171,12 @@ function Preview({ mode, state }: { mode: Mode; state: State }) {
         if (config.background) return config.background
 
         if (variant === 'plain') {
-          return isHover ? colors.primaryShades[0] : 'transparent'
+          return isHover ? _s('colors').primaryShades[0] : 'transparent'
         }
 
-        return isHover ? colors[`${variant}Shades`][4] : colors[variant]
+        return isHover
+          ? _s(`colors.${variant}Shades`)[4]
+          : _s(`colors.${variant}`)
       })()
 
       return {
@@ -185,7 +187,7 @@ function Preview({ mode, state }: { mode: Mode; state: State }) {
       } as React.CSSProperties
     }
 
-    const variantConfig = buttons[variant]
+    const variantConfig = _s(`buttons.${variant}`)
     return {
       ...base,
       '--button-background': variantConfig.normal.background,
@@ -213,7 +215,16 @@ function Preview({ mode, state }: { mode: Mode; state: State }) {
         </button>
       </div>
 
-      <footer className={clsx('app text-secondary mt-3', styles.footer)}>
+      <div className={clsx('mt-3 text-secondary app', styles.notice)}>
+        <span className="material-symbols-outlined small me-1">code</span>
+        <span>
+          Use <code>.primary</code>, <code>.secondary</code>,{' '}
+          <code>.tertiary</code> or
+          <code>.plain</code> to achieve the respective styling.
+        </span>
+      </div>
+
+      <footer className={clsx('app text-secondary mt-1', styles.footer)}>
         {previewMode ? (
           <motion.div
             initial={{ y: -10 }}
@@ -270,13 +281,13 @@ interface StyledButtonProps extends React.PropsWithChildren {
 }
 
 function StyledButton({ children, variant = 'primary' }: StyledButtonProps) {
-  const [{ buttons, body, colors }] = useStyleConfig()
+  const [, , , _s] = useStyleConfig()
 
   function getVariables(variant: Variant) {
-    const normalConfig = buttons[variant]['normal']
+    const normalConfig = _s(`buttons.${variant}.normal`)
 
     const base = {
-      '--button-font-family': normalConfig.fontFamily || body.fontFamily,
+      '--button-font-family': normalConfig.fontFamily || _s('body.fontFamily'),
       '--button-font-size': normalConfig.fontSize,
       '--button-font-weight': normalConfig.fontWeight,
       '--button-vertical-padding': normalConfig.verticalPadding,
@@ -284,7 +295,7 @@ function StyledButton({ children, variant = 'primary' }: StyledButtonProps) {
       '--button-border-radius': normalConfig.borderRadius,
     }
 
-    const variantConfig = buttons[variant]
+    const variantConfig = _s(`buttons.${variant}`)
     return {
       ...base,
       '--button-background': variantConfig.normal.background,

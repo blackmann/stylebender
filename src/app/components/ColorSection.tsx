@@ -9,7 +9,7 @@ import clsx from 'clsx'
 type ColorTypes = 'primary' | 'secondary' | 'tertiary'
 
 function Preview() {
-  const [style, setStyle] = useStyleConfig()
+  const [style, setStyle, base, _s] = useStyleConfig()
 
   function handleColorSelect(which: ColorTypes, value: string) {
     setStyle((style) => ({
@@ -26,7 +26,7 @@ function Preview() {
     }))
   }
 
-  const { primary, secondary, tertiary } = style.colors
+  const { primary, secondary, tertiary } = _s('colors')
 
   return (
     <div className={styles.preview}>
@@ -94,7 +94,7 @@ function generateColor() {
 }
 
 function ColorSection() {
-  const [style, setStyle] = useStyleConfig()
+  const [_, setStyle] = useStyleConfig()
 
   function handleRandomizeColors() {
     setStyle((style) => ({
@@ -112,7 +112,7 @@ function ColorSection() {
     <Section
       config={
         <Button className="plain" onClick={handleRandomizeColors}>
-          `<span className="material-symbols-outlined me-1">shuffle</span>{' '}
+          <span className="material-symbols-outlined me-1">shuffle</span>{' '}
           Randomize
         </Button>
       }

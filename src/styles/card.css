@@ -1,11 +1,8 @@
 [data-preview="true"] .card {
-  --card-border-color: #2e4965b3;
-  --card-border-radius: 1em;
-  --card-padding: 1em;
   max-width: 20rem;
-  border: var(--card-border-width, 1px) solid var(--card-border-color);
-  border-radius: var(--card-border-radius);
-  padding: var(--card-padding);
+  border: var(--card-border-width, 1px) solid var(--card-border-color, #2e4965b3);
+  border-radius: var(--card-border-radius, 1em);
+  padding: var(--card-padding, 1em);
   font-family: var(--font-family);
 }
 
