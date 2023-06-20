@@ -215,6 +215,15 @@ function Preview({ mode, state }: { mode: Mode; state: State }) {
       </div>
 
       <footer className={clsx('app text-secondary mt-3', styles.footer)}>
+        <div className={clsx('mb-1 text-secondary app', styles.notice)}>
+          <span className="material-symbols-outlined small me-1">code</span>
+          <span>
+            Use <code>.primary</code>, <code>.secondary</code>,{' '}
+            <code>.tertiary</code> or
+            <code>.plain</code> to achieve the respective styling.
+          </span>
+        </div>
+
         {previewMode && (
           <motion.div
             animate={{
@@ -231,15 +240,6 @@ function Preview({ mode, state }: { mode: Mode; state: State }) {
             <span>Preview mode</span>
           </motion.div>
         )}
-
-        <div className={clsx('mb-1 text-secondary app', styles.notice)}>
-          <span className="material-symbols-outlined small me-1">code</span>
-          <span>
-            Use <code>.primary</code>, <code>.secondary</code>,{' '}
-            <code>.tertiary</code> or
-            <code>.plain</code> to achieve the respective styling.
-          </span>
-        </div>
 
         {previewMode ? (
           <motion.div
