@@ -28,7 +28,7 @@
 }
 
 [data-theme='dark'] {
-  --app-background-color: #323335;
+  --app-background-color: #212121;
   --app-foreground-color: #f4f5f5;
   --app-secondary-color: #b5babfb7;
 }
