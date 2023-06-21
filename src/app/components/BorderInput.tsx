@@ -2,14 +2,16 @@ import ColorPicker from './ColorPicker'
 import UnitInput from './UnitInput'
 import styles from './BorderInput.module.css'
 
-function BorderInput() {
+interface Props extends React.ComponentProps<'input'> {}
+
+function BorderInput(props: Props) {
   return (
     <div className={styles.input}>
       <div className="me-1">
         <ColorPicker />
       </div>
 
-      <UnitInput />
+      <UnitInput {...props}/>
     </div>
   )
 }

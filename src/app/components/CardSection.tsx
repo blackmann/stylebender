@@ -21,16 +21,16 @@ function Config() {
         <ColorPicker />
       </Fieldset>
 
-      <Fieldset label="Border">
-        <BorderInput />
+      <Fieldset label="Border" inputId='card-border'>
+        <BorderInput id='card-border' />
       </Fieldset>
 
-      <Fieldset label="Border radius">
-        <UnitInput />
+      <Fieldset label="Border radius" inputId='card-radius'>
+        <UnitInput id='card-radius'/>
       </Fieldset>
 
-      <Fieldset label="Padding">
-        <UnitInput />
+      <Fieldset label="Padding" inputId='card-padding'>
+        <UnitInput id='card-padding'/>
       </Fieldset>
     </Card>
   )
