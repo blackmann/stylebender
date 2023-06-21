@@ -20,7 +20,9 @@ function Preview() {
       </p>
 
       <header className="text-secondary medium mt-2">secondary text</header>
-      <p style={{ color: body.secondaryColor }}>
+      <p
+        style={{ color: body.secondaryColor }}
+      >
         No one shall be subjected to arbitrary interference with his privacy,
         family, home or correspondence, nor to attacks upon his honour and
         reputation.
@@ -67,9 +69,8 @@ function Config() {
         />
       </Fieldset>
 
-      <Fieldset label="Font family" inputId="body-font-family">
+      <Fieldset label="Font family">
         <TextInput
-          id="body-font-family"
           onChange={(e) => handleChange('fontFamily', e.target.value)}
           value={body.fontFamily}
         />
@@ -80,9 +81,8 @@ function Config() {
         components
       </small>
 
-      <Fieldset label="Font size" inputId="body-font-size">
+      <Fieldset label="Font size">
         <UnitInput
-          id="body-font-size"
           onChange={(e) => handleChange('fontSize', e.target.value)}
           value={body.fontSize}
         />
