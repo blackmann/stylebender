@@ -21,23 +21,23 @@ function Config() {
         <ColorPicker />
       </Fieldset>
 
-      <Fieldset label="Border">
-        <BorderInput />
+      <Fieldset label="Border" inputId="card-border-input">
+        <BorderInput id="card-border-input" />
       </Fieldset>
 
-      <Fieldset label="Border radius">
-        <UnitInput />
+      <Fieldset label="Border radius" inputId="card-border-radius">
+        <UnitInput id="card-border-radius" />
       </Fieldset>
 
-      <Fieldset label="Padding">
-        <UnitInput />
+      <Fieldset label="Padding" inputId="card-padding">
+        <UnitInput id="card-padding" />
       </Fieldset>
     </Card>
   )
 }
 
 function Preview() {
-  const [,,,_s] = useStyleConfig()
+  const [, , , _s] = useStyleConfig()
 
   return (
     <div style={{ '--font-family': _s('body.fontFamily') }} className="card">
@@ -45,14 +45,20 @@ function Preview() {
         <div className="avatar me-1">
           <Avatar
             size={40}
-            colors={[_s('colors.primary'), _s('colors.secondary'), _s('colors.tertiary')]}
+            colors={[
+              _s('colors.primary'),
+              _s('colors.secondary'),
+              _s('colors.tertiary'),
+            ]}
             variant="beam"
             name="N"
           />
         </div>
         <div>
           <div className="medium">@stimulus</div>
-          <div style={{ color: _s('body.secondaryColor') }}>Posted 23rd May</div>
+          <div style={{ color: _s('body.secondaryColor') }}>
+            Posted 23rd May
+          </div>
         </div>
       </div>
 
