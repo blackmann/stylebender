@@ -70,6 +70,7 @@ function Config({
 
         <div>
           <Select
+            id="button-variant"
             onChange={(e) => setVariant(e.target.value as Variant)}
             value={variant}
           >
@@ -91,24 +92,24 @@ function Config({
         </Button>
       </div>
 
-      <Fieldset label="Font family">
-        <TextInput />
+      <Fieldset label="Font family" inputId="buttons-font-family">
+        <TextInput id="buttons-font-family" />
       </Fieldset>
 
-      <Fieldset label="Font size">
-        <UnitInput />
+      <Fieldset label="Font size" inputId="buttons-font-size">
+        <UnitInput id="buttons-font-size" />
       </Fieldset>
 
-      <Fieldset label="Font weight">
-        <UnitInput />
+      <Fieldset label="Font weight" inputId="buttons-font-weight">
+        <UnitInput id="buttons-font-weight" />
       </Fieldset>
 
-      <Fieldset label="Radius">
-        <UnitInput />
+      <Fieldset label="Radius" inputId="buttons-radius">
+        <UnitInput id="buttons-radius" />
       </Fieldset>
 
-      <Fieldset label="Padding">
-        <UnitInput />
+      <Fieldset label="Padding" inputId="buttons-padding">
+        <UnitInput id="buttons-padding" />
       </Fieldset>
 
       <div className="text-secondary medium mt-1">State overrides</div>
@@ -136,8 +137,8 @@ function Config({
         <ColorPicker value="black" />
       </Fieldset>
 
-      <Fieldset label="Border">
-        <BorderInput />
+      <Fieldset label="Border" inputId="buttons-border">
+        <BorderInput id="buttons-border" />
       </Fieldset>
     </Card>
   )
