@@ -85,7 +85,7 @@ function Config({
       <div style={{ marginTop: '-1rem' }}>
         <Button className="plain small" onClick={toggleModes}>
           <span className="material-symbols-outlined me-1">
-            {previewMode ? 'edit' : 'play_arrow'}
+            {previewMode ? 'edit' : 'visibility'}
           </span>
           {previewMode ? 'Enter edit mode' : 'Preview'}
         </Button>
@@ -144,7 +144,7 @@ function Config({
 }
 
 function Preview({ mode, state }: { mode: Mode; state: State }) {
-  const [,,,_s] = useStyleConfig()
+  const [, , , _s] = useStyleConfig()
 
   function getVariables(variant: Variant) {
     const normalConfig = _s(`buttons.${variant}.normal`)
@@ -173,7 +173,9 @@ function Preview({ mode, state }: { mode: Mode; state: State }) {
           return isHover ? _s('colors').primaryShades[0] : 'transparent'
         }
 
-        return isHover ? _s(`colors.${variant}Shades`)[4] : _s(`colors.${variant}`)
+        return isHover
+          ? _s(`colors.${variant}Shades`)[4]
+          : _s(`colors.${variant}`)
       })()
 
       return {
@@ -212,20 +214,40 @@ function Preview({ mode, state }: { mode: Mode; state: State }) {
         </button>
       </div>
 
-      <div className={clsx('mt-3 text-secondary app', styles.notice)}>
-        <span className="material-symbols-outlined small me-1">code</span>
-        <span>
-          Use <code>.primary</code>, <code>.secondary</code>,{' '}
-          <code>.tertiary</code> or
-          <code>.plain</code> to achieve the respective styling.
-        </span>
-      </div>
+      <footer className={clsx('app text-secondary mt-3', styles.footer)}>
+        <div className={clsx('mb-1 text-secondary app', styles.notice)}>
+          <span className="material-symbols-outlined small me-1">code</span>
+          <span>
+            Use <code>.primary</code>, <code>.secondary</code>,{' '}
+            <code>.tertiary</code> or
+            <code>.plain</code> to achieve the respective styling.
+          </span>
+        </div>
 
-      <footer className={clsx('app text-secondary mt-1', styles.footer)}>
+        {previewMode && (
+          <motion.div
+            animate={{
+              y: [-10, 0],
+              opacity: [0, 1],
+              transition: { duration: 0.25 },
+            }}
+            className={clsx('text-secondary mb-1', styles.notice)}
+          >
+            <span className="material-symbols-outlined small me-1">
+              visibility
+            </span>
+
+            <span>Preview mode</span>
+          </motion.div>
+        )}
+
         {previewMode ? (
           <motion.div
-            initial={{ y: -10 }}
-            animate={{ y: 0 }}
+            animate={{
+              y: [-10, 0],
+              opacity: [0, 1],
+              transition: { duration: 0.25 },
+            }}
             className={styles.notice}
             key={'edit'}
           >
@@ -237,13 +259,16 @@ function Preview({ mode, state }: { mode: Mode; state: State }) {
           </motion.div>
         ) : (
           <motion.div
-            initial={{ y: -10 }}
-            animate={{ y: 0 }}
+            animate={{
+              y: [-10, 0],
+              opacity: [0, 1],
+              transition: { duration: 0.25 },
+            }}
             className={styles.notice}
             key={'preview'}
           >
             <span className="material-symbols-outlined small me-1">
-              play_arrow
+              visibility
             </span>
             <span>Toggle Preview mode to see and try results.</span>
           </motion.div>
@@ -278,10 +303,10 @@ interface StyledButtonProps extends React.PropsWithChildren {
 }
 
 function StyledButton({ children, variant = 'primary' }: StyledButtonProps) {
-  const [,,,_s] = useStyleConfig()
+  const [, , , _s] = useStyleConfig()
 
   function getVariables(variant: Variant) {
-    const normalConfig =  _s(`buttons.${variant}.normal`)
+    const normalConfig = _s(`buttons.${variant}.normal`)
 
     const base = {
       '--button-font-family': normalConfig.fontFamily || _s('body.fontFamily'),
