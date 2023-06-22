@@ -4,13 +4,21 @@
   padding: 0.5rem 0;
 }
 
+.fieldset:disabled input,
+.fieldset:disabled select {
+  cursor: not-allowed;
+}
+
 .fieldset :global(label) {
   font-weight: 500;
   margin-right: 1rem;
   width: 7rem;
-  cursor: pointer;
 }
 
 .input {
   flex: 1;
+}
+
+[data-theme='dark'] .fieldset:disabled input {
+  color: #ccc;
 }

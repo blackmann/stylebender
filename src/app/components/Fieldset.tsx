@@ -5,11 +5,12 @@ interface Props extends React.PropsWithChildren {
   className?: string
   inputId?: string
   label: React.ReactNode
+  disabled?: boolean
 }
 
-function Fieldset({ children, className, inputId, label }: Props) {
+function Fieldset({ children, className, disabled, inputId, label }: Props) {
   return (
-    <fieldset className={clsx(styles.fieldset, className)}>
+    <fieldset className={clsx(styles.fieldset, className)} disabled={disabled}>
       <label htmlFor={inputId}>{label}</label>
 
       <div className={styles.input}>{children}</div>

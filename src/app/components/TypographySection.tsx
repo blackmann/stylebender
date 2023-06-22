@@ -22,7 +22,7 @@ enum Level {
 }
 
 function Preview() {
-  const [, , , _s] = useStyleConfig()
+  const [,,, _s] = useStyleConfig()
 
   function getProps(level: `${Level}`) {
     const levelTypography = _s(`typography.${level}`)
@@ -72,7 +72,7 @@ function Preview() {
 }
 
 function Config() {
-  const [, setStyle, , _s] = useStyleConfig()
+  const [, setStyle,, _s] = useStyleConfig()
   const [level, setLevel] = React.useState<`${Level}`>('h1')
 
   const levelTypography = _s(`typography.${level}`)
@@ -97,10 +97,7 @@ function Config() {
       <header className={clsx('medium text-secondary', cs.configHeader)}>
         <div>typography</div>
 
-        <Select
-          id="typography-level-select"
-          onChange={(e) => setLevel(e.target.value as Level)}
-        >
+        <Select onChange={(e) => setLevel(e.target.value as Level)}>
           {Object.values(Level).map((level) => (
             <option key={level} value={level}>
               {level}
@@ -109,19 +106,17 @@ function Config() {
         </Select>
       </header>
 
-      <Fieldset label="Font family" inputId="typography-font-family">
+      <Fieldset label="Font family">
         <TextInput
-          id="typography-font-family"
           onChange={(e) => handleChange('fontFamily', e.target.value)}
           value={fontFamily}
         />
       </Fieldset>
 
-      <Fieldset label="Font weight" inputId="typography-font-weight">
+      <Fieldset label="Font weight">
         <Select
           onChange={(e) => handleChange('fontWeight', e.target.value)}
           value={fontWeight}
-          id="typography-font-weight"
         >
           <option value="400">Regular</option>
           <option value="500">Medium</option>
@@ -129,9 +124,8 @@ function Config() {
         </Select>
       </Fieldset>
 
-      <Fieldset label="Font size" inputId="typography-font-size">
+      <Fieldset label="Font size">
         <UnitInput
-          id="typography-font-size"
           onChange={(e) => handleChange('fontSize', e.target.value)}
           value={fontSize}
         />

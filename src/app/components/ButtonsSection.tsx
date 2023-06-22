@@ -70,7 +70,6 @@ function Config({
 
         <div>
           <Select
-            id="button-variant"
             onChange={(e) => setVariant(e.target.value as Variant)}
             value={variant}
           >
@@ -88,33 +87,33 @@ function Config({
           <span className="material-symbols-outlined me-1">
             {previewMode ? 'edit' : 'visibility'}
           </span>
-          {previewMode ? 'Enter edit mode' : 'Preview'}
+          {previewMode ? 'Enter edit mode' : 'Enter preview mode'}
         </Button>
       </div>
 
-      <Fieldset label="Font family" inputId="buttons-font-family">
-        <TextInput id="buttons-font-family" />
+      <Fieldset disabled={previewMode} label="Font family">
+        <TextInput />
       </Fieldset>
 
-      <Fieldset label="Font size" inputId="buttons-font-size">
-        <UnitInput id="buttons-font-size" />
+      <Fieldset disabled={previewMode} label="Font size">
+        <UnitInput />
       </Fieldset>
 
-      <Fieldset label="Font weight" inputId="buttons-font-weight">
-        <UnitInput id="buttons-font-weight" />
+      <Fieldset disabled={previewMode} label="Font weight">
+        <UnitInput />
       </Fieldset>
 
-      <Fieldset label="Radius" inputId="buttons-radius">
-        <UnitInput id="buttons-radius" />
+      <Fieldset disabled={previewMode} label="Radius">
+        <UnitInput />
       </Fieldset>
 
-      <Fieldset label="Padding" inputId="buttons-padding">
-        <UnitInput id="buttons-padding" />
+      <Fieldset disabled={previewMode} label="Padding">
+        <UnitInput />
       </Fieldset>
 
       <div className="text-secondary medium mt-1">State overrides</div>
 
-      <div className={clsx(styles.states, 'mt-1')}>
+      <div className="mt-1">
         {states.map((state) => (
           <Chip
             checked={state === selectedState}
@@ -126,19 +125,19 @@ function Config({
         ))}
       </div>
 
-      <Fieldset label="Background">
+      <Fieldset disabled={previewMode} label="Background">
         <ColorPicker
           onChange={(value) => handleChange('background', value)}
           value="black"
         />
       </Fieldset>
 
-      <Fieldset label="Color">
+      <Fieldset disabled={previewMode} label="Color">
         <ColorPicker value="black" />
       </Fieldset>
 
-      <Fieldset label="Border" inputId="buttons-border">
-        <BorderInput id="buttons-border" />
+      <Fieldset disabled={previewMode} label="Border">
+        <BorderInput />
       </Fieldset>
     </Card>
   )
@@ -215,56 +214,47 @@ function Preview({ mode, state }: { mode: Mode; state: State }) {
         </button>
       </div>
 
-      <footer className={clsx('app text-secondary mt-3', styles.footer)}>
-        <div className={clsx('mb-1 text-secondary app', styles.notice)}>
-          <span className="material-symbols-outlined small me-1">code</span>
-          <span>
-            Use <code>.primary</code>, <code>.secondary</code>,{' '}
-            <code>.tertiary</code> or
-            <code>.plain</code> to achieve the respective styling.
-          </span>
-        </div>
+      <div className={clsx('mt-3 text-secondary app', styles.notice)}>
+        <span className="material-symbols-outlined small me-1">code</span>
+        <span>
+          Use <code>.primary</code>, <code>.secondary</code>,{' '}
+          <code>.tertiary</code> or
+          <code>.plain</code> to achieve the respective styling.
+        </span>
+      </div>
 
-        {previewMode && (
-          <motion.div
-            animate={{
-              y: [-10, 0],
-              opacity: [0, 1],
-              transition: { duration: 0.25 },
-            }}
-            className={clsx('text-secondary mb-1', styles.notice)}
-          >
-            <span className="material-symbols-outlined small me-1">
-              visibility
-            </span>
-
-            <span>Preview mode</span>
-          </motion.div>
-        )}
-
+      <footer className={clsx('app text-secondary mt-1', styles.footer)}>
         {previewMode ? (
-          <motion.div
-            animate={{
-              y: [-10, 0],
-              opacity: [0, 1],
-              transition: { duration: 0.25 },
-            }}
-            className={styles.notice}
-            key={'edit'}
-          >
-            <span className="material-symbols-outlined small me-1">edit</span>
-            <span>
-              Enter edit mode to be able to configure the buttons in their
-              respective states.
-            </span>
-          </motion.div>
+          <>
+            <motion.div
+              initial={{ y: -10 }}
+              animate={{ y: 0 }}
+              className={clsx(styles.notice, 'mb-1')}
+              // key={previewMode}
+            >
+              <span className="material-symbols-outlined small me-1">
+                visibility
+              </span>
+              <span>Preview mode</span>
+            </motion.div>
+
+            <motion.div
+              initial={{ y: -10 }}
+              animate={{ y: 0 }}
+              className={styles.notice}
+              key={'edit'}
+            >
+              <span className="material-symbols-outlined small me-1">edit</span>
+              <span>
+                Enter edit mode to be able to configure the buttons in their
+                respective states.
+              </span>
+            </motion.div>
+          </>
         ) : (
           <motion.div
-            animate={{
-              y: [-10, 0],
-              opacity: [0, 1],
-              transition: { duration: 0.25 },
-            }}
+            initial={{ y: -10 }}
+            animate={{ y: 0 }}
             className={styles.notice}
             key={'preview'}
           >
