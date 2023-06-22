@@ -22,7 +22,7 @@ enum Level {
 }
 
 function Preview() {
-  const [, , , _s] = useStyleConfig()
+  const [,,, _s] = useStyleConfig()
 
   function getProps(level: `${Level}`) {
     const levelTypography = _s(`typography.${level}`)
@@ -72,7 +72,7 @@ function Preview() {
 }
 
 function Config() {
-  const [, setStyle, , _s] = useStyleConfig()
+  const [, setStyle,, _s] = useStyleConfig()
   const [level, setLevel] = React.useState<`${Level}`>('h1')
 
   const levelTypography = _s(`typography.${level}`)
@@ -95,12 +95,9 @@ function Config() {
   return (
     <Card>
       <header className={clsx('medium text-secondary', cs.configHeader)}>
-        <label htmlFor="typo">typography</label>
+        <div>typography</div>
 
-        <Select
-          onChange={(e) => setLevel(e.target.value as Level)}
-          id="typo"
-        >
+        <Select onChange={(e) => setLevel(e.target.value as Level)}>
           {Object.values(Level).map((level) => (
             <option key={level} value={level}>
               {level}
@@ -109,17 +106,15 @@ function Config() {
         </Select>
       </header>
 
-      <Fieldset label="Font family" inputId="typo-family">
+      <Fieldset label="Font family">
         <TextInput
-          id="typo-family"
           onChange={(e) => handleChange('fontFamily', e.target.value)}
           value={fontFamily}
         />
       </Fieldset>
 
-      <Fieldset label="Font weight" inputId="typo-weight">
+      <Fieldset label="Font weight">
         <Select
-          id="typo-weight"
           onChange={(e) => handleChange('fontWeight', e.target.value)}
           value={fontWeight}
         >
@@ -129,9 +124,8 @@ function Config() {
         </Select>
       </Fieldset>
 
-      <Fieldset label="Font size" inputId="typo-size">
+      <Fieldset label="Font size">
         <UnitInput
-          id="typo-size"
           onChange={(e) => handleChange('fontSize', e.target.value)}
           value={fontSize}
         />

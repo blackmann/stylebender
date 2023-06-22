@@ -100,7 +100,3 @@ code {
 .material-symbols-outlined.small {
   font-size: 1.3rem;
 }
-
-[data-theme='dark'] :is(input,select,.pcr-button){
-  border: 0.065rem solid #3f3f46;
-}

@@ -66,13 +66,10 @@ function Config({
   return (
     <Card>
       <header className={cs.configHeader}>
-        <label className="text-secondary medium" htmlFor="buttons">
-          buttons
-        </label>
+        <div className="text-secondary medium">buttons</div>
 
         <div>
           <Select
-            id="buttons"
             onChange={(e) => setVariant(e.target.value as Variant)}
             value={variant}
           >
@@ -94,24 +91,24 @@ function Config({
         </Button>
       </div>
 
-      <Fieldset label="Font family" inputId="button-font-family">
-        <TextInput id="button-font-family" />
+      <Fieldset label="Font family">
+        <TextInput />
       </Fieldset>
 
-      <Fieldset label="Font size" inputId="button-font-size">
-        <UnitInput id="button-font-size" />
+      <Fieldset label="Font size">
+        <UnitInput />
       </Fieldset>
 
-      <Fieldset label="Font weight" inputId="button-font-weight">
-        <UnitInput id="button-font-weight" />
+      <Fieldset label="Font weight">
+        <UnitInput />
       </Fieldset>
 
-      <Fieldset label="Radius" inputId="button-radius">
-        <UnitInput id="button-radius" />
+      <Fieldset label="Radius">
+        <UnitInput />
       </Fieldset>
 
-      <Fieldset label="Padding" inputId="button-padding">
-        <UnitInput id="button-padding" />
+      <Fieldset label="Padding">
+        <UnitInput />
       </Fieldset>
 
       <div className="text-secondary medium mt-1">State overrides</div>
@@ -139,15 +136,15 @@ function Config({
         <ColorPicker value="black" />
       </Fieldset>
 
-      <Fieldset label="Border" inputId="button-border">
-        <BorderInput id="button-border" />
+      <Fieldset label="Border">
+        <BorderInput />
       </Fieldset>
     </Card>
   )
 }
 
 function Preview({ mode, state }: { mode: Mode; state: State }) {
-  const [, , , _s] = useStyleConfig()
+  const [,,,_s] = useStyleConfig()
 
   function getVariables(variant: Variant) {
     const normalConfig = _s(`buttons.${variant}.normal`)
@@ -176,9 +173,7 @@ function Preview({ mode, state }: { mode: Mode; state: State }) {
           return isHover ? _s('colors').primaryShades[0] : 'transparent'
         }
 
-        return isHover
-          ? _s(`colors.${variant}Shades`)[4]
-          : _s(`colors.${variant}`)
+        return isHover ? _s(`colors.${variant}Shades`)[4] : _s(`colors.${variant}`)
       })()
 
       return {
@@ -283,10 +278,10 @@ interface StyledButtonProps extends React.PropsWithChildren {
 }
 
 function StyledButton({ children, variant = 'primary' }: StyledButtonProps) {
-  const [, , , _s] = useStyleConfig()
+  const [,,,_s] = useStyleConfig()
 
   function getVariables(variant: Variant) {
-    const normalConfig = _s(`buttons.${variant}.normal`)
+    const normalConfig =  _s(`buttons.${variant}.normal`)
 
     const base = {
       '--button-font-family': normalConfig.fontFamily || _s('body.fontFamily'),
