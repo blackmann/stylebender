@@ -18,3 +18,7 @@
 .input {
   flex: 1;
 }
+
+[data-theme='dark'] .fieldset:disabled input {
+  color: #ccc;
+}
