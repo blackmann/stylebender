@@ -2,14 +2,6 @@
   display: flex;
 }
 
-.states {
-  pointer-events: all;
-}
-
-.statesDisabled {
-  pointer-events: none;
-}
-
 .footer {
   min-height: 5rem;
 }

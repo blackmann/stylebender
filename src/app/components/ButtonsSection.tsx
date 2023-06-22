@@ -113,12 +113,7 @@ function Config({
 
       <div className="text-secondary medium mt-1">State overrides</div>
 
-      <div
-        className={clsx(
-          previewMode ? styles.statesDisabled : styles.states,
-          'mt-1'
-        )}
-      >
+      <div className="mt-1">
         {states.map((state) => (
           <Chip
             checked={state === selectedState}
