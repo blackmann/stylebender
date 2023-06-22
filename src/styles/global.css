@@ -19,6 +19,8 @@
   --app-secondary-color-light: #dfe7eeb8;
   --app-font-size: 14px;
   --app-border-radius: 1rem;
+  --app-dark-border-color: #3f3f46;
+  --app-light-border-color: #e4e4e7;
 
   font-size: var(--app-font-size);
 }
@@ -57,7 +59,7 @@ code {
   padding: 0 0.25rem 0.125rem;
 }
 
-[data-theme="dark"] code {
+[data-theme='dark'] code {
   background-color: var(--app-background-color);
 }
 
@@ -99,4 +101,16 @@ code {
 
 .material-symbols-outlined.small {
   font-size: 1.3rem;
+}
+
+[type='button'].pcr-button {
+  border: 0.065rem solid var(--app-light-border-color);
+}
+
+[data-theme='light'] :is(input, select, .prc-button) {
+  border: 0.065rem solid var(--app-light-border-color);
+}
+
+[data-theme='dark'] :is(input, select, .pcr-button) {
+  border: 0.065rem solid var(--app-dark-border-color);
 }
