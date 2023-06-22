@@ -85,7 +85,7 @@ function Config({
       <div style={{ marginTop: '-1rem' }}>
         <Button className="plain small" onClick={toggleModes}>
           <span className="material-symbols-outlined me-1">
-            {previewMode ? 'edit' : 'play_arrow'}
+            {previewMode ? 'edit' : 'visibility'}
           </span>
           {previewMode ? 'Enter edit mode' : 'Enter preview mode'}
         </Button>
@@ -230,18 +230,32 @@ function Preview({ mode, state }: { mode: Mode; state: State }) {
 
       <footer className={clsx('app text-secondary mt-1', styles.footer)}>
         {previewMode ? (
-          <motion.div
-            initial={{ y: -10 }}
-            animate={{ y: 0 }}
-            className={styles.notice}
-            key={'edit'}
-          >
-            <span className="material-symbols-outlined small me-1">edit</span>
-            <span>
-              Enter edit mode to be able to configure the buttons in their
-              respective states.
-            </span>
-          </motion.div>
+          <>
+            <motion.div
+              initial={{ y: -10 }}
+              animate={{ y: 0 }}
+              className={clsx(styles.notice, 'mb-1')}
+              // key={previewMode}
+            >
+              <span className="material-symbols-outlined small me-1">
+                visibility
+              </span>
+              <span>Preview mode</span>
+            </motion.div>
+
+            <motion.div
+              initial={{ y: -10 }}
+              animate={{ y: 0 }}
+              className={styles.notice}
+              key={'edit'}
+            >
+              <span className="material-symbols-outlined small me-1">edit</span>
+              <span>
+                Enter edit mode to be able to configure the buttons in their
+                respective states.
+              </span>
+            </motion.div>
+          </>
         ) : (
           <motion.div
             initial={{ y: -10 }}
@@ -250,7 +264,7 @@ function Preview({ mode, state }: { mode: Mode; state: State }) {
             key={'preview'}
           >
             <span className="material-symbols-outlined small me-1">
-              play_arrow
+              visibility
             </span>
             <span>Toggle Preview mode to see and try results.</span>
           </motion.div>
