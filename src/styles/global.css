@@ -103,14 +103,6 @@ code {
   font-size: 1.3rem;
 }
 
-[type='button'].pcr-button {
-  border: 0.065rem solid var(--app-light-border-color);
-}
-
-[data-theme='light'] :is(input, select, .prc-button) {
-  border: 0.065rem solid var(--app-light-border-color);
-}
-
-[data-theme='dark'] :is(input, select, .pcr-button) {
+[data-theme='dark'] :is(input, select) {
   border: 0.065rem solid var(--app-dark-border-color);
 }
