@@ -3,7 +3,11 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
-  "extends": ["preact"],
+  "extends": [
+    "preact",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
   "rules": {
     "sort-imports": "warn"
   }

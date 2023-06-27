@@ -5,6 +5,9 @@ type Theme = 'light' | 'dark'
 const light = signal({
   body: {
     fontFamily: 'Iosevka, monospace',
+    fontSize: '14px',
+    background: 'canvas',
+    color: '#222'
   },
 })
 
@@ -12,10 +15,10 @@ const dark = signal({
   body: {},
 })
 
-function getStyle(
+function getStyle<T = string>(
   key: string,
   theme: Theme = 'light'
-): string | Record<string, any> | undefined {
+): T | undefined {
   if (theme === 'light') {
     return getValue(light.value, key)
   }
@@ -48,7 +51,7 @@ function setStyle(key: string, value: string, theme: Theme = 'light') {
   const assignmentKey = path.pop() as string
 
   let valueStep = target.value as Record<string, any>
-  let valueRef = valueStep
+  const valueRef = valueStep
 
   let i = 0
   while (i < path.length) {

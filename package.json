@@ -6,8 +6,7 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:app": "yarn workspace app run dev",
-    "gt": "yarn workspace app run generate-template"
+    "dev:app": "yarn workspace app run dev"
   },
   "repository": {
     "type": "git",

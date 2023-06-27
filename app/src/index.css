@@ -1,9 +1,6 @@
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -20,4 +17,14 @@
 
 body {
   margin: 0;
+  min-height: 100vh;
+}
+
+fieldset {
+  border: 0;
+  padding: 0
+}
+
+.fw-bold {
+  font-weight: 700;
 }

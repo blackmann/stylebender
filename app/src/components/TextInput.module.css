@@ -1,0 +1,17 @@
+.input {
+  background-color: var(--app-background-color);
+  border: 0;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.input[type='number'] {
+  width: 4rem;
+}
+
+[data-theme='dark'] .input {
+  background-color: var(--app-background-color);
+  color: #ccc;
+}

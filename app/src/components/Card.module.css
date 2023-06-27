@@ -1,0 +1,16 @@
+.card {
+  --card-background: #fff;
+  --card-border-color: #dfe7eeb8;
+
+  background-color: var(--card-background);
+  border-color: var(--card-border-color);
+  border-width: 1px;
+  border-radius: 1rem;
+  border-style: solid;
+  padding: 1rem;
+}
+
+[data-theme='dark'] .card {
+  --card-background: #1a1a1a;
+  --card-border-color: #3a3a3a;
+}
