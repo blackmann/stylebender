@@ -1,0 +1,36 @@
+.config {
+  width: 22rem;
+}
+
+.config > :first-child {
+  position: absolute;
+  width: inherit;
+}
+
+.section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-side {
+  margin-top: 1rem;
+  width: 12rem;
+}
+
+.preview {
+  flex: 1;
+  margin: 0 1rem;
+  max-width: 60rem;
+  padding: 1rem 3rem;
+}
+
+.section:first-child .preview {
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+
+.section:last-child .preview {
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
