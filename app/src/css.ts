@@ -77,6 +77,7 @@ function typography() {
   return ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
     .map(createTypographyStyle)
     .join('\n')
+    .trim()
 }
 
 function buttons() {
@@ -86,15 +87,38 @@ function buttons() {
   return [
     ...createButtonStyle('primary', true, 'button, button.primary'),
     ...createButtonStyle('accent', false),
+    createPlainButtonStyle(),
     spaced.css,
   ].join('\n')
 }
 
+function createPlainButtonStyle() {
+  const base = new Style('.root :is(button.plain, a.plain)')
+
+  base.add('background', 'transparent !important')
+  base.add('color', l('buttons.plain.color') || l('body.color'))
+
+  const dark = new Style('[data-theme=dark] :is(button.plain, a.plain)')
+  dark.add('color', (d('buttons.plain.color') || d('body.color')) + '!important')
+
+  return [dark.css, base.css].join('\n')
+}
+
 function createButtonStyle(name: string, setDefault = true, selector?: string) {
-  const base = new Style(selector || `button.${name}, a.${name}`)
+  const elementSelector = `button.${name}, a.${name}`
+  selector = selector || elementSelector
+
+  const base = new Style(selector)
+  setDefault && base.add('border-style', 'solid')
+  setDefault && base.add('cursor', 'pointer')
+
   base.add(
     'background-color',
     l(`buttons.${name}.background`) || l(`colors.${name}`)
+  )
+  base.add(
+    'color',
+    l(`buttons.${name}.color`) || (setDefault ? '#f3f3f3' : undefined)
   )
   base.add(
     'font-family',
@@ -111,14 +135,15 @@ function createButtonStyle(name: string, setDefault = true, selector?: string) {
     'font-weight',
     l(`buttons.${name}.fontWeight`) || (setDefault ? '500' : undefined)
   )
-  setDefault && base.add('border-style', 'solid') // hard
-  base.add(
-    'color',
-    l(`buttons.${name}.color`) || (setDefault ? '#f3f3f3' : undefined)
-  )
-  setDefault && base.add('cursor', 'pointer')
 
-  return [base.css]
+  const dark = new Style(`[data-theme=dark] .root :is(${selector})`)
+  dark.add(
+    'background-color',
+    d(`buttons.${name}.background`) || getStyle(`colors.${name}`, 'dark')
+  )
+  dark.add('color', d(`buttons.${name}.color`))
+
+  return [dark.css, base.css]
 }
 
 function createTypographyStyle(level: string) {

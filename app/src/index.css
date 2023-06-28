@@ -39,7 +39,6 @@ fieldset {
   font-weight: 700;
 }
 
-
 :target {
   scroll-margin-top: 10rem;
 }
@@ -63,6 +62,10 @@ fieldset {
 
 [data-theme='dark'] .app-text-secondary {
   color: #a0a1aa;
+}
+
+#editor {
+  margin-bottom: 12rem;
 }
 
 body {
