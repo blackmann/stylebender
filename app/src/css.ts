@@ -1,7 +1,7 @@
 import { getStyle } from './config'
 
 function getCss() {
-  return [utils(), body(), typography()].join('\n')
+  return [utils(), body(), typography(), buttons()].join('\n')
 }
 
 class Style {
@@ -79,6 +79,48 @@ function typography() {
     .join('\n')
 }
 
+function buttons() {
+  const spaced = new Style(':is(button, .button) + :is(button, .button)')
+  spaced.add('margin-left', '0.75em')
+
+  return [
+    ...createButtonStyle('primary', true, 'button, button.primary'),
+    ...createButtonStyle('accent', false),
+    spaced.css,
+  ].join('\n')
+}
+
+function createButtonStyle(name: string, setDefault = true, selector?: string) {
+  const base = new Style(selector || `button.${name}, a.${name}`)
+  base.add(
+    'background-color',
+    l(`buttons.${name}.background`) || l(`colors.${name}`)
+  )
+  base.add(
+    'font-family',
+    l(`buttons.${name}.fontFamily`) ||
+      (setDefault ? l(`body.fontFamily`) : undefined)
+  )
+  base.add('padding', l(`buttons.${name}.padding`))
+  base.add(
+    'border-width',
+    l(`buttons.${name}.borderWidth`) || (setDefault ? '0' : undefined)
+  )
+  base.add('border-radius', l(`buttons.${name}.borderRadius`))
+  base.add(
+    'font-weight',
+    l(`buttons.${name}.fontWeight`) || (setDefault ? '500' : undefined)
+  )
+  setDefault && base.add('border-style', 'solid') // hard
+  base.add(
+    'color',
+    l(`buttons.${name}.color`) || (setDefault ? '#f3f3f3' : undefined)
+  )
+  setDefault && base.add('cursor', 'pointer')
+
+  return [base.css]
+}
+
 function createTypographyStyle(level: string) {
   const selector = `${level}, .${level}`
   const base = new Style(selector) // h1, .h1
@@ -94,7 +136,7 @@ function createTypographyStyle(level: string) {
   dark.add('font-family', darkConfig.fontFamily)
   dark.add('font-size', darkConfig.fontSize)
   dark.add('font-weight', darkConfig.fontWeight)
-  base.add('color', config.color)
+  base.add('color', darkConfig.color)
 
   return [base.css, dark.css].join('\n')
 }

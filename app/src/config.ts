@@ -23,6 +23,14 @@ const light = signal({
     h5: {},
     h6: {},
   },
+  buttons: {
+    primary: {
+      padding: '0.5em 0.75em',
+      borderRadius: '0.35rem'
+    },
+    accent: {},
+    plain: {},
+  },
 })
 
 const dark = signal({

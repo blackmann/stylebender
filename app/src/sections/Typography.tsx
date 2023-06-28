@@ -45,6 +45,9 @@ function Preview() {
 
       <ComponentHeader>h5</ComponentHeader>
       <h5>The quick brown fox jumps over the lazy dog</h5>
+
+      <ComponentHeader>h6</ComponentHeader>
+      <h6>The quick brown fox jumps over the lazy dog</h6>
     </>
   )
 }
