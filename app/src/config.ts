@@ -1,5 +1,5 @@
+import { theme as appTheme } from './hooks/useTheme'
 import { signal } from '@preact/signals'
-import { theme } from './hooks/useTheme'
 
 type Theme = 'light' | 'dark'
 
@@ -9,6 +9,14 @@ const light = signal({
     fontSize: '14px',
     background: '#f6f8fa',
     color: '#222'
+  },
+  typography: {
+    h1: {},
+    h2: {},
+    h3: {},
+    h4: {},
+    h5: {},
+    h6: {},
   },
 })
 
@@ -21,8 +29,12 @@ const dark = signal({
 
 function getStyle<T = string>(
   key: string,
-  theme: Theme = 'light'
+  theme?: Theme
 ): T | undefined {
+  if (!theme) {
+    return getStyle(key, appTheme.value)
+  }
+
   if (theme === 'light') {
     return getValue(light.value, key)
   }
@@ -53,7 +65,7 @@ function setStyle(key: string, value: string, base?: true) {
   // base means, this value is only set in `light` config
   // useful in cases where values are [supposed to be] the same accross
   // themes
-  const target = (base || theme.value === 'light') ? light : dark
+  const target = (base || appTheme.value === 'light') ? light : dark
   const path: string[] = key.split('.')
   const assignmentKey = path.pop() as string
 
@@ -75,7 +87,6 @@ function setStyle(key: string, value: string, base?: true) {
   }
 
   valueStep[assignmentKey] = value
-
   target.value = {...valueRef} as any
 }
 

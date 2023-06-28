@@ -9,6 +9,7 @@
     "plugin:@typescript-eslint/recommended"
   ],
   "rules": {
-    "sort-imports": "warn"
+    "sort-imports": "warn",
+    "@typescript-eslint/no-non-null-assertion": "off"
   }
 }

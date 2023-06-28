@@ -1,15 +1,15 @@
+import useTheme, { theme } from '../hooks/useTheme'
 import Button from './Button'
-import useTheme from '../hooks/useTheme'
 
 function ThemeSwitch() {
-  const { theme, switchTheme } = useTheme()
+  const { switchTheme } = useTheme()
 
   return (
     <Button className="plain" onClick={switchTheme}>
       <span className="material-symbols-outlined me-1">
-        {theme === 'light' ? 'dark_mode' : 'light_mode'}
+        {theme.value === 'light' ? 'dark_mode' : 'light_mode'}
       </span>
-      {theme === 'light' ? 'Dark mode' : 'Light mode'}
+      {theme.value === 'light' ? 'Dark mode' : 'Light mode'}
     </Button>
   )
 }
