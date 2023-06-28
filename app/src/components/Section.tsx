@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from 'framer-motion'
 import { ComponentChildren } from 'preact'
 import { LinkButton } from './Button'
 import React from 'preact/compat'
@@ -23,7 +24,23 @@ function Section({ config, id, name, children }: Props) {
         </LinkButton>
       </div>
       <div class={clsx(styles.preview, 'root')}>{children}</div>
-      <div class={styles.config}>{config}</div>
+      <div class={styles.config}>
+        <AnimatePresence>
+          {checked && (
+            <motion.div
+              animate={{ translateY: 10 }}
+              exit={{
+                translateY: -80,
+                opacity: 0,
+                transition: { duration: 0.1 },
+              }}
+              key={`config-${id}`}
+            >
+              {config}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   )
 }
