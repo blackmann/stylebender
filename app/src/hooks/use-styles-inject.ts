@@ -2,11 +2,13 @@ import React from 'preact/compat'
 import getCss from '../css'
 
 function useStylesInject() {
+
   const styleRef = React.useRef<HTMLStyleElement>()
   const css = getCss()
 
   React.useEffect(() => {
-    console.log('🔨 creating new style')
+    // Maybe only change the style content instead of destroying
+    // and recreating style node
 
     const style = document.createElement('style')
     style.setAttribute('type', 'text/css')

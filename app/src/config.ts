@@ -1,4 +1,5 @@
 import { signal } from '@preact/signals'
+import { theme } from './hooks/useTheme'
 
 type Theme = 'light' | 'dark'
 
@@ -6,13 +7,16 @@ const light = signal({
   body: {
     fontFamily: 'Iosevka, monospace',
     fontSize: '14px',
-    background: 'canvas',
+    background: '#f6f8fa',
     color: '#222'
   },
 })
 
 const dark = signal({
-  body: {},
+  body: {
+    background: '#212121',
+    color: '#F5F4F4',
+  },
 })
 
 function getStyle<T = string>(
@@ -45,8 +49,11 @@ function getValue(obj: Record<string, any>, key: string): any {
   return value
 }
 
-function setStyle(key: string, value: string, theme: Theme = 'light') {
-  const target = theme === 'light' ? light : dark
+function setStyle(key: string, value: string, base?: true) {
+  // base means, this value is only set in `light` config
+  // useful in cases where values are [supposed to be] the same accross
+  // themes
+  const target = (base || theme.value === 'light') ? light : dark
   const path: string[] = key.split('.')
   const assignmentKey = path.pop() as string
 

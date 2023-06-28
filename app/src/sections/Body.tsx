@@ -8,7 +8,15 @@ import UnitInput from '../components/UnitInput'
 
 function Body() {
   return (
-    <Section config={<Config />} id="body" name={<>Body</>}>
+    <Section
+      config={<Config />}
+      id="body"
+      name={
+        <>
+          <span className="material-symbols-outlined me-1">segment</span> Body
+        </>
+      }
+    >
       <Preview />
     </Section>
   )

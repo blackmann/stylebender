@@ -16,7 +16,10 @@ function body() {
 
 `
 
-  let dark = '[data-theme=dark] .root {'
+  let dark = `[data-theme=dark] .root {
+background-color: ${s('body.background', 'dark')};
+color: ${s('body.color', 'dark')};
+    `
 
   dark += '\n}'
 

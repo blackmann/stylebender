@@ -1,0 +1,16 @@
+.logo {
+  align-items: center;
+  border-radius: 8px;
+  color: #585858;
+  display: inline-flex;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+:global(.material-symbols-outlined) {
+  font-size: 26px;
+}
+
+[data-theme="dark"] .logo {
+  color: #f5f5f5;
+}
