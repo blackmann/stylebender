@@ -1,4 +1,4 @@
-import { theme as appTheme } from './hooks/useTheme'
+import { theme as appTheme } from './hooks/use-theme'
 import { signal } from '@preact/signals'
 
 type Theme = 'light' | 'dark'
@@ -8,7 +8,12 @@ const light = signal({
     fontFamily: 'Iosevka, monospace',
     fontSize: '14px',
     background: '#f6f8fa',
-    color: '#222'
+    color: '#222',
+  },
+  colors: {
+    primary: '#4882F9',
+    accent: '#DE2323',
+    secondary: '#838995',
   },
   typography: {
     h1: {},
@@ -29,7 +34,8 @@ const dark = signal({
 
 function getStyle<T = string>(
   key: string,
-  theme?: Theme
+  theme?: Theme,
+  fallback = true
 ): T | undefined {
   if (!theme) {
     return getStyle(key, appTheme.value)
@@ -38,9 +44,10 @@ function getStyle<T = string>(
   if (theme === 'light') {
     return getValue(light.value, key)
   }
-
   // fallback to light when dark has no value
-  return getValue(dark.value, key) || getStyle(key, 'light')
+  return (
+    getValue(dark.value, key) || (fallback ? getStyle(key, 'light') : undefined)
+  )
 }
 
 function getValue(obj: Record<string, any>, key: string): any {
@@ -61,11 +68,11 @@ function getValue(obj: Record<string, any>, key: string): any {
   return value
 }
 
-function setStyle(key: string, value: string, base?: true) {
+function setStyle(key: string, value: string | string[], base?: true) {
   // base means, this value is only set in `light` config
   // useful in cases where values are [supposed to be] the same accross
   // themes
-  const target = (base || appTheme.value === 'light') ? light : dark
+  const target = base || appTheme.value === 'light' ? light : dark
   const path: string[] = key.split('.')
   const assignmentKey = path.pop() as string
 
@@ -87,7 +94,7 @@ function setStyle(key: string, value: string, base?: true) {
   }
 
   valueStep[assignmentKey] = value
-  target.value = {...valueRef} as any
+  target.value = { ...valueRef } as any
 }
 
 export { getStyle, light, setStyle }

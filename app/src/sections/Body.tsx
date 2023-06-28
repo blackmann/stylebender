@@ -25,16 +25,16 @@ function Body() {
 function Preview() {
   return (
     <>
-      <header class="fw-bold">body</header>
+      <header class="fw-bold text-secondary">body</header>
 
       <p>
         Everyone has the right to rest and leisure, including reasonable
         limitation of working hours and periodic holidays with pay.
       </p>
 
-      <header class="fw-bold">secondary text</header>
+      <header class="fw-bold text-secondary">secondary text</header>
 
-      <p>
+      <p class="text-secondary">
         No one shall be subjected to arbitrary interference with his privacy,
         family, home or correspondence, nor to attacks upon his honour and
         reputation.
@@ -69,7 +69,7 @@ function Config() {
       <Fieldset label="Font family">
         <TextInput
           onChange={(e) =>
-            setStyle('body.fontFamily', (e.target as HTMLInputElement).value)
+            setStyle('body.fontFamily', (e.target as HTMLInputElement).value, true)
           }
           value={getStyle('body.fontFamily')}
         />
@@ -83,7 +83,7 @@ function Config() {
       <Fieldset label="Font size">
         <UnitInput
           onChange={(e) =>
-            setStyle('body.fontSize', (e.target as HTMLInputElement).value)
+            setStyle('body.fontSize', (e.target as HTMLInputElement).value, true)
           }
           value={getStyle('body.fontSize')}
         />

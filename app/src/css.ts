@@ -1,7 +1,7 @@
 import { getStyle } from './config'
 
 function getCss() {
-  return [body(), typography()].join('\n')
+  return [utils(), body(), typography()].join('\n')
 }
 
 class Style {
@@ -38,7 +38,7 @@ function l<T>(key: string) {
 }
 
 function d<T>(key: string) {
-  return getStyle<T>(key, 'dark')
+  return getStyle<T>(key, 'dark', false)
 }
 
 function body() {
@@ -49,11 +49,34 @@ function body() {
   base.add('font-size', l('body.fontSize'))
   base.add('background-color', l('body.background'))
 
-  const dark = new Style('[data-theme=dark] .root')
+  const dark = new Style('[data-theme="dark"] .root')
   dark.add('background-color', d('body.background'))
   dark.add('color', d('body.color'))
 
   return [base.css, dark.css].join('\n')
+}
+
+function utils() {
+  const baseVariables = new Style('.root /* :root */')
+  baseVariables.add('--primary-color', l('colors.primary'))
+  baseVariables.add('--accent-color', l('colors.accent'))
+  baseVariables.add('--secondary-color', l('colors.secondary'))
+
+  const darkVariables = new Style('[data-theme=dark] .root /* :root */')
+  darkVariables.add('--primary-color', d('colors.primary'))
+  darkVariables.add('--accent-color', d('colors.accent'))
+  darkVariables.add('--secondary-color', d('colors.secondary'))
+
+  const textSecondary = new Style('.text-secondary')
+  textSecondary.add('color', 'var(--secondary-color)')
+
+  return [baseVariables.css, darkVariables.css, textSecondary.css].join('\n')
+}
+
+function typography() {
+  return ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
+    .map(createTypographyStyle)
+    .join('\n')
 }
 
 function createTypographyStyle(level: string) {
@@ -74,12 +97,6 @@ function createTypographyStyle(level: string) {
   base.add('color', config.color)
 
   return [base.css, dark.css].join('\n')
-}
-
-function typography() {
-  return ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
-    .map(createTypographyStyle)
-    .join('\n')
 }
 
 export default getCss

@@ -1,0 +1,18 @@
+.shades {
+  display: flex;
+}
+
+.shades > * {
+  flex: 1;
+  height: 27px;
+}
+
+.shades > :first-child {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.shades > :last-child {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}

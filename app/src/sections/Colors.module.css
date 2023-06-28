@@ -1,0 +1,25 @@
+.baseColor {
+  display: flex;
+}
+
+.baseColor + .baseColor {
+  margin-top: 1rem;
+}
+
+.baseColor > :first-child {
+  width: 8rem;
+}
+
+.shadeIndices {
+  display: flex;
+  margin-left: 8rem;
+}
+
+.shadeIndices > * {
+  flex: 1;
+}
+
+.shades {
+  flex: 1;
+  margin-top: 1.2rem;
+}

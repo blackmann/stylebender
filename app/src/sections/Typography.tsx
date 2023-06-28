@@ -9,6 +9,7 @@ import TextInput from '../components/TextInput'
 import UnitInput from '../components/UnitInput'
 import clsx from 'clsx'
 import cs from './Common.module.css'
+import ComponentHeader from '../components/ComponentHeader'
 
 function Typography() {
   return (
@@ -30,19 +31,19 @@ function Typography() {
 function Preview() {
   return (
     <>
-      <header>h1</header>
+      <ComponentHeader>h1</ComponentHeader>
       <h1>The quick brown fox jumps over the lazy dog</h1>
 
-      <header>h2</header>
+      <ComponentHeader>h2</ComponentHeader>
       <h2>The quick brown fox jumps over the lazy dog</h2>
 
-      <header>h3</header>
+      <ComponentHeader>h3</ComponentHeader>
       <h3>The quick brown fox jumps over the lazy dog</h3>
 
-      <header>h4</header>
+      <ComponentHeader>h4</ComponentHeader>
       <h4>The quick brown fox jumps over the lazy dog</h4>
 
-      <header>h5</header>
+      <ComponentHeader>h5</ComponentHeader>
       <h5>The quick brown fox jumps over the lazy dog</h5>
     </>
   )

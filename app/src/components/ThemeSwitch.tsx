@@ -1,4 +1,4 @@
-import useTheme, { theme } from '../hooks/useTheme'
+import useTheme, { theme } from '../hooks/use-theme'
 import Button from './Button'
 
 function ThemeSwitch() {
