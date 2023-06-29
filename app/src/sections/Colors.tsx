@@ -1,4 +1,5 @@
 import { getStyle as _s, setStyle } from '../config'
+import Button from '../components/Button'
 import ColorPicker from '../components/ColorPicker'
 import ComponentHeader from '../components/ComponentHeader'
 import React from 'preact/compat'
@@ -10,8 +11,18 @@ import styles from './Colors.module.css'
 type ColorTypes = 'primary' | 'secondary' | 'accent'
 
 function Colors() {
+  function handleRandomizeColors() {
+    setStyle('colors.primary', generateColor())
+    setStyle('colors.accent', generateColor())
+  }
   return (
     <Section
+      config={
+        <Button className="plain" onClick={handleRandomizeColors}>
+          <span className="material-symbols-outlined me-1">shuffle</span>{' '}
+          Randomize
+        </Button>
+      }
       id="colors"
       name={
         <>
@@ -102,11 +113,19 @@ function Preview() {
             )}
           />
 
-          <p class="m-0 text-secondary">Used mainly for sub-titles or secondary texts</p>
+          <p class="m-0 text-secondary">
+            Used mainly for sub-titles or secondary texts
+          </p>
         </div>
       </div>
     </div>
   )
+}
+
+function generateColor() {
+  return `#${Math.floor(Math.random() * 0xffffff)
+    .toString(16)
+    .padStart(6, '0')}`
 }
 
 export default Colors
