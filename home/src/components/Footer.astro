@@ -1,0 +1,65 @@
+---
+const today = new Date()
+---
+
+<footer class="text-secondary container mt-8 pt-5">
+	<div class="row">
+		<div class="col-md-6">
+			<div>
+				&copy; {today.getFullYear()} stylebender. All rights reserved.
+			</div>
+
+			<div>version 2023.06.29/1</div>
+		</div>
+
+		<div class="col-md-6 text-md-end pt-5 pt-md-0">
+			<svg
+				width="70"
+				height="21"
+				viewBox="0 0 141 42"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<circle cx="20" cy="21" r="19" stroke="currentColor" stroke-width="2"
+				></circle>
+				<mask id="path-2-inside-1_11_9" fill="white">
+					<path
+						d="M113 5C113 2.79086 111.192 0.959681 109.026 1.39861C105.203 2.17384 101.658 4.05787 98.8579 6.85786C95.1071 10.6086 93 15.6957 93 21C93 26.3043 95.1071 31.3914 98.8579 35.1421C101.658 37.9421 105.203 39.8262 109.026 40.6014C111.192 41.0403 113 39.2091 113 37L113 21L113 5Z"
+					></path>
+				</mask>
+				<path
+					d="M113 5C113 2.79086 111.192 0.959681 109.026 1.39861C105.203 2.17384 101.658 4.05787 98.8579 6.85786C95.1071 10.6086 93 15.6957 93 21C93 26.3043 95.1071 31.3914 98.8579 35.1421C101.658 37.9421 105.203 39.8262 109.026 40.6014C111.192 41.0403 113 39.2091 113 37L113 21L113 5Z"
+					stroke="currentColor"
+					stroke-width="4"
+					mask="url(#path-2-inside-1_11_9)"></path>
+				<mask id="path-3-inside-2_11_9" fill="white">
+					<path
+						d="M121 5C121 2.79086 122.808 0.959681 124.974 1.39861C128.797 2.17384 132.342 4.05787 135.142 6.85786C138.893 10.6086 141 15.6957 141 21C141 26.3043 138.893 31.3914 135.142 35.1421C132.342 37.9421 128.797 39.8262 124.974 40.6014C122.808 41.0403 121 39.2091 121 37L121 21L121 5Z"
+					></path>
+				</mask>
+				<path
+					d="M121 5C121 2.79086 122.808 0.959681 124.974 1.39861C128.797 2.17384 132.342 4.05787 135.142 6.85786C138.893 10.6086 141 15.6957 141 21C141 26.3043 138.893 31.3914 135.142 35.1421C132.342 37.9421 128.797 39.8262 124.974 40.6014C122.808 41.0403 121 39.2091 121 37L121 21L121 5Z"
+					stroke="currentColor"
+					stroke-width="4"
+					mask="url(#path-3-inside-2_11_9)"></path>
+				<path
+					d="M48 33V9C48 4.58172 51.5817 1 56 1H82.377C86.0676 1 87.7893 5.57235 85.0152 8.00659L73.6341 17.9934C71.8185 19.5866 71.8185 22.4134 73.6341 24.0066L85.0152 33.9934C87.7893 36.4277 86.0676 41 82.377 41H56C51.5817 41 48 37.4183 48 33Z"
+					stroke="currentColor"
+					stroke-width="2"></path>
+			</svg>
+		</div>
+	</div>
+</footer>
+<style>
+	footer {
+		padding: 25px;
+		color: graytext;
+		border-top: 1px solid var(--bs-gray-300);
+	}
+
+	@media (prefers-color-scheme: dark) {
+		footer {
+			border-top: 1px solid var(--bs-gray-800);
+		}
+	}
+</style>
