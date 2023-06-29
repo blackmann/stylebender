@@ -8,6 +8,12 @@ const theme = signal<Theme>('light')
 function useTheme() {
 
   React.useEffect(() => {
+    // TODO: This is causing issues around base config generation
+    // That is, some values are created/prefilled in light mode
+    // But when the app reloads but from dark mode, the values are not
+    // prefilled (eg. color shades)
+    // A possible solution is to hardcode the generated values in the config file
+    // Explore!
     const savedTheme = localStorage.getItem('theme') as Theme | undefined
     theme.value = savedTheme || 'light'
 

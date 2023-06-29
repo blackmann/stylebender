@@ -1,15 +1,28 @@
 import { getStyle } from './config'
 
-function getCss() {
-  return [utils(), body(), typography(), buttons()].join('\n')
+const PREFERS_COLOR_SCHEME = ':root { color-scheme: light dark; }'
+
+function getCss(preview = true) {
+  const styles = [utils(), body(), typography(), buttons()]
+  const generated = styles
+    .flat()
+    .map((style) => (preview ? style.preview() : style.export()))
+    .filter(Boolean) // removes empty styles
+    .join('\n\n')
+
+  return [preview ? '' : PREFERS_COLOR_SCHEME, generated].join('\n\n')
 }
+
+type Mode = 'light' | 'dark'
 
 class Style {
   private properties = ''
   selector: string
+  private mode: Mode
 
-  constructor(selector: string) {
+  constructor(selector: string, mode: Mode = 'light') {
     this.selector = selector
+    this.mode = mode
   }
 
   add(key: string, value: string | undefined) {
@@ -28,6 +41,24 @@ class Style {
     return `${this.selector} {\n${this.properties}}`
   }
 
+  preview() {
+    if (!this.properties) return ''
+
+    return this.mode === 'light'
+      ? `.root ${this.css}`
+      : `[data-theme=dark] .root ${this.css}`
+  }
+
+  export() {
+    if (!this.properties) return ''
+
+    const rootFillIn = this.selector ? '' : ':root'
+
+    return this.mode === 'light'
+      ? rootFillIn + this.css
+      : `@media (prefers-color-scheme: dark) { ${rootFillIn} ${this.css} }`
+  }
+
   valueOf() {
     return this.css
   }
@@ -42,24 +73,24 @@ function d<T>(key: string) {
 }
 
 function body() {
-  const base = new Style('.root')
+  const base = new Style('')
 
   base.add('color', l('body.color'))
   base.add('font-family', l('body.fontFamily'))
   base.add('font-size', l('body.fontSize'))
   base.add('background-color', l('body.background'))
 
-  const dark = new Style('[data-theme="dark"] .root')
+  const dark = new Style('', 'dark')
   dark.add('background-color', d('body.background'))
   dark.add('color', d('body.color'))
 
-  return [base.css, dark.css].join('\n')
+  return [base, dark]
 }
 
 const colors = ['primary', 'accent', 'secondary']
 
 function utils() {
-  const baseVariables = new Style('.root /* :root */')
+  const baseVariables = new Style('')
   baseVariables.add('--primary-color', l('colors.primary'))
   baseVariables.add('--accent-color', l('colors.accent'))
   baseVariables.add('--secondary-color', l('colors.secondary'))
@@ -73,7 +104,7 @@ function utils() {
     }
   }
 
-  const darkVariables = new Style('[data-theme=dark] .root /* :root */')
+  const darkVariables = new Style('', 'dark')
   darkVariables.add('--primary-color', d('colors.primary'))
   darkVariables.add('--accent-color', d('colors.accent'))
   darkVariables.add('--secondary-color', d('colors.secondary'))
@@ -90,14 +121,11 @@ function utils() {
   const textSecondary = new Style('.text-secondary')
   textSecondary.add('color', 'var(--secondary-color)')
 
-  return [baseVariables.css, darkVariables.css, textSecondary.css].join('\n')
+  return [baseVariables, darkVariables, textSecondary]
 }
 
 function typography() {
-  return ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
-    .map(createTypographyStyle)
-    .join('\n')
-    .trim()
+  return ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].map(createTypographyStyle).flat()
 }
 
 function buttons() {
@@ -108,12 +136,12 @@ function buttons() {
     ...createButtonStyle('primary'),
     ...createButtonStyle('accent'),
     createPlainButtonStyle(),
-    spaced.css,
-  ].join('\n')
+    spaced,
+  ].flat()
 }
 
 function createPlainButtonStyle() {
-  const base = new Style('.root :is(.button, button)')
+  const base = new Style(':is(.button, button)')
 
   base.add('background', 'var(--secondary-100)')
   base.add('color', l('buttons.base.color') || l('body.color'))
@@ -126,20 +154,20 @@ function createPlainButtonStyle() {
   base.add('border-radius', l('buttons.base.borderRadius'))
   base.add('transition', 'filter 240ms ease-out')
 
-  const dark = new Style('[data-theme=dark] .root :is(.button, button)')
+  const dark = new Style(':is(.button, button)', 'dark')
   dark.add('color', d('buttons.plain.color') || d('body.color'))
   dark.add('background', 'var(--secondary-700)')
 
-  const hover = new Style('.root :is(.button, button):hover')
+  const hover = new Style(':is(.button, button):hover')
   hover.add('filter', 'brightness(92%)')
 
-  return [dark.css, base.css, hover.css].join('\n')
+  return [dark, base, hover]
 }
 
 function createButtonStyle(name: string) {
   const selector = `button.${name}, .button.${name}`
 
-  const base = new Style(`.root :is(${selector})`)
+  const base = new Style(selector)
 
   base.add('background-color', l(`colors.${name}`))
   base.add('color', l(`buttons.${name}.color`))
@@ -147,11 +175,11 @@ function createButtonStyle(name: string) {
   base.add('border-radius', l(`buttons.${name}.borderRadius`))
   base.add('font-weight', l(`buttons.${name}.fontWeight`))
 
-  const dark = new Style(`[data-theme=dark] .root :is(${selector})`)
+  const dark = new Style(selector, 'dark')
   dark.add('background-color', getStyle(`colors.${name}`, 'dark'))
   dark.add('color', d(`buttons.${name}.color`))
 
-  return [dark.css, base.css]
+  return [dark, base]
 }
 
 function createTypographyStyle(level: string) {
@@ -165,13 +193,13 @@ function createTypographyStyle(level: string) {
   base.add('color', config.color)
 
   const darkConfig = d<Record<string, any>>(`typography.${level}`) || {}
-  const dark = new Style(`[data-theme=dark] :is(${selector})`)
+  const dark = new Style(selector, 'dark')
   dark.add('font-family', darkConfig.fontFamily)
   dark.add('font-size', darkConfig.fontSize)
   dark.add('font-weight', darkConfig.fontWeight)
   dark.add('color', darkConfig.color)
 
-  return [base.css, dark.css].join('\n')
+  return [base, dark]
 }
 
 export default getCss

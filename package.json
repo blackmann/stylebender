@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:app": "yarn workspace app run dev"
+    "dev:app": "yarn workspace app run dev",
+    "dev:home": "yarn workspace home run dev"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,8 @@
     "url": "https://github.com/blackmann/stylebender-react/issues"
   },
   "workspaces": [
-    "app"
+    "app",
+    "home"
   ],
   "homepage": "https://github.com/blackmann/stylebender-react#readme"
 }

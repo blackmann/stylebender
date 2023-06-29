@@ -6,7 +6,7 @@ import styles from './Navbar.module.css'
 
 function Navbar() {
   function download() {
-    const css = getCss()
+    const css = getCss(false)
     const blob = new Blob([css], { type: 'text/css' })
     const url = URL.createObjectURL(blob)
 
