@@ -25,11 +25,16 @@ const light = signal({
   },
   buttons: {
     primary: {
-      padding: '0.5em 0.75em',
-      borderRadius: '0.35rem'
+      color: '#fff',
     },
-    accent: {},
-    plain: {},
+    accent: {
+      color: '#fff',
+    },
+    base: {
+      fontWeight: '500',
+      padding: '0.5em 0.75em',
+      borderRadius: '0.35rem',
+    },
   },
 })
 

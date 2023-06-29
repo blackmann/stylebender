@@ -21,10 +21,9 @@ function Preview() {
   return (
     <>
       <div>
-        <button>Raw button</button>
+        <button>Base/Default</button>
         <button className="primary">Primary</button>
         <button className="accent">Accent</button>
-        <button className="plain">Plain</button>
       </div>
     </>
   )

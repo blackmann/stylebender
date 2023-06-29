@@ -56,16 +56,36 @@ function body() {
   return [base.css, dark.css].join('\n')
 }
 
+const colors = ['primary', 'accent', 'secondary']
+
 function utils() {
   const baseVariables = new Style('.root /* :root */')
   baseVariables.add('--primary-color', l('colors.primary'))
   baseVariables.add('--accent-color', l('colors.accent'))
   baseVariables.add('--secondary-color', l('colors.secondary'))
 
+  for (const color of colors) {
+    const shades = (l(`colors.${color}Shades`) || []) as string[]
+    let i = 1
+    for (const shade of shades) {
+      baseVariables.add(`--${color}-${i * 100}`, shade)
+      i++
+    }
+  }
+
   const darkVariables = new Style('[data-theme=dark] .root /* :root */')
   darkVariables.add('--primary-color', d('colors.primary'))
   darkVariables.add('--accent-color', d('colors.accent'))
   darkVariables.add('--secondary-color', d('colors.secondary'))
+
+  for (const color of colors) {
+    const shades = (d(`colors.${color}Shades`) || []) as string[]
+    let i = 1
+    for (const shade of shades) {
+      darkVariables.add(`--${color}-${i * 100}`, shade)
+      i++
+    }
+  }
 
   const textSecondary = new Style('.text-secondary')
   textSecondary.add('color', 'var(--secondary-color)')
@@ -85,62 +105,50 @@ function buttons() {
   spaced.add('margin-left', '0.75em')
 
   return [
-    ...createButtonStyle('primary', true, 'button, button.primary'),
-    ...createButtonStyle('accent', false),
+    ...createButtonStyle('primary'),
+    ...createButtonStyle('accent'),
     createPlainButtonStyle(),
     spaced.css,
   ].join('\n')
 }
 
 function createPlainButtonStyle() {
-  const base = new Style('.root :is(button.plain, a.plain)')
+  const base = new Style('.root :is(.button, button)')
 
-  base.add('background', 'transparent !important')
-  base.add('color', l('buttons.plain.color') || l('body.color'))
+  base.add('background', 'var(--secondary-100)')
+  base.add('color', l('buttons.base.color') || l('body.color'))
+  base.add('border-style', 'solid')
+  base.add('border-width', '0')
+  base.add('font-family', l('buttons.base.fontFamily') || l('body.fontFamily'))
+  base.add('font-weight', l('buttons.base.fontWeight'))
+  base.add('cursor', 'pointer')
+  base.add('padding', l('buttons.base.padding'))
+  base.add('border-radius', l('buttons.base.borderRadius'))
+  base.add('transition', 'filter 240ms ease-out')
 
-  const dark = new Style('[data-theme=dark] :is(button.plain, a.plain)')
-  dark.add('color', (d('buttons.plain.color') || d('body.color')) + '!important')
+  const dark = new Style('[data-theme=dark] .root :is(.button, button)')
+  dark.add('color', d('buttons.plain.color') || d('body.color'))
+  dark.add('background', 'var(--secondary-700)')
 
-  return [dark.css, base.css].join('\n')
+  const hover = new Style('.root :is(.button, button):hover')
+  hover.add('filter', 'brightness(92%)')
+
+  return [dark.css, base.css, hover.css].join('\n')
 }
 
-function createButtonStyle(name: string, setDefault = true, selector?: string) {
-  const elementSelector = `button.${name}, a.${name}`
-  selector = selector || elementSelector
+function createButtonStyle(name: string) {
+  const selector = `button.${name}, .button.${name}`
 
-  const base = new Style(selector)
-  setDefault && base.add('border-style', 'solid')
-  setDefault && base.add('cursor', 'pointer')
+  const base = new Style(`.root :is(${selector})`)
 
-  base.add(
-    'background-color',
-    l(`buttons.${name}.background`) || l(`colors.${name}`)
-  )
-  base.add(
-    'color',
-    l(`buttons.${name}.color`) || (setDefault ? '#f3f3f3' : undefined)
-  )
-  base.add(
-    'font-family',
-    l(`buttons.${name}.fontFamily`) ||
-      (setDefault ? l(`body.fontFamily`) : undefined)
-  )
-  base.add('padding', l(`buttons.${name}.padding`))
-  base.add(
-    'border-width',
-    l(`buttons.${name}.borderWidth`) || (setDefault ? '0' : undefined)
-  )
+  base.add('background-color', l(`colors.${name}`))
+  base.add('color', l(`buttons.${name}.color`))
+  base.add('border-width', l(`buttons.${name}.borderWidth`))
   base.add('border-radius', l(`buttons.${name}.borderRadius`))
-  base.add(
-    'font-weight',
-    l(`buttons.${name}.fontWeight`) || (setDefault ? '500' : undefined)
-  )
+  base.add('font-weight', l(`buttons.${name}.fontWeight`))
 
   const dark = new Style(`[data-theme=dark] .root :is(${selector})`)
-  dark.add(
-    'background-color',
-    d(`buttons.${name}.background`) || getStyle(`colors.${name}`, 'dark')
-  )
+  dark.add('background-color', getStyle(`colors.${name}`, 'dark'))
   dark.add('color', d(`buttons.${name}.color`))
 
   return [dark.css, base.css]
@@ -161,7 +169,7 @@ function createTypographyStyle(level: string) {
   dark.add('font-family', darkConfig.fontFamily)
   dark.add('font-size', darkConfig.fontSize)
   dark.add('font-weight', darkConfig.fontWeight)
-  base.add('color', darkConfig.color)
+  dark.add('color', darkConfig.color)
 
   return [base.css, dark.css].join('\n')
 }

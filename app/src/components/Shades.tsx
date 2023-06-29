@@ -32,7 +32,7 @@ function Shades({ className, color, inform }: Props) {
   )
 
   React.useEffect(() => {
-    // inform?.([...tints, ...shades])
+    inform?.([...tints, ...shades])
   }, [tints, shades, inform])
 
   return (
