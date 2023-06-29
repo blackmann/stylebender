@@ -66,10 +66,15 @@ function Config() {
         />
       </Fieldset>
 
-      <Fieldset label="Font family">
+      <Fieldset label="Font family" inputId="body-font-family">
         <TextInput
+          id="body-font-family"
           onChange={(e) =>
-            setStyle('body.fontFamily', (e.target as HTMLInputElement).value, true)
+            setStyle(
+              'body.fontFamily',
+              (e.target as HTMLInputElement).value,
+              true
+            )
           }
           value={getStyle('body.fontFamily')}
         />
@@ -80,10 +85,15 @@ function Config() {
         components
       </small>
 
-      <Fieldset label="Font size">
+      <Fieldset label="Font size" inputId="body-font-size">
         <UnitInput
+          id="body-font-size"
           onChange={(e) =>
-            setStyle('body.fontSize', (e.target as HTMLInputElement).value, true)
+            setStyle(
+              'body.fontSize',
+              (e.target as HTMLInputElement).value,
+              true
+            )
           }
           value={getStyle('body.fontSize')}
         />

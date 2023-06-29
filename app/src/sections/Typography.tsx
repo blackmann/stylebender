@@ -89,15 +89,17 @@ function Config() {
         </Select>
       </header>
 
-      <Fieldset label="Font family">
+      <Fieldset label="Font family" inputId="typography-font-family">
         <TextInput
+          id="typography-font-family"
           onChange={(e) => handleChange('fontFamily', e.target.value)}
           value={fontFamily}
         />
       </Fieldset>
 
-      <Fieldset label="Font weight">
+      <Fieldset label="Font weight" inputId="typography-font-weight">
         <Select
+          id="typography-font-weight"
           onChange={(e) => handleChange('fontWeight', e.target.value)}
           value={fontWeight}
         >
@@ -107,8 +109,9 @@ function Config() {
         </Select>
       </Fieldset>
 
-      <Fieldset label="Font size">
+      <Fieldset label="Font size" inputId="typography-font-size">
         <UnitInput
+          id="typography-font-size"
           onChange={(e) => handleChange('fontSize', e.target.value)}
           value={fontSize}
         />
