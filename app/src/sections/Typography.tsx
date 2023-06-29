@@ -80,7 +80,11 @@ function Config() {
       <header className={clsx('medium text-secondary', cs.configHeader)}>
         <div>typography</div>
 
-        <Select onChange={(e) => setLevel((e.target as HTMLInputElement).value as Level)}>
+        <Select
+          onChange={(e) =>
+            setLevel((e.target as HTMLInputElement).value as Level)
+          }
+        >
           {Object.values(Level).map((level) => (
             <option key={level} value={level}>
               {level}
@@ -89,16 +93,22 @@ function Config() {
         </Select>
       </header>
 
-      <Fieldset label="Font family">
+      <Fieldset label="Font family" inputId="typography-font-family">
         <TextInput
-          onChange={(e) => handleChange('fontFamily', (e.target as HTMLInputElement).value)}
+          id="typography-font-family"
+          onChange={(e) =>
+            handleChange('fontFamily', (e.target as HTMLInputElement).value)
+          }
           value={fontFamily}
         />
       </Fieldset>
 
-      <Fieldset label="Font weight">
+      <Fieldset label="Font weight" inputId="typography-font-weight">
         <Select
-          onChange={(e) => handleChange('fontWeight', (e.target as HTMLInputElement).value)}
+          id="typography-font-weight"
+          onChange={(e) =>
+            handleChange('fontWeight', (e.target as HTMLInputElement).value)
+          }
           value={fontWeight}
         >
           <option value="400">Regular</option>
@@ -107,9 +117,12 @@ function Config() {
         </Select>
       </Fieldset>
 
-      <Fieldset label="Font size">
+      <Fieldset label="Font size" inputId="typography-font-size">
         <UnitInput
-          onChange={(e) => handleChange('fontSize', (e.target as HTMLInputElement).value)}
+          id="typography-font-size"
+          onChange={(e) =>
+            handleChange('fontSize', (e.target as HTMLInputElement).value)
+          }
           value={fontSize}
         />
       </Fieldset>

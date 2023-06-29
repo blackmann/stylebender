@@ -28,20 +28,20 @@ function Config() {
     <Card>
       <header className={cs.configHeader}>buttons</header>
 
-      <Fieldset label="Font family">
-        <UnitInput />
+      <Fieldset label="Font family" inputId="buttons-font-family">
+        <UnitInput id="buttons-font-family" />
       </Fieldset>
 
-      <Fieldset label="Font size">
-        <UnitInput />
+      <Fieldset label="Font size" inputId="buttons-font-size">
+        <UnitInput id="buttons-font-size" />
       </Fieldset>
 
-      <Fieldset label="Padding">
-        <TextInput />
+      <Fieldset label="Padding" inputId="buttons-padding">
+        <TextInput id="buttons-padding" />
       </Fieldset>
 
-      <Fieldset label="Border radius">
-        <UnitInput />
+      <Fieldset label="Border radius" inputId="buttons-border-radius">
+        <UnitInput id="buttons-border-radius" />
       </Fieldset>
     </Card>
   )
