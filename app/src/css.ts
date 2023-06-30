@@ -30,7 +30,7 @@ class Style {
       return
     }
 
-    this.properties += `${key}: ${value};\n`
+    this.properties += `  ${key}: ${value};\n`
   }
 
   get css() {
@@ -46,7 +46,7 @@ class Style {
 
     return this.mode === 'light'
       ? `.root ${this.css}`
-      : `[data-theme=dark] .root ${this.css}`
+      : `[data-theme=dark] .root \n${this.css}\n`
   }
 
   export() {
@@ -56,7 +56,9 @@ class Style {
 
     return this.mode === 'light'
       ? rootFillIn + this.css
-      : `@media (prefers-color-scheme: dark) { ${rootFillIn} ${this.css} }`
+      : `@media (prefers-color-scheme: dark) { \n${indent(
+          rootFillIn + this.css
+        )} \n}`
   }
 
   valueOf() {
@@ -198,6 +200,11 @@ function createTypographyStyle(level: string) {
   dark.add('color', darkConfig.color)
 
   return [base, dark]
+}
+
+function indent(str: string, level = 1) {
+  const replacement = '  '.repeat(level)
+  return str.replace(/^(.)/gm, `${replacement}$1`)
 }
 
 export default getCss
