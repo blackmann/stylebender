@@ -25,7 +25,7 @@ function Navbar() {
 
   return (
     <header className={styles.header}>
-      <a href="/app">
+      <a href="/">
         <Logo />
       </a>
 
