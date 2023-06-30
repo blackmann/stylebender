@@ -31,6 +31,7 @@ const light = signal({
       color: '#fff',
     },
     base: {
+      fontSize: '13px',
       fontWeight: '500',
       padding: '0.5em 0.75em',
       borderRadius: '0.35rem',

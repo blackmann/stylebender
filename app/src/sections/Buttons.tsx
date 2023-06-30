@@ -1,3 +1,4 @@
+import { getStyle as s, setStyle } from '../config'
 import Card from '../components/Card'
 import Fieldset from '../components/Fieldset'
 import Section from '../components/Section'
@@ -29,19 +30,55 @@ function Config() {
       <header className={cs.configHeader}>buttons</header>
 
       <Fieldset label="Font family" inputId="buttons-font-family">
-        <UnitInput id="buttons-font-family" />
+        <TextInput
+          id="buttons-font-family"
+          onChange={(e) =>
+            setStyle(
+              'buttons.base.fontFamily',
+              (e.target as HTMLInputElement).value
+            )
+          }
+          value={s('buttons.base.fontFamily') || s('body.fontFamily')}
+        />
       </Fieldset>
 
       <Fieldset label="Font size" inputId="buttons-font-size">
-        <UnitInput id="buttons-font-size" />
+        <UnitInput
+          id="buttons-font-size"
+          onChange={(e) =>
+            setStyle(
+              'buttons.base.fontSize',
+              (e.target as HTMLInputElement).value
+            )
+          }
+          value={s('buttons.base.fontSize') || s('body.fontSize')}
+        />
       </Fieldset>
 
       <Fieldset label="Padding" inputId="buttons-padding">
-        <TextInput id="buttons-padding" />
+        <TextInput
+          id="buttons-padding"
+          onChange={(e) =>
+            setStyle(
+              'buttons.base.padding',
+              (e.target as HTMLInputElement).value
+            )
+          }
+          value={s('buttons.base.padding')}
+        />
       </Fieldset>
 
       <Fieldset label="Border radius" inputId="buttons-border-radius">
-        <UnitInput id="buttons-border-radius" />
+        <UnitInput
+          id="buttons-border-radius"
+          onChange={(e) =>
+            setStyle(
+              'buttons.base.borderRadius',
+              (e.target as HTMLInputElement).value
+            )
+          }
+          value={s('buttons.base.borderRadius')}
+        />
       </Fieldset>
     </Card>
   )

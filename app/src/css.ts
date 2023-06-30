@@ -148,6 +148,7 @@ function createPlainButtonStyle() {
   base.add('border-style', 'solid')
   base.add('border-width', '0')
   base.add('font-family', l('buttons.base.fontFamily') || l('body.fontFamily'))
+  base.add('font-size', l('buttons.base.fontSize') || l('body.fontSize'))
   base.add('font-weight', l('buttons.base.fontWeight'))
   base.add('cursor', 'pointer')
   base.add('padding', l('buttons.base.padding'))
@@ -171,9 +172,6 @@ function createButtonStyle(name: string) {
 
   base.add('background-color', l(`colors.${name}`))
   base.add('color', l(`buttons.${name}.color`))
-  base.add('border-width', l(`buttons.${name}.borderWidth`))
-  base.add('border-radius', l(`buttons.${name}.borderRadius`))
-  base.add('font-weight', l(`buttons.${name}.fontWeight`))
 
   const dark = new Style(selector, 'dark')
   dark.add('background-color', getStyle(`colors.${name}`, 'dark'))
