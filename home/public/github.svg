@@ -4,7 +4,7 @@
   />
 
   <style>
-    path { fill: #000; }
+    path { fill: #373737; }
     @media (prefers-color-scheme: dark) {
     path { fill: #FFF; }
     }
