@@ -1,5 +1,5 @@
 .button {
-  background-color: #2e2e67;
+  background-color: var(--app-primary-color);
   border: 0;
   border-radius: 0.5rem;
   color: #fff;
@@ -12,8 +12,12 @@
   transition: background-color 240ms ease-out;
 }
 
+.button + .button {
+  margin-left: 0.5rem
+}
+
 .button:global(.checked) {
-  background-color: #2e2e67;
+  background-color: var(--app-primary-color);
 }
 
 a.button {
@@ -21,7 +25,7 @@ a.button {
 }
 
 .button:hover {
-  background-color: #2e2e67;
+  background-color: #3f73db;
 }
 
 .button:not(:disabled) {

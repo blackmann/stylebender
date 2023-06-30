@@ -1,6 +1,7 @@
 import { getStyle, setStyle } from '../config'
 import Card from '../components/Card'
 import ColorPicker from '../components/ColorPicker'
+import ComponentHeader from '../components/ComponentHeader'
 import Fieldset from '../components/Fieldset'
 import Section from '../components/Section'
 import TextInput from '../components/TextInput'
@@ -25,14 +26,14 @@ function Body() {
 function Preview() {
   return (
     <>
-      <header class="fw-bold text-secondary">body</header>
+      <ComponentHeader>body</ComponentHeader>
 
       <p>
         Everyone has the right to rest and leisure, including reasonable
         limitation of working hours and periodic holidays with pay.
       </p>
 
-      <header class="fw-bold text-secondary">secondary text</header>
+      <ComponentHeader>secondary text</ComponentHeader>
 
       <p class="text-secondary">
         No one shall be subjected to arbitrary interference with his privacy,
@@ -46,7 +47,7 @@ function Preview() {
 function Config() {
   return (
     <Card>
-      <header className="medium text-secondary">body</header>
+      <header className="medium app-text-secondary">body</header>
 
       <Fieldset label="Background">
         <ColorPicker

@@ -1,20 +1,27 @@
 ---
-import HeaderLink from './HeaderLink.astro'
+import Link from './Link.astro'
 ---
 
-<header class="container d-flex justify-content-between align-items-center py-3">
-	<h2 class="d-flex align-items-center fs-5 text-secondary">
+<header
+	class="container d-flex justify-content-between align-items-center py-3"
+>
+	<h2 class="d-flex align-items-center logo text-secondary">
 		<span class="material-symbols-outlined me-3">gesture</span> stylebender
 	</h2>
-	<nav>
-		<HeaderLink href="/app">Start bending</HeaderLink>
-		<HeaderLink href="https://github.com/blackmann/stylebender">
-			Github
-		</HeaderLink>
+	<nav class="d-flex align-items-center">
+		<Link href="/app">Start bending</Link>
+		<Link href="/docs">Docs</Link>
+		<Link href="https://github.com/blackmann/stylebender" target="_blank">
+			<img width="28px" src="/github.svg" alt="Github" />
+		</Link>
 	</nav>
 </header>
 <style>
 	h2 {
 		margin: 0.5em 0;
+	}
+
+	.logo {
+		font-size: 1.2rem;
 	}
 </style>

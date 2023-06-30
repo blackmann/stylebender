@@ -9,3 +9,9 @@
   display: block;
   text-decoration: none;
 }
+
+.downloadModalContainer {
+  position: absolute;
+  right: 3rem;
+  width: 20rem;
+}

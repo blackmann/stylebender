@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content'
+import Link from './Link.astro';
+
+const docs = await getCollection('docs')
+---
+
+<nav>
+  <ul>
+    {
+      docs.map((doc) => (
+        <li>
+          <Link href={`/docs/${doc.slug}`}>{doc.data.title}</Link>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+
+<style>
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+</style>

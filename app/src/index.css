@@ -10,6 +10,8 @@
   --app-dark-border-color: #3f3f46;
   --app-light-border-color: #e4e4e7;
 
+  --app-primary-color: #4882F9;
+
   font-family: "DM Sans", system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
 
@@ -20,6 +22,12 @@
   -webkit-text-size-adjust: 100%;
 
   font-size: 14px;
+}
+
+[data-theme='dark'] {
+  --app-background-color: #212121;
+  --app-foreground-color: #f4f5f5;
+  --app-secondary-color: #b5babfb7;
 }
 
 * {
@@ -46,12 +54,6 @@ fieldset {
 
 .app {
   font-size: 14px;
-}
-
-[data-theme='dark'] {
-  --app-background-color: #212121;
-  --app-foreground-color: #f4f5f5;
-  --app-secondary-color: #b5babfb7;
 }
 
 

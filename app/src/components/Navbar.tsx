@@ -1,26 +1,15 @@
+import { AnimatePresence, motion } from 'framer-motion'
 import Button from './Button'
+import DownloadModal from './DownloadModal'
 import Logo from './Logo'
 import ThemeSwitch from './ThemeSwitch'
-import getCss from '../css'
+import clsx from 'clsx'
+import currentModal from '../current-modal'
 import styles from './Navbar.module.css'
 
 function Navbar() {
-  function download() {
-    const css = getCss(false)
-    const blob = new Blob([css], { type: 'text/css' })
-    const url = URL.createObjectURL(blob)
-
-    const a = document.createElement('a')
-    a.download = 'style.css'
-    a.href = url
-    a.style.display = 'none'
-
-    document.body.appendChild(a)
-
-    a.click()
-    URL.revokeObjectURL(url)
-
-    document.body.removeChild(a)
+  function toggleDownloadModal() {
+    currentModal.value = currentModal.value !== 'download' ? 'download' : null
   }
 
   return (
@@ -29,12 +18,29 @@ function Navbar() {
         <Logo />
       </a>
 
-      <div>
+      <div className="position-relative" style={{ zIndex: '100' }}>
         <ThemeSwitch />
-        <Button className="plain" onClick={download}>
+        <Button className="plain" onClick={toggleDownloadModal}>
           <span className="material-symbols-outlined me-1">download</span>{' '}
           Download stylesheet
         </Button>
+
+        <div className={clsx(styles.downloadModalContainer, 'me-5')}>
+          <AnimatePresence>
+            {currentModal.value === 'download' && (
+              <motion.div
+                animate={{ translateY: 10 }}
+                exit={{
+                  translateX: 80,
+                  opacity: 0,
+                  transition: { duration: 0.1 },
+                }}
+              >
+                <DownloadModal />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
     </header>
   )

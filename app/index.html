@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>stylebender</title>
 
-    <script type="text/javascript">
-      const theme = localStorage.getItem('theme') || 'light'
-      document.querySelector('html').setAttribute('data-theme', theme)
-    </script>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>stylebender</title>
+
+  <script type="text/javascript">
+    const theme = localStorage.getItem('theme') || 'light'
+    document.querySelector('html').setAttribute('data-theme', theme)
+  </script>
+
+  <script async src="https://analytics.umami.is/script.js"
+    data-website-id="acddb9e1-cd0d-4b27-897a-884bdb7bdb89"></script>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
 </html>

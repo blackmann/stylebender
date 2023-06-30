@@ -77,7 +77,7 @@ function Config() {
 
   return (
     <Card>
-      <header className={clsx('medium text-secondary', cs.configHeader)}>
+      <header className={clsx('medium app-text-secondary', cs.configHeader)}>
         <div>typography</div>
 
         <Select

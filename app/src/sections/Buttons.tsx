@@ -4,6 +4,7 @@ import Fieldset from '../components/Fieldset'
 import Section from '../components/Section'
 import TextInput from '../components/TextInput'
 import UnitInput from '../components/UnitInput'
+import clsx from 'clsx'
 import cs from './Common.module.css'
 import styles from './Buttons.module.css'
 
@@ -27,7 +28,9 @@ function Buttons() {
 function Config() {
   return (
     <Card>
-      <header className={cs.configHeader}>buttons</header>
+      <header className={clsx(cs.configHeader, 'app-text-secondary medium')}>
+        buttons
+      </header>
 
       <Fieldset label="Font family" inputId="buttons-font-family">
         <TextInput
