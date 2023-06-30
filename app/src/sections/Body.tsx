@@ -46,7 +46,7 @@ function Preview() {
 function Config() {
   return (
     <Card>
-      <header className="medium text-secondary">body</header>
+      <header className="medium app-text-secondary">body</header>
 
       <Fieldset label="Background">
         <ColorPicker

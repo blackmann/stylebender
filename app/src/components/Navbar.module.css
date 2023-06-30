@@ -3,3 +3,9 @@
   justify-content: space-between;
   margin-bottom: 3rem;
 }
+
+.downloadModalContainer {
+  position: absolute;
+  right: 3rem;
+  width: 20rem
+}
