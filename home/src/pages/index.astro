@@ -3,34 +3,34 @@ import Shell from '../layouts/Shell.astro'
 ---
 
 <Shell
-	title="Welcome"
-	description="Stylebender: The missing web workflow for fast moving Indie developers."
+  title="Welcome"
+  description="Stylebender: The missing web workflow for fast moving Indie developers."
 >
-	<div class="container py-5 pb-0">
-		<div class="text-secondary text-center my-0">Welcome to stylebender</div>
-		<h1 class="mx-auto mt-0 text-center">
-			The missing web workflow for the fast moving indie developer
-		</h1>
+  <div class="container py-5 pb-0">
+    <div class="text-secondary text-center my-0">Welcome to stylebender</div>
+    <h1 class="mx-auto mt-0 text-center">
+      The missing web workflow for the fast moving indie developer
+    </h1>
 
-		<div class="text-center">
-			<button class="cta">Start bending</button>
-		</div>
+    <div class="text-center">
+      <a href="/app" class="cta">Start bending</a>
+    </div>
 
-		<div>
-			<img
-				id="screenshot-light"
-				src="/screenshot-light.png"
-				alt="Screenshot"
-				class="img-fluid"
-			/>
-			<img
-				id="screenshot-dark"
-				src="/screenshot.png"
-				alt="Screenshot"
-				class="img-fluid"
-			/>
-		</div>
-	</div>
+    <div>
+      <img
+        id="screenshot-light"
+        src="/screenshot-light.png"
+        alt="Screenshot"
+        class="img-fluid"
+      />
+      <img
+        id="screenshot-dark"
+        src="/screenshot.png"
+        alt="Screenshot"
+        class="img-fluid"
+      />
+    </div>
+  </div>
 
 	<section class="intro py-5">
 		<div class="container">
@@ -88,46 +88,46 @@ import Shell from '../layouts/Shell.astro'
 </Shell>
 
 <style>
-	h1 {
-		max-width: 500px;
-	}
+  h1 {
+    max-width: 500px;
+  }
 
-	button {
-		border: 0;
-		background-color: var(--bs-primary);
-		padding: 0.5rem 1rem;
-		border-radius: 0.5rem;
-		font-size: 1rem;
-		color: #fff;
-		cursor: pointer;
-		font-family: inherit;
-	}
+  .cta {
+    border: 0;
+    background-color: var(--bs-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    color: #fff;
+    cursor: pointer;
+    font-family: inherit;
+  }
 
-	#screenshot-light {
-		display: block;
-	}
+  #screenshot-light {
+    display: block;
+  }
 
-	#screenshot-dark {
-		display: none;
-	}
+  #screenshot-dark {
+    display: none;
+  }
 
-	.intro {
-		background: #f6f8fa;
-		border-top: 1px solid #e9eaeb;
-	}
+  .intro {
+    background: #f6f8fa;
+    border-top: 1px solid #e9eaeb;
+  }
 
-	@media (prefers-color-scheme: dark) {
-		#screenshot-light {
-			display: none;
-		}
+  @media (prefers-color-scheme: dark) {
+    #screenshot-light {
+      display: none;
+    }
 
-		#screenshot-dark {
-			display: block;
-		}
+    #screenshot-dark {
+      display: block;
+    }
 
-		.intro {
-			background: #1d1d1d;
-			border-top: 1px solid #3f3f3f;
-		}
-	}
+    .intro {
+      background: #1d1d1d;
+      border-top: 1px solid #3f3f3f;
+    }
+  }
 </style>
