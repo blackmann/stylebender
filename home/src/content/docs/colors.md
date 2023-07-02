@@ -1,51 +1,46 @@
 ---
-title: Colors
+title: 🎨 Colors
 description: Set up default colors for your stylesheet
 index: 1
 ---
 
-In the Colors section, Stylebender offers a seamless solution for configuring the colors of your stylesheet.
+There are three color choices to make.
 
-With a user-friendly interface, you can effortlessly personalize and fine-tune the color palette of your web development projects.
+1. Primary: Think of this as the main brand color.
 
-Whether you prefer bold and vibrant hues or subtle and soothing tones, Stylebender empowers you to create a visual identity that aligns perfectly with your vision.
+1. Accent: This color is meant to compliment the primary color. Use in fewer places like indicating a secondary option. Be creative!
 
-## Color Options
+1. Secondary: This color is used for secondary texts or actions.
 
-Stylebender offers three color options to enhance your web development projects:
+Note that these are just suggestions on how to think about these colors. You're free to use them in any manner you want. When you select a color, shades from `100-800` are generated for that color.
 
-- **Primary**: This color option serves as the foundation of your design, setting the overall tone and establishing a strong visual presence. Choose a primary color that resonates with your brand and captivates your audience.
+- [ ] TODO: Insert screenshot of shades
 
-- **Accent**: Add a touch of flair and emphasis with the Accent color option. Use it strategically to highlight key elements, create visual interest, and guide the user's attention to important areas of your website.
+These shades are added as [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) which you can use in your project. This is how it looks for color selected for primary:
 
-- **Secondary**: The Secondary color option provides an additional layer of depth and versatility to your design. It complements the primary color and can be used to differentiate secondary elements, such as buttons, icons, or secondary text.
+```css
+:root {
+  --primary-100: #ede0d4;
+  --primary-200: #dbc1a9;
+  --primary-300: #c8a37f;
+  --primary-400: #b68454;
+  --primary-500: #835121;
+  --primary-600: #623d19;
+  --primary-700: #422810;
+  --primary-800: #211408;
+}
+```
 
-With these three carefully curated color options in Stylebender, you can effortlessly create a harmonious and visually appealing website that leaves a lasting impression on your visitors.
+You can set the color for `<div />` background in your project with:
 
-## Picking Colors
+```html
+<div style="background-color: var(--primary-100);">
+  Hello world, look at me!
+</div>
+```
 
-You can pick a color in Stylebender using the following options:
 
-- **Click in the color space**: Simply click on the color space to choose a color visually. Explore the spectrum of hues and select the one that suits your design aesthetic.
 
-- **Use the sliders**: Fine-tune your color selection by adjusting the sliders on the color picker dialog. These sliders allow you to control the intensity of the primary color components, giving you precise control over your color choice.
+### Light & Dark Mode Variants
 
-- **Enter the hex code**: For a more specific color choice, you can directly enter the hex code of the desired color. This option is perfect when you have a specific shade in mind and want to ensure accuracy.
-
-## Transparent Colors
-
-If you would like your colors to have a bit of transparency, you can drag the `opacity slider` around till you get your desired level of transparency.
-
-## Color Shades
-
-Picking a color for each option automatically generates up to `eight (8)` different shades of that color.
-
-This goes from 100-800 (lightest to darkest) shades of the chosen color.
-
-## Random Colors
-
-Don't have an exact color choice? The config dialog for the Color section generates random colors for all [three color options](#color-options)
-
-## Light & Dark Mode Variants
-
-See [Light and dark color schemes](lightAndDarkColorSchemes) for details.
+You can override color selections for dark mode. See [Light and dark color schemes](/docs/color-schemes) for details.
