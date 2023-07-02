@@ -43,7 +43,7 @@ function Config() {
               true
             )
           }
-          value={getStyle('input.fontFamily')}
+          value={getStyle('input.fontFamily') || getStyle('body.fontFamily') }
         />
       </Fieldset>
 
@@ -57,7 +57,7 @@ function Config() {
               true
             )
           }
-          value={getStyle('input.fontFamily') || getStyle('body.fontFamily')}
+          value={getStyle('input.fontSize')}
         />
       </Fieldset>
 
@@ -90,7 +90,7 @@ function Config() {
       </Fieldset>
 
       <Fieldset label="Border" inputId="input-border">
-        <UnitInput
+        <TextInput
           id="input-border"
           onChange={(e) =>
             setStyle('input.border', (e.target as HTMLInputElement).value)
