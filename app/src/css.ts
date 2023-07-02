@@ -235,7 +235,7 @@ function input() {
   base.add('font-size', l('input.fontSize'))
   base.add(
     'border-radius',
-    l('input.border-radius') || l('buttons.base.borderRadius')
+    l('input.borderRadius') || l('buttons.base.borderRadius')
   )
   base.add('font-weight', l('input.fontWeight'))
 
