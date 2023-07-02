@@ -89,6 +89,16 @@ function Config() {
         />
       </Fieldset>
 
+      <Fieldset label="Border" inputId="input-border">
+        <UnitInput
+          id="input-border"
+          onChange={(e) =>
+            setStyle('input.border', (e.target as HTMLInputElement).value)
+          }
+          value={getStyle('input.border')}
+        />
+      </Fieldset>
+
       <Fieldset label="Border Radius" inputId="input-border-radius">
         <UnitInput
           id="input-border-radius"
@@ -118,15 +128,6 @@ function Config() {
             setStyle('input.background', value)
           }}
           value={getStyle('input.background')}
-        />
-      </Fieldset>
-
-      <Fieldset label="Border Color">
-        <ColorPicker
-          onChange={(value) => {
-            setStyle('input.border', value)
-          }}
-          value={getStyle('input.border')}
         />
       </Fieldset>
     </Card>

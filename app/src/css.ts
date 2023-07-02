@@ -241,6 +241,8 @@ function input() {
 
   const dark = new Style(':is(input, .input, select)', 'dark')
   dark.add('border', d('input.border'))
+  dark.add('color', d('input.color') || 'inherit')
+  dark.add('background', d('input.background') || 'transparent')
 
   const invertCalendarIcon = new Style(
     '::-webkit-calendar-picker-indicator',
