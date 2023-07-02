@@ -58,6 +58,21 @@ function Config() {
         />
       </Fieldset>
 
+
+
+      <Fieldset label="Font weight" inputId="buttons-font-weight">
+        <UnitInput
+          id="buttons-font-weight"
+          onChange={(e) =>
+            setStyle(
+              'buttons.base.fontWeight',
+              (e.target as HTMLInputElement).value
+            )
+          }
+          value={s('buttons.base.fontWeight')}
+        />
+      </Fieldset>
+
       <Fieldset label="Padding" inputId="buttons-padding">
         <TextInput
           id="buttons-padding"

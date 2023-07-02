@@ -1,6 +1,7 @@
 import Body from '../sections/Body'
 import Buttons from '../sections/Buttons'
 import Colors from '../sections/Colors'
+import Input from '../sections/Input'
 import Typography from '../sections/Typography'
 
 function Editor() {
@@ -11,6 +12,7 @@ function Editor() {
       <Body />
       <Typography />
       <Buttons />
+      <Input />
     </div>
   )
 }

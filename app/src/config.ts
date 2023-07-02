@@ -28,18 +28,23 @@ const light = signal({
     h6: {},
   },
   buttons: {
+    base: {
+      fontSize: '0.9em',
+      fontWeight: '500',
+      padding: '0.5em 0.75em',
+      borderRadius: '0.35rem',
+    },
     primary: {
       color: '#fff',
     },
     accent: {
       color: '#fff',
     },
-    base: {
-      fontSize: '13px',
-      fontWeight: '500',
-      padding: '0.5em 0.75em',
-      borderRadius: '0.35rem',
-    },
+  },
+  input: {
+    border: '1px solid var(--secondary-200)',
+    fontSize: '0.9em',
+    padding: '0.5em 0.75em',
   },
 })
 
@@ -48,6 +53,9 @@ const dark = signal({
     background: '#212121',
     color: '#F5F4F4',
   },
+  input: {
+    border: '1px solid var(--secondary-600)',
+  }
 })
 
 function getStyle<T = string>(
