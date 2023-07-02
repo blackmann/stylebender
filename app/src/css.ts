@@ -1,3 +1,4 @@
+import fontIndex from './gfonts'
 import { getStyle } from './config'
 
 const PREFERS_COLOR_SCHEME = ':root { color-scheme: light dark; }'
@@ -10,7 +11,27 @@ function getCss(preview = true) {
     .filter(Boolean) // removes empty styles
     .join('\n\n')
 
-  return [preview ? '' : PREFERS_COLOR_SCHEME, generated].join('\n\n')
+  const fontImports = getFontImports(generated)
+
+  return [preview ? '' : PREFERS_COLOR_SCHEME, fontImports, generated].join(
+    '\n\n'
+  )
+}
+
+function getFontImports(css: string) {
+  const fontNameMatches = css.matchAll(/font-family: (.+);/g)
+  const fontSet = new Set<string>()
+  Array.from(fontNameMatches).forEach((match) => {
+    match[1].split(',').forEach((name) => fontSet.add(name.trim()))
+  })
+
+  return Array.from(fontSet)
+    .filter((font) => fontIndex[font])
+    .map((name) => {
+      const clean = name.replace(/ /, '+')
+      return `@import url('https://fonts.googleapis.com/css2?family=${clean}:wght@400;500;700&display=swap');`
+    })
+    .join('\n')
 }
 
 type Mode = 'light' | 'dark'
