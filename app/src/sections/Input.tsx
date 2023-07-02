@@ -1,5 +1,5 @@
-import { getStyle as s, setStyle } from '../config'
 import Card from '../components/Card'
+import ColorPicker from '../components/ColorPicker'
 import ComponentHeader from '../components/ComponentHeader'
 import Fieldset from '../components/Fieldset'
 import Section from '../components/Section'
@@ -7,7 +7,6 @@ import TextInput from '../components/TextInput'
 import UnitInput from '../components/UnitInput'
 import clsx from 'clsx'
 import cs from './Common.module.css'
-import ColorPicker from '../components/ColorPicker'
 
 function Input() {
   return (
