@@ -3,6 +3,8 @@ import { getCollection } from 'astro:content'
 import Link from './Link.astro';
 
 const docs = await getCollection('docs')
+
+docs.sort((a, b) => a.data.index - b.data.index)
 ---
 
 <nav>
