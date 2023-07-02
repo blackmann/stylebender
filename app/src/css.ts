@@ -235,12 +235,14 @@ function input() {
   base.add('font-size', l('input.fontSize'))
   base.add(
     'border-radius',
-    l('input.border-radius') || l('buttons.base.borderRadius')
+    l('input.borderRadius') || l('buttons.base.borderRadius')
   )
   base.add('font-weight', l('input.fontWeight'))
 
   const dark = new Style(':is(input, .input, select)', 'dark')
   dark.add('border', d('input.border'))
+  dark.add('color', d('input.color') || 'inherit')
+  dark.add('background', d('input.background') || 'transparent')
 
   const invertCalendarIcon = new Style(
     '::-webkit-calendar-picker-indicator',

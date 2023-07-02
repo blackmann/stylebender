@@ -9,7 +9,7 @@ const light = signal({
       // Sorry, I like to see Iosevka when developing
       ? 'Iosevka, monospace'
       // TODO: Change this to inter maybe
-      : 'system-ui, sans-serif',
+      : 'Inter, sans-serif',
     fontSize: '14px',
     background: '#f6f8fa',
     color: '#222',
