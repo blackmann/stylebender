@@ -1,9 +1,7 @@
 import Card from '../components/Card'
 import ComponentHeader from '../components/ComponentHeader'
 import Fieldset from '../components/Fieldset'
-import React from 'preact/compat'
 import Section from '../components/Section'
-import Select from '../components/Select'
 import TextInput from '../components/TextInput'
 import UnitInput from '../components/UnitInput'
 import clsx from 'clsx'
@@ -66,11 +64,13 @@ function Preview() {
       <ComponentHeader className="mt-2">Select</ComponentHeader>
       <select value="-">
         <option value="-" disabled>
-          Choose your favorite styling workflow
+          Choose your favorite art type
         </option>
-        <option value="Tailwind">Tailwind</option>
-        <option value="CSSLibs">CSS Libraries (Bootstrap, bulma, etc.)</option>
-        <option value="Stylebender">Stylebender</option>
+        <option value="music">Music</option>
+        <option value="visual-arts">
+          Visual arts (drawing, painting, etc.)
+        </option>
+        <option value="literature">Literature</option>
       </select>
     </>
   )

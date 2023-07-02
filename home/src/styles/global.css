@@ -37,10 +37,41 @@ a:hover {
   color: canvastext;
 }
 
+:not(.astro-code) > code {
+  padding: 0.15rem 0.25rem;
+  border-radius: 0.25rem;
+  background-color: var(--bs-gray-200);
+}
+
+.astro-code {
+  counter-reset: step;
+  counter-increment: step 0;
+	padding: 1rem;
+	border-radius: 0.5rem;
+}
+
+.astro-code .line {
+	line-height: 1.6rem;
+}
+
+.astro-code .line::before {
+  content: counter(step);
+  counter-increment: step;
+  width: 1rem;
+  margin-right: 1.5rem;
+  display: inline-block;
+  text-align: right;
+  color: rgba(115,138,148,.4)
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --border-light: var(--bs-gray-800);
     background-color: #1e1e1e;
-    color: #f3f3f3;
+    color: #e0e0e0;
+  }
+
+  :not(.astro-code) > code {
+    background-color: var(--bs-gray-800);
   }
 }

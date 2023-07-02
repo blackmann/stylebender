@@ -16,7 +16,7 @@ const { Content } = await doc.render()
 ---
 
 <Shell title={Astro.props.title} description={Astro.props.description}>
-  <div class="container">
+  <div class="container blog">
     <div class="row">
       <div class="col-md-3">
         <DocsNav />
@@ -34,5 +34,23 @@ const { Content } = await doc.render()
 <style>
   .content {
     border-left: 1px solid var(--border-light);
+    line-height: 1.7;
+  }
+
+  .content :global(a) {
+    text-decoration: underline;
+  }
+
+  :global(.astro-code) {
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .content :global(:is(h2, h3, h4, h5, h6)) {
+    margin-bottom: 0;
+  }
+
+  :global(p) {
+    margin-top: 0.5rem;
   }
 </style>
