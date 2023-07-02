@@ -57,7 +57,7 @@ function Config() {
               true
             )
           }
-          value={getStyle('input.fontSize')}
+          value={getStyle('input.fontFamily') || getStyle('body.fontFamily')}
         />
       </Fieldset>
 
@@ -71,7 +71,7 @@ function Config() {
               true
             )
           }
-          value={getStyle('input.fontWeight')}
+          value={getStyle('input.fontWeight') || '500'}
         />
       </Fieldset>
 
@@ -109,7 +109,10 @@ function Config() {
               true
             )
           }
-          value={getStyle('input.border-radius')}
+          value={
+            getStyle('input.borderRadius') ||
+            getStyle('buttons.base.borderRadius')
+          }
         />
       </Fieldset>
 
@@ -118,7 +121,7 @@ function Config() {
           onChange={(value) => {
             setStyle('input.color', value)
           }}
-          value={getStyle('input.color')}
+          value={getStyle('input.color') || getStyle('body.foreground')}
         />
       </Fieldset>
 
@@ -127,7 +130,7 @@ function Config() {
           onChange={(value) => {
             setStyle('input.background', value)
           }}
-          value={getStyle('input.background')}
+          value={getStyle('input.background') || 'transparent'}
         />
       </Fieldset>
     </Card>
