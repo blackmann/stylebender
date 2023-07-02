@@ -1,13 +1,13 @@
+import { getStyle as s, setStyle } from '../config'
 import Card from '../components/Card'
 import ComponentHeader from '../components/ComponentHeader'
 import Fieldset from '../components/Fieldset'
-import React from 'preact/compat'
 import Section from '../components/Section'
-import Select from '../components/Select'
 import TextInput from '../components/TextInput'
 import UnitInput from '../components/UnitInput'
 import clsx from 'clsx'
 import cs from './Common.module.css'
+import ColorPicker from '../components/ColorPicker'
 
 function Input() {
   return (
@@ -33,16 +33,36 @@ function Config() {
         <div>input</div>
       </header>
 
-      <Fieldset label="Font Family">
-        <TextInput />
+      <Fieldset label="Font Family" inputId="input-font-family">
+        <TextInput id="input-font-family" />
       </Fieldset>
 
-      <Fieldset label="Font Size">
-        <UnitInput />
+      <Fieldset label="Font Size" inputId="input-font-size">
+        <UnitInput id="input-font-size" />
       </Fieldset>
 
-      <Fieldset label="Font Weight">
-        <UnitInput />
+      <Fieldset label="Font Weight" inputId="input-font-weight">
+        <UnitInput id="input-font-weight" />
+      </Fieldset>
+
+      <Fieldset label="Padding" inputId="input-padding">
+        <TextInput id="input-padding" />
+      </Fieldset>
+
+      <Fieldset label="Border Radius" inputId="input-border-radius">
+        <UnitInput id="input-border-radius" />
+      </Fieldset>
+
+      <Fieldset label="Color">
+        <ColorPicker />
+      </Fieldset>
+
+      <Fieldset label="Background">
+        <ColorPicker />
+      </Fieldset>
+
+      <Fieldset label="Border Color">
+        <ColorPicker />
       </Fieldset>
     </Card>
   )
