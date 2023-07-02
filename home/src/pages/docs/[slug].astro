@@ -5,10 +5,12 @@ import { getCollection } from 'astro:content'
 
 export async function getStaticPaths() {
   const docs = await getCollection('docs')
-  return docs.map((doc) => ({
-    params: { slug: doc.slug },
-    props: { doc, title: doc.data.title },
-  }))
+  return docs
+    .sort((a, b) => a.data.index - b.data.index)
+    .map((doc) => ({
+      params: { slug: doc.slug },
+      props: { doc, title: doc.data.title },
+    }))
 }
 
 const { doc, title } = Astro.props
