@@ -4,7 +4,8 @@ import { getStyle } from './config'
 const PREFERS_COLOR_SCHEME = ':root { color-scheme: light dark; }'
 
 function getCss(preview = true) {
-  const styles = [utils(), body(), typography(), buttons()]
+  const styles = [utils(), body(), typography(), buttons(), input()]
+
   const generated = styles
     .flat()
     .map((style) => (preview ? style.preview() : style.export()))
@@ -221,6 +222,33 @@ function createTypographyStyle(level: string) {
   dark.add('color', darkConfig.color)
 
   return [base, dark]
+}
+
+function input() {
+  const base = new Style(':is(input, .input, select)')
+
+  base.add('border', l('input.border'))
+  base.add('color', l('input.color') || 'inherit')
+  base.add('background', l('input.background') || 'transparent')
+  base.add('font-family', l('input.fontFamily') || l('body.fontFamily'))
+  base.add('padding', l('input.padding'))
+  base.add('font-size', l('input.fontSize'))
+  base.add(
+    'border-radius',
+    l('input.border-radius') || l('buttons.base.borderRadius')
+  )
+  base.add('font-weight', l('input.fontWeight'))
+
+  const dark = new Style(':is(input, .input, select)', 'dark')
+  dark.add('border', d('input.border'))
+
+  const invertCalendarIcon = new Style(
+    '::-webkit-calendar-picker-indicator',
+    'dark'
+  )
+  invertCalendarIcon.add('filter', 'invert(1)')
+
+  return [base, dark, invertCalendarIcon]
 }
 
 function indent(str: string, level = 1) {
