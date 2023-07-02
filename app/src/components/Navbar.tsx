@@ -14,9 +14,9 @@ function Navbar() {
 
   return (
     <header className={styles.header}>
-      <div>
+      <a href="/">
         <Logo />
-      </div>
+      </a>
 
       <div className="position-relative" style={{ zIndex: '100' }}>
         <ThemeSwitch />
