@@ -229,6 +229,7 @@ function createTypographyStyle(level: string) {
 function input() {
   const base = new Style(':is(input, .input, select)')
 
+  base.add('-webkit-appearance', 'none')
   base.add('border', l('input.border'))
   base.add('color', l('input.color') || 'inherit')
   base.add('background', l('input.background') || 'transparent')
