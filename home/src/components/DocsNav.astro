@@ -1,28 +1,46 @@
 ---
 import { getCollection } from 'astro:content'
-import Link from './Link.astro';
 
 const docs = await getCollection('docs')
-
 docs.sort((a, b) => a.data.index - b.data.index)
+
+const { pathname } = Astro.url
 ---
 
 <nav>
-  <ul>
+  <ul class="p-0">
     {
       docs.map((doc) => (
         <li>
-          <Link href={`/docs/${doc.slug}`}>{doc.data.title}</Link>
+          <a
+            class:list={[
+              'd-flex py-1 px-2 rounded',
+              { active: pathname === `/docs/${doc.slug}` },
+            ]}
+            href={`/docs/${doc.slug}`}
+          >
+            {doc.data.title}
+          </a>
         </li>
       ))
     }
   </ul>
 </nav>
 
-
 <style>
   ul {
     list-style: none;
-    padding: 0;
+  }
+
+  a:hover,
+  a.active {
+    background-color: var(--bs-gray-200);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    a:hover,
+    a.active {
+      background-color: var(--bs-gray-800);
+    }
   }
 </style>

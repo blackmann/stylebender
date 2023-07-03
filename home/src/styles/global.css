@@ -27,10 +27,24 @@ img {
   max-width: 100%;
 }
 
-a {
+blockquote {
   color: var(--bs-secondary);
+  border-left: 2px solid var(--bs-primary);
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 1.5rem;
+}
+
+a {
+  color: var(--bs-gray-700);
   text-decoration: none;
-  transition: color 240ms ease-out;
+  transition: color 240ms ease-out, background 240ms ease-out;
+}
+
+@media (prefers-color-scheme: dark) {
+  a {
+    color: var(--bs-gray-400);
+  }
 }
 
 a:hover {

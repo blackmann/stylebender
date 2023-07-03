@@ -1,7 +1,9 @@
 import fontIndex from './gfonts'
 import { getStyle } from './config'
 
-const PREFERS_COLOR_SCHEME = ':root { color-scheme: light dark; }'
+const MACRO = `:root { color-scheme: light dark; }
+* { box-sizing: border-box; }
+`
 
 function getCss(preview = true) {
   const styles = [utils(), body(), typography(), buttons(), input()]
@@ -14,7 +16,7 @@ function getCss(preview = true) {
 
   const fontImports = getFontImports(generated)
 
-  return [preview ? '' : PREFERS_COLOR_SCHEME, fontImports, generated].join(
+  return [preview ? '' : MACRO, fontImports, generated].join(
     '\n\n'
   )
 }

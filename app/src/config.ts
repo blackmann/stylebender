@@ -8,7 +8,6 @@ const light = signal({
     fontFamily: import.meta.env.DEV
       // Sorry, I like to see Iosevka when developing
       ? 'Iosevka, monospace'
-      // TODO: Change this to inter maybe
       : 'Inter, sans-serif',
     fontSize: '14px',
     background: '#f6f8fa',

@@ -1,5 +1,5 @@
 ---
-title: 🎨 Colors
+title: Colors 🎨
 description: Set up default colors for your stylesheet
 index: 1
 ---
