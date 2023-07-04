@@ -45,6 +45,21 @@ const light = signal({
     fontSize: '0.9em',
     padding: '0.5em 0.75em',
   },
+  link: {
+    textDecoration: 'none',
+    default: {
+      color: '#222',
+    },
+    hover: {
+      color: '#222',
+    },
+    active: {
+      color: '#222',
+    },
+    visited: {
+      color: '#222',
+    },
+  },
 })
 
 const dark = signal({
@@ -54,7 +69,22 @@ const dark = signal({
   },
   input: {
     border: '1px solid var(--secondary-600)',
-  }
+  },
+  link: {
+    textDecoration: 'none',
+    default: {
+      color: '#fff',
+    },
+    hover: {
+      color: '#fff',
+    },
+    active: {
+      color: '#fff',
+    },
+    visited: {
+      color: '#fff',
+    },
+  },
 })
 
 function getStyle<T = string>(
