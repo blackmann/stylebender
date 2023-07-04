@@ -6,7 +6,7 @@ const MACRO = `:root { color-scheme: light dark; }
 `
 
 function getCss(preview = true) {
-  const styles = [utils(), body(), typography(), buttons(), input()]
+  const styles = [utils(), body(), typography(), buttons(), input(), link()]
 
   const generated = styles
     .flat()
@@ -254,6 +254,38 @@ function input() {
   invertCalendarIcon.add('filter', 'invert(1)')
 
   return [base, dark, invertCalendarIcon]
+}
+
+function link() {
+  const base = new Style(':is(.a, a)')
+
+  base.add('color', l('link.default.color'))
+  base.add('cursor', 'pointer')
+  base.add('text-decoration', l('link.textDecoration'))
+
+  const hover = new Style(':is(.a, a):hover')
+  hover.add('color', l('link.hover.color'))
+  
+  const active = new Style(':is(.a, a):active')
+  active.add('color', l('link.active.color'))
+  
+  const visited = new Style(':is(.a, a):visited')
+  visited.add('color', l('link.visited.color'))
+
+  const dark = new Style(':is(.a, a)', 'dark')
+  dark.add('color', d('link.default.color'))
+  dark.add('text-decoration', d('link.textDecoration'))
+
+  const darkHover = new Style(':is(.a, a):hover', 'dark')
+  darkHover.add('color', d('link.hover.color'))
+  
+  const darkActive = new Style(':is(.a, a):active', 'dark')
+  darkActive.add('color', d('link.active.color'))
+  
+  const darkVisited = new Style(':is(.a, a):visited', 'dark')
+  darkVisited.add('color', l('link.visited.color'))
+
+  return [base, dark, hover, active, visited, darkHover, darkActive, darkVisited]
 }
 
 function indent(str: string, level = 1) {
