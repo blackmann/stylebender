@@ -257,35 +257,26 @@ function input() {
 }
 
 function link() {
-  const base = new Style(':is(.a, a)')
+  const createStyle = (selector: string, colorConfigPath: string, mode = <Mode>'light') => {
+    const style = new Style(`:is(.a, a)${selector}`, mode);
+    style.add('color', mode === 'light' ? l(colorConfigPath) : d(colorConfigPath));
+    style.add('cursor', 'pointer');
+    style.add('text-decoration', mode === 'light' ? l('link.textDecoration') : d('link.textDecoration'));
+    return style;
+  };
 
-  base.add('color', l('link.default.color'))
-  base.add('cursor', 'pointer')
-  base.add('text-decoration', l('link.textDecoration'))
+  const styles = [
+    createStyle('', 'link.default.color'),
+    createStyle(':hover', 'link.hover.color'),
+    createStyle(':active', 'link.active.color'),
+    createStyle(':visited', 'link.visited.color'),
+    createStyle('', 'link.default.color', 'dark'),
+    createStyle(':hover', 'link.hover.color', 'dark'),
+    createStyle(':active', 'link.active.color', 'dark'),
+    createStyle(':visited', 'link.visited.color', 'dark'),
+  ];
 
-  const hover = new Style(':is(.a, a):hover')
-  hover.add('color', l('link.hover.color'))
-  
-  const active = new Style(':is(.a, a):active')
-  active.add('color', l('link.active.color'))
-  
-  const visited = new Style(':is(.a, a):visited')
-  visited.add('color', l('link.visited.color'))
-
-  const dark = new Style(':is(.a, a)', 'dark')
-  dark.add('color', d('link.default.color'))
-  dark.add('text-decoration', d('link.textDecoration'))
-
-  const darkHover = new Style(':is(.a, a):hover', 'dark')
-  darkHover.add('color', d('link.hover.color'))
-  
-  const darkActive = new Style(':is(.a, a):active', 'dark')
-  darkActive.add('color', d('link.active.color'))
-  
-  const darkVisited = new Style(':is(.a, a):visited', 'dark')
-  darkVisited.add('color', d('link.visited.color'))
-
-  return [base, dark, hover, active, visited, darkHover, darkActive, darkVisited]
+  return styles;
 }
 
 function indent(str: string, level = 1) {
