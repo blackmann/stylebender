@@ -283,7 +283,7 @@ function link() {
   darkActive.add('color', d('link.active.color'))
   
   const darkVisited = new Style(':is(.a, a):visited', 'dark')
-  darkVisited.add('color', l('link.visited.color'))
+  darkVisited.add('color', d('link.visited.color'))
 
   return [base, dark, hover, active, visited, darkHover, darkActive, darkVisited]
 }
