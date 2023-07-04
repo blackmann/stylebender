@@ -3,6 +3,7 @@ import Buttons from '../sections/Buttons'
 import Colors from '../sections/Colors'
 import Input from '../sections/Input'
 import Typography from '../sections/Typography'
+import Link from '../sections/Link'
 
 function Editor() {
 
@@ -13,6 +14,7 @@ function Editor() {
       <Typography />
       <Buttons />
       <Input />
+      <Link />
     </div>
   )
 }
