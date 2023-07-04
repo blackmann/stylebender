@@ -10,19 +10,26 @@ const { pathname } = Astro.url
 <nav>
   <ul class="p-0">
     {
-      docs.map((doc) => (
-        <li>
-          <a
-            class:list={[
-              'd-flex py-1 px-2 rounded',
-              { active: pathname === `/docs/${doc.slug}` },
-            ]}
-            href={`/docs/${doc.slug}`}
-          >
-            {doc.data.title}
-          </a>
-        </li>
-      ))
+      docs.map((doc) => {
+        const link = `/docs/${doc.slug}`
+        const active = pathname === link || link === pathname.replace(/\/$/, '')
+
+        return (
+          <li>
+            <a
+              class:list={[
+                'd-flex py-1 px-2 rounded',
+                {
+                  active,
+                },
+              ]}
+              href={link}
+            >
+              {doc.data.title}
+            </a>
+          </li>
+        )
+      })
     }
   </ul>
 </nav>
