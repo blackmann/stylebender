@@ -14,7 +14,7 @@ h1 {
 
 @media (prefers-color-scheme: dark) {
     h1 {
-        color: red; /* only font-weight is set here */
+        color: red; /* only color is set here */
     }
 }
 ```
