@@ -1,8 +1,18 @@
 import fontIndex from './gfonts'
 import { getStyle } from './config'
 
-const MACRO = `:root { color-scheme: light dark; }
+const MACRO = `:root {
+  color-scheme: light dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
 * { box-sizing: border-box; }
+
+body { margin: 0; }
 `
 
 function getCss(preview = true) {
