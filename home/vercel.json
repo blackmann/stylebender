@@ -1,8 +1,8 @@
 {
   "rewrites": [
-    { "source": "/app/", "destination": "https://stylebender-app.vercel.app/" },
+    { "source": "/app/", "destination": "https://stylebender-app.vercel.app/app/" },
     {
-      "source": "/app/:match*", "destination": "https://stylebender-app.vercel.app/:match*"
+      "source": "/app/:match*", "destination": "https://stylebender-app.vercel.app/app/:match*"
     }
   ]
 }
