@@ -46,7 +46,6 @@ const light = signal({
     padding: '0.5em 0.75em',
   },
   link: {
-    textDecoration: 'none',
     fontWeight: '500',
     defaultColor: undefined,
   },
@@ -61,7 +60,6 @@ const dark = signal({
     border: '1px solid var(--secondary-600)',
   },
   link: {
-    textDecoration: 'none',
     fontWeight: '500',
     defaultColor: undefined,
   },

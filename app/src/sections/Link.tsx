@@ -36,19 +36,6 @@ function Config() {
   return (
     <Card>
       <header className="medium app-text-secondary">link</header>
-
-      <Fieldset label="Text Decoration">
-        <Select
-            id="text-decoration"
-            onChange={(e) => {
-                setStyle('link.textDecoration', (e.target as HTMLInputElement).value)
-            }}
-            value={getStyle('link.textDecoration')}
-            >
-            <option value="none">None</option>
-            <option value="underline">Underline</option>
-            </Select>
-      </Fieldset>
       
       <Fieldset label="link color">
         <ColorPicker

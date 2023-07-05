@@ -257,18 +257,21 @@ function input() {
 }
 
 function link() {
+  const base = new Style(':is(.a, a)')
+  base.add('cursor', 'pointer')
+  base.add('text-decoration', 'underline')
+
   const createStyle = (mode: Mode = 'light') => {
     const style = new Style(`:is(.a, a)`, mode);
     style.add('color', mode === 'light' ? l('link.defaultColor') : d('link.defaultColor'));
-    style.add('cursor', 'pointer');
     style.add('font-weight', mode === 'light' ? l('link.fontWeight') : d('link.fontWeight'));
-    style.add('text-decoration', mode === 'light' ? l('link.textDecoration') : d('link.textDecoration'));
     return style;
   };
 
   const styles = [
     createStyle(),
     createStyle('dark'),
+    base
   ];
 
   return styles;
