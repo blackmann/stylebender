@@ -257,13 +257,12 @@ function input() {
 }
 
 function link() {
-  const base = new Style(':is(.a, a)')
-  base.add('cursor', 'pointer')
-  base.add('text-decoration', 'underline')
 
   const createStyle = (mode: Mode = 'light') => {
-    const style = new Style(`:is(.a, a)`, mode);
+    const style = new Style(`:is(a)`, mode);
     style.add('color', mode === 'light' ? l('link.defaultColor') : d('link.defaultColor'));
+    style.add('cursor', 'pointer');
+    style.add('text-decoration', 'underline');
     style.add('font-weight', mode === 'light' ? l('link.fontWeight') : d('link.fontWeight'));
     return style;
   };
@@ -271,7 +270,6 @@ function link() {
   const styles = [
     createStyle(),
     createStyle('dark'),
-    base
   ];
 
   return styles;

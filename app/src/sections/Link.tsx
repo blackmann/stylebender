@@ -4,7 +4,6 @@ import ColorPicker from '../components/ColorPicker'
 import ComponentHeader from '../components/ComponentHeader'
 import Fieldset from '../components/Fieldset'
 import Section from '../components/Section'
-import Select from '../components/Select'
 import UnitInput from '../components/UnitInput'
 
 function Body() {
@@ -27,7 +26,7 @@ function Preview() {
   return (
     <>
       <ComponentHeader>link</ComponentHeader>
-      <a>Click me to go to your destination</a>
+      <p>You will be arriving at <a>your destination</a> in 6 hours, 34 minutes. Enjoy your ride!</p>
     </>
   )
 }
