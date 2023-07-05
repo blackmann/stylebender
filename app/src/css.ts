@@ -6,7 +6,7 @@ const MACRO = `:root { color-scheme: light dark; }
 `
 
 function getCss(preview = true) {
-  const styles = [utils(), body(), typography(), buttons(), input()]
+  const styles = [utils(), body(), typography(), buttons(), input(), link()]
 
   const generated = styles
     .flat()
@@ -254,6 +254,19 @@ function input() {
   invertCalendarIcon.add('filter', 'invert(1)')
 
   return [base, dark, invertCalendarIcon]
+}
+
+function link() {
+  const base = new Style('a')
+  base.add('color', l('link.defaultColor'));
+  base.add('cursor', 'pointer');
+  base.add('text-decoration', 'underline');
+  base.add('font-weight', l('link.fontWeight'));
+
+  const dark = new Style('a', 'dark')
+  dark.add('color', d('link.defaultColor'))
+
+  return [base, dark];
 }
 
 function indent(str: string, level = 1) {

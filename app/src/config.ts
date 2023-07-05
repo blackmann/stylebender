@@ -45,6 +45,10 @@ const light = signal({
     fontSize: '0.9em',
     padding: '0.5em 0.75em',
   },
+  link: {
+    fontWeight: '500',
+    defaultColor: undefined,
+  },
 })
 
 const dark = signal({
@@ -54,7 +58,10 @@ const dark = signal({
   },
   input: {
     border: '1px solid var(--secondary-600)',
-  }
+  },
+  link: {
+    defaultColor: undefined,
+  },
 })
 
 function getStyle<T = string>(
