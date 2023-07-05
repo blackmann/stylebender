@@ -60,7 +60,6 @@ const dark = signal({
     border: '1px solid var(--secondary-600)',
   },
   link: {
-    fontWeight: '500',
     defaultColor: undefined,
   },
 })

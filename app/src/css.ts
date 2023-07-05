@@ -257,22 +257,16 @@ function input() {
 }
 
 function link() {
+  const base = new Style(':is(a)')
+  base.add('color', l('link.defaultColor'));
+  base.add('cursor', 'pointer');
+  base.add('text-decoration', 'underline');
+  base.add('font-weight', l('link.fontWeight'));
 
-  const createStyle = (mode: Mode = 'light') => {
-    const style = new Style(`:is(a)`, mode);
-    style.add('color', mode === 'light' ? l('link.defaultColor') : d('link.defaultColor'));
-    style.add('cursor', 'pointer');
-    style.add('text-decoration', 'underline');
-    style.add('font-weight', mode === 'light' ? l('link.fontWeight') : d('link.fontWeight'));
-    return style;
-  };
+  const dark = new Style(':is(a)', 'dark')
+  dark.add('color', d('link.defaultColor'))
 
-  const styles = [
-    createStyle(),
-    createStyle('dark'),
-  ];
-
-  return styles;
+  return [base, dark];
 }
 
 function indent(str: string, level = 1) {

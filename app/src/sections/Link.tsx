@@ -51,7 +51,8 @@ function Config() {
           onChange={(e) =>
             setStyle(
               'link.fontWeight',
-              (e.target as HTMLInputElement).value
+              (e.target as HTMLInputElement).value,
+              true
             )
           }
           value={getStyle('link.fontWeight')}
