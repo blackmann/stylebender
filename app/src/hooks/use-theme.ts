@@ -13,6 +13,7 @@ function useTheme() {
     // But when the app reloads but from dark mode, the values are not
     // prefilled (eg. color shades)
     // A possible solution is to hardcode the generated values in the config file
+    // or force switch to light mode
     // Explore!
     const savedTheme = localStorage.getItem('theme') as Theme | undefined
     theme.value = savedTheme || 'light'
