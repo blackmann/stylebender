@@ -47,18 +47,8 @@ const light = signal({
   },
   link: {
     textDecoration: 'none',
-    default: {
-      color: '#222',
-    },
-    hover: {
-      color: '#222',
-    },
-    active: {
-      color: '#222',
-    },
-    visited: {
-      color: '#222',
-    },
+    fontWeight: '500',
+    defaultColor: undefined,
   },
 })
 
@@ -72,18 +62,8 @@ const dark = signal({
   },
   link: {
     textDecoration: 'none',
-    default: {
-      color: '#fff',
-    },
-    hover: {
-      color: '#fff',
-    },
-    active: {
-      color: '#fff',
-    },
-    visited: {
-      color: '#fff',
-    },
+    fontWeight: '500',
+    defaultColor: undefined,
   },
 })
 

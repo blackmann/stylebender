@@ -5,6 +5,7 @@ import ComponentHeader from '../components/ComponentHeader'
 import Fieldset from '../components/Fieldset'
 import Section from '../components/Section'
 import Select from '../components/Select'
+import UnitInput from '../components/UnitInput'
 
 function Body() {
   return (
@@ -25,7 +26,7 @@ function Body() {
 function Preview() {
   return (
     <>
-      <ComponentHeader>:link</ComponentHeader>
+      <ComponentHeader>link</ComponentHeader>
       <a>Click me to go to your destination</a>
     </>
   )
@@ -49,39 +50,25 @@ function Config() {
             </Select>
       </Fieldset>
       
-      <Fieldset label=":link color">
+      <Fieldset label="link color">
         <ColorPicker
           onChange={(value) => {
-            setStyle('link.default.color', value)
+            setStyle('link.defaultColor', value)
           }}
-          value={getStyle('link.default.color')}
+          value={getStyle('link.defaultColor') || getStyle('body.color')}
         />
       </Fieldset>
-      
-       <Fieldset label=":hover color">
-        <ColorPicker
-          onChange={(value) => {
-            setStyle('link.hover.color', value)
-          }}
-          value={getStyle('link.hover.color')}
-        />
-      </Fieldset>
-      
-      <Fieldset label=":active color">
-        <ColorPicker
-          onChange={(value) => {
-            setStyle('link.active.color', value)
-          }}
-          value={getStyle('link.active.color')}
-        />
-      </Fieldset>
-      
-      <Fieldset label=":visited color">
-        <ColorPicker
-          onChange={(value) => {
-            setStyle('link.visited.color', value)
-          }}
-          value={getStyle('link.visited.color')}
+
+      <Fieldset label="Font weight" inputId="link-font-weight">
+        <UnitInput
+          id="link-font-weight"
+          onChange={(e) =>
+            setStyle(
+              'link.fontWeight',
+              (e.target as HTMLInputElement).value
+            )
+          }
+          value={getStyle('link.fontWeight')}
         />
       </Fieldset>
     </Card>

@@ -257,23 +257,18 @@ function input() {
 }
 
 function link() {
-  const createStyle = (selector: string, colorConfigPath: string, mode = <Mode>'light') => {
-    const style = new Style(`:is(.a, a)${selector}`, mode);
-    style.add('color', mode === 'light' ? l(colorConfigPath) : d(colorConfigPath));
+  const createStyle = (mode: Mode = 'light') => {
+    const style = new Style(`:is(.a, a)`, mode);
+    style.add('color', mode === 'light' ? l('link.defaultColor') : d('link.defaultColor'));
     style.add('cursor', 'pointer');
+    style.add('font-weight', mode === 'light' ? l('link.fontWeight') : d('link.fontWeight'));
     style.add('text-decoration', mode === 'light' ? l('link.textDecoration') : d('link.textDecoration'));
     return style;
   };
 
   const styles = [
-    createStyle('', 'link.default.color'),
-    createStyle(':hover', 'link.hover.color'),
-    createStyle(':active', 'link.active.color'),
-    createStyle(':visited', 'link.visited.color'),
-    createStyle('', 'link.default.color', 'dark'),
-    createStyle(':hover', 'link.hover.color', 'dark'),
-    createStyle(':active', 'link.active.color', 'dark'),
-    createStyle(':visited', 'link.visited.color', 'dark'),
+    createStyle(),
+    createStyle('dark'),
   ];
 
   return styles;
