@@ -127,6 +127,7 @@ const colors = ['primary', 'accent', 'secondary']
 
 function utils() {
   const baseVariables = new Style('')
+  baseVariables.add('accent-color', l('colors.accent'))
   baseVariables.add('--primary-color', l('colors.primary'))
   baseVariables.add('--accent-color', l('colors.accent'))
   baseVariables.add('--secondary-color', l('colors.secondary'))
@@ -141,6 +142,7 @@ function utils() {
   }
 
   const darkVariables = new Style('', 'dark')
+  baseVariables.add('accent-color', d('colors.accent'))
   darkVariables.add('--primary-color', d('colors.primary'))
   darkVariables.add('--accent-color', d('colors.accent'))
   darkVariables.add('--secondary-color', d('colors.secondary'))
@@ -237,7 +239,8 @@ function createTypographyStyle(level: string) {
 }
 
 function input() {
-  const base = new Style(':is(input, .input, select)')
+  const selector = ':is(input, .input, select):not([type=radio], [type=checkbox])'
+  const base = new Style(selector)
 
   base.add('-webkit-appearance', 'none')
   base.add('border', l('input.border'))
@@ -263,7 +266,11 @@ function input() {
   )
   invertCalendarIcon.add('filter', 'invert(1)')
 
-  return [base, dark, invertCalendarIcon]
+  const checkboxStyle = new Style(':is(input[type=checkbox], input[type=radio])')
+  checkboxStyle.add('width', l('body.fontSize'))
+  checkboxStyle.add('height', l('body.fontSize'))
+
+  return [base, dark, invertCalendarIcon, checkboxStyle]
 }
 
 function link() {

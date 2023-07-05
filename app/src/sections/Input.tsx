@@ -43,7 +43,7 @@ function Config() {
               true
             )
           }
-          value={getStyle('input.fontFamily') || getStyle('body.fontFamily') }
+          value={getStyle('input.fontFamily') || getStyle('body.fontFamily')}
         />
       </Fieldset>
 
@@ -163,6 +163,24 @@ function Preview() {
         </option>
         <option value="literature">Literature</option>
       </select>
+
+      <ComponentHeader className="mt-2">Checkbox</ComponentHeader>
+      <label>
+        <input type="checkbox" /> Agree to terms?
+      </label>
+
+      <ComponentHeader className="mt-2">Checkbox</ComponentHeader>
+      <fieldset>
+        <label>
+          <input type="radio" name="radio" />
+          Print
+        </label>
+
+        <label>
+          <input type="radio" name="radio" />
+          Tape recording
+        </label>
+      </fieldset>
     </>
   )
 }
