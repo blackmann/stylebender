@@ -257,13 +257,13 @@ function input() {
 }
 
 function link() {
-  const base = new Style(':is(a)')
+  const base = new Style('a')
   base.add('color', l('link.defaultColor'));
   base.add('cursor', 'pointer');
   base.add('text-decoration', 'underline');
   base.add('font-weight', l('link.fontWeight'));
 
-  const dark = new Style(':is(a)', 'dark')
+  const dark = new Style('a', 'dark')
   dark.add('color', d('link.defaultColor'))
 
   return [base, dark];
