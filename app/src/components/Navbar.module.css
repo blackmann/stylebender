@@ -10,6 +10,13 @@
   text-decoration: none;
 }
 
+.header.sticky {
+  position: sticky;
+  top: 0;
+  background-color: var(--app-background-color);
+  z-index: 10;
+}
+
 .downloadModalContainer {
   position: absolute;
   right: 3rem;
