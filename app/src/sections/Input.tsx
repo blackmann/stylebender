@@ -169,9 +169,9 @@ function Preview() {
         <input type="checkbox" /> Agree to terms?
       </label>
 
-      <ComponentHeader className="mt-2">Checkbox</ComponentHeader>
+      <ComponentHeader className="mt-2">Radio Buttons</ComponentHeader>
       <fieldset>
-        <label>
+        <label className="me-2">
           <input type="radio" name="radio" />
           Print
         </label>
