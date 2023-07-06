@@ -6,30 +6,14 @@ import ThemeSwitch from './ThemeSwitch'
 import clsx from 'clsx'
 import currentModal from '../current-modal'
 import styles from './Navbar.module.css'
-import { useEffect, useState } from 'preact/hooks';
 
 function Navbar() {
   function toggleDownloadModal() {
     currentModal.value = currentModal.value !== 'download' ? 'download' : null
   }
 
-  const [isSticky, setIsSticky] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const shouldStick = window.scrollY > 0;
-      setIsSticky(shouldStick);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   return (
-    <header className={`${styles.header} ${isSticky ? styles.sticky : ''}`}>
+    <header className={styles.header}>
       <a href="/">
         <Logo />
       </a>
