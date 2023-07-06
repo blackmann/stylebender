@@ -171,7 +171,7 @@ function Preview() {
 
       <ComponentHeader className="mt-2">Radio Buttons</ComponentHeader>
       <fieldset>
-        <label className="me-2">
+        <label className="me-1">
           <input type="radio" name="radio" />
           Print
         </label>
