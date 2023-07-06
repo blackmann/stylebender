@@ -157,9 +157,15 @@ function utils() {
   }
 
   const textSecondary = new Style('.text-secondary')
-  textSecondary.add('color', 'var(--secondary-color)')
+  textSecondary.add('color', 'var(--secondary-color) !important')
 
-  return [baseVariables, darkVariables, textSecondary]
+  const textPrimary = new Style('.text-primary')
+  textPrimary.add('color', 'var(--primary-color) !important')
+
+  const textAccent = new Style('.text-accent')
+  textAccent.add('color', 'var(--accent-color) !important')
+
+  return [baseVariables, darkVariables, textSecondary, textPrimary, textAccent]
 }
 
 function typography() {

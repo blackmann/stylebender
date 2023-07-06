@@ -1,4 +1,8 @@
 const layoutCss = /* css */ `
+.w-100 {
+    width: 100% !important;
+}
+
 /*!
  * Bootstrap Grid v5.3.0 (https://getbootstrap.com/)
  * Copyright 2011-2023 The Bootstrap Authors
