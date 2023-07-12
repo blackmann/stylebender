@@ -1,5 +1,5 @@
-import fontIndex from './gfonts'
 import { getStyle } from './config'
+import fontIndex from './gfonts'
 
 const MACRO = `:root {
   color-scheme: light dark;
@@ -26,9 +26,7 @@ function getCss(preview = true) {
 
   const fontImports = getFontImports(generated)
 
-  return [preview ? '' : MACRO, fontImports, generated].join(
-    '\n\n'
-  )
+  return [preview ? '' : MACRO, fontImports, generated].join('\n\n')
 }
 
 function getFontImports(css: string) {
@@ -203,10 +201,14 @@ function createPlainButtonStyle() {
   dark.add('color', d('buttons.plain.color') || d('body.color'))
   dark.add('background', 'var(--secondary-700)')
 
-  const hover = new Style(':is(.button, button):hover')
+  const hover = new Style(':is(.button, button):not(:disabled):hover')
   hover.add('filter', 'brightness(92%)')
 
-  return [dark, base, hover]
+  const disabled = new Style(':is(.button, button):disabled')
+  disabled.add('cursor', 'not-allowed !important')
+  disabled.add('filter', 'opacity(50%)')
+
+  return [dark, base, hover, disabled]
 }
 
 function createButtonStyle(name: string) {
@@ -245,7 +247,8 @@ function createTypographyStyle(level: string) {
 }
 
 function input() {
-  const selector = ':is(input, .input, select):not([type=radio], [type=checkbox])'
+  const selector =
+    ':is(input, .input, select):not([type=radio], [type=checkbox])'
   const base = new Style(selector)
 
   base.add('-webkit-appearance', 'none')
@@ -272,7 +275,9 @@ function input() {
   )
   invertCalendarIcon.add('filter', 'invert(1)')
 
-  const checkboxStyle = new Style(':is(input[type=checkbox], input[type=radio])')
+  const checkboxStyle = new Style(
+    ':is(input[type=checkbox], input[type=radio])'
+  )
   checkboxStyle.add('width', l('body.fontSize'))
   checkboxStyle.add('height', l('body.fontSize'))
 
@@ -281,15 +286,15 @@ function input() {
 
 function link() {
   const base = new Style('a')
-  base.add('color', l('link.defaultColor'));
-  base.add('cursor', 'pointer');
-  base.add('text-decoration', 'underline');
-  base.add('font-weight', l('link.fontWeight'));
+  base.add('color', l('link.defaultColor'))
+  base.add('cursor', 'pointer')
+  base.add('text-decoration', 'underline')
+  base.add('font-weight', l('link.fontWeight'))
 
   const dark = new Style('a', 'dark')
   dark.add('color', d('link.defaultColor'))
 
-  return [base, dark];
+  return [base, dark]
 }
 
 function indent(str: string, level = 1) {

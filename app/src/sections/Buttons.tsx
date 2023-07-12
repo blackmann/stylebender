@@ -1,12 +1,12 @@
-import { getStyle as s, setStyle } from '../config'
+import clsx from 'clsx'
 import Card from '../components/Card'
 import Fieldset from '../components/Fieldset'
 import Section from '../components/Section'
 import TextInput from '../components/TextInput'
 import UnitInput from '../components/UnitInput'
-import clsx from 'clsx'
-import cs from './Common.module.css'
+import { getStyle as s, setStyle } from '../config'
 import styles from './Buttons.module.css'
+import cs from './Common.module.css'
 
 function Buttons() {
   return (
@@ -58,8 +58,6 @@ function Config() {
         />
       </Fieldset>
 
-
-
       <Fieldset label="Font weight" inputId="buttons-font-weight">
         <UnitInput
           id="buttons-font-weight"
@@ -109,6 +107,14 @@ function Preview() {
         <button>Base/Default</button>
         <button className="primary">Primary</button>
         <button className="accent">Accent</button>
+        <button disabled>Disabled Base/Default</button>
+
+        <button className="primary" disabled>
+          Disabled primary
+        </button>
+        <button className="accent" disabled>
+          Accent
+        </button>
       </div>
     </div>
   )
