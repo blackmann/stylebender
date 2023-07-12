@@ -1,5 +1,5 @@
-import { getStyle } from './config'
 import fontIndex from './gfonts'
+import { getStyle } from './config'
 
 const MACRO = `:root {
   color-scheme: light dark;
