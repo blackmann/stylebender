@@ -129,6 +129,7 @@ function utils() {
   baseVariables.add('--primary-color', l('colors.primary'))
   baseVariables.add('--accent-color', l('colors.accent'))
   baseVariables.add('--secondary-color', l('colors.secondary'))
+  baseVariables.add('--reset-color', l('body.color'))
 
   for (const color of colors) {
     const shades = (l(`colors.${color}Shades`) || []) as string[]
@@ -144,6 +145,7 @@ function utils() {
   darkVariables.add('--primary-color', d('colors.primary'))
   darkVariables.add('--accent-color', d('colors.accent'))
   darkVariables.add('--secondary-color', d('colors.secondary'))
+  darkVariables.add('--reset-color', d('body.color'))
 
   for (const color of colors) {
     const shades = (d(`colors.${color}Shades`) || []) as string[]
@@ -163,7 +165,10 @@ function utils() {
   const textAccent = new Style('.text-accent')
   textAccent.add('color', 'var(--accent-color) !important')
 
-  return [baseVariables, darkVariables, textSecondary, textPrimary, textAccent]
+  const textReset = new Style('.text-reset')
+  textReset.add('color', 'var(--reset-color) !important')
+
+  return [baseVariables, darkVariables, textSecondary, textPrimary, textAccent, textReset]
 }
 
 function typography() {
