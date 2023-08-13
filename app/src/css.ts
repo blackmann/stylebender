@@ -269,7 +269,7 @@ function input() {
   )
   base.add('font-weight', l('input.fontWeight'))
 
-  const dark = new Style(':is(input, .input, select)', 'dark')
+  const dark = new Style(selector, 'dark')
   dark.add('border', d('input.border'))
   dark.add('color', d('input.color') || 'inherit')
   dark.add('background', d('input.background') || 'transparent')
