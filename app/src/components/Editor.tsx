@@ -2,8 +2,8 @@ import Body from '../sections/Body'
 import Buttons from '../sections/Buttons'
 import Colors from '../sections/Colors'
 import Input from '../sections/Input'
-import Typography from '../sections/Typography'
 import Link from '../sections/Link'
+import Typography from '../sections/Typography'
 
 function Editor() {
 

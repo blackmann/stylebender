@@ -129,4 +129,4 @@ function setStyle(key: string, value: string | string[], base?: true) {
   target.value = { ...valueRef } as any
 }
 
-export { getStyle, light, setStyle }
+export { getStyle, light, dark, setStyle }
