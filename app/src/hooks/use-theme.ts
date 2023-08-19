@@ -33,8 +33,6 @@ function useTheme() {
       dark.value = parsedDark
     })
 
-    console.log(light.value)
-
     theme.subscribe((value) => {
       document.querySelector('html')?.setAttribute('data-theme', value)
 
