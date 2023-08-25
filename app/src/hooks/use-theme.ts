@@ -1,4 +1,3 @@
-import { dark, light } from '../config'
 import React from 'preact/compat'
 import { signal } from '@preact/signals'
 
@@ -19,33 +18,12 @@ function useTheme() {
     const savedTheme = localStorage.getItem('theme') as Theme | undefined
     theme.value = savedTheme || 'light'
 
-    const savedLight = localStorage.getItem('savedLight')
-    const savedDark = localStorage.getItem('savedDark')
-    
-    window.addEventListener('load', () => {
-      if(!savedLight) return
-      if(!savedDark) return
-
-      const parsedLight = JSON.parse(savedLight)
-      const parsedDark = JSON.parse(savedDark)
-
-      light.value = parsedLight
-      dark.value = parsedDark
-    })
-
     theme.subscribe((value) => {
       document.querySelector('html')?.setAttribute('data-theme', value)
 
       localStorage.setItem('theme', value)
     })
 
-    light.subscribe((value) => {
-      localStorage.setItem('savedLight', JSON.stringify(value))
-    })
-    
-    dark.subscribe((value) => {
-      localStorage.setItem('savedDark', JSON.stringify(value))
-    })
   }, [])
 
   const switchTheme = React.useCallback(() => {

@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
+import { configHasChanged, dark, light } from '../config'
 import Button from './Button'
 import DownloadModal from './DownloadModal'
 import Logo from './Logo'
@@ -20,7 +21,7 @@ function Navbar() {
       </a>
 
       <div className="position-relative" style={{ zIndex: '100' }}>
-        <ResetStyles />
+        { configHasChanged.value && <ResetStyles />}
         <ThemeSwitch />
         <Button className="plain" onClick={toggleDownloadModal}>
           <span className="material-symbols-outlined me-1">download</span>{' '}

@@ -1,10 +1,12 @@
 import Button from "./Button";
+import { theme } from "../hooks/use-theme";
 
 function ResetStyles() {
 
   const resetStyles = () => {
     localStorage.removeItem('savedLight')
     localStorage.removeItem('savedDark')
+    theme.value = 'light';
     window.location.reload();
   }
 

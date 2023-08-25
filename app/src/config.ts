@@ -1,13 +1,31 @@
+import { computed, signal } from '@preact/signals'
+import Values from 'values.js'
 import { theme as appTheme } from './hooks/use-theme'
-import { signal } from '@preact/signals'
 
 type Theme = 'light' | 'dark'
 
-const light = signal({
+const tintAndShade = (color: string) => {
+  const values = new Values(color)
+  
+  const shades = values
+  .shades(20)
+  .slice(0, 4)
+  .map((value) => value.hexString())
+
+  const tints = values
+    .tints(20)
+    .reverse()
+    .slice(1)
+    .map((value) => value.hexString())
+  
+  return tints.concat(shades)
+}
+
+const initialLight = {
   body: {
     fontFamily: import.meta.env.DEV
-      // Sorry, I like to see Iosevka when developing
-      ? 'Iosevka, sans-serif'
+      ? // Sorry, I like to see Iosevka when developing
+        'Iosevka, sans-serif'
       : 'Inter, sans-serif',
     fontSize: '14px',
     background: '#f6f8fa',
@@ -15,8 +33,11 @@ const light = signal({
   },
   colors: {
     primary: '#4882F9',
+    primaryShades: tintAndShade('#4882F9'),
     accent: '#DE2323',
+    accentShades: tintAndShade('#DE2323'),
     secondary: '#838995',
+    secondaryShades: tintAndShade('#838995'),
   },
   typography: {
     h1: {},
@@ -49,9 +70,9 @@ const light = signal({
     fontWeight: '500',
     defaultColor: undefined,
   },
-})
+}
 
-const dark = signal({
+const initialDark = {
   body: {
     background: '#212121',
     color: '#F5F4F4',
@@ -62,6 +83,32 @@ const dark = signal({
   link: {
     defaultColor: undefined,
   },
+}
+
+const light = signal(structuredClone(initialLight))
+
+const dark = signal(structuredClone(initialDark))
+
+const savedLight = localStorage.getItem('savedLight')
+const savedDark = localStorage.getItem('savedDark')
+
+window.addEventListener('load', () => {
+  light.subscribe((value) => {
+    localStorage.setItem('savedLight', JSON.stringify(value))
+  })
+
+  dark.subscribe((value) => {
+    localStorage.setItem('savedDark', JSON.stringify(value))
+  })
+
+  if (!savedLight) return
+  if (!savedDark) return
+
+  const parsedLight = JSON.parse(savedLight)
+  const parsedDark = JSON.parse(savedDark)
+
+  light.value = parsedLight
+  dark.value = parsedDark
 })
 
 function getStyle<T = string>(
@@ -129,4 +176,11 @@ function setStyle(key: string, value: string | string[], base?: true) {
   target.value = { ...valueRef } as any
 }
 
-export { getStyle, light, dark, setStyle }
+const configHasChanged = computed(() => {
+  return (
+    JSON.stringify(initialDark) !== JSON.stringify(dark.value) ||
+    JSON.stringify(initialLight) !== JSON.stringify(light.value)
+  )
+})
+
+export { getStyle, light, dark, setStyle, configHasChanged }
