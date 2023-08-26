@@ -2,8 +2,10 @@ import { AnimatePresence, motion } from 'framer-motion'
 import Button from './Button'
 import DownloadModal from './DownloadModal'
 import Logo from './Logo'
+import ResetStyles from './ResetStyles'
 import ThemeSwitch from './ThemeSwitch'
 import clsx from 'clsx'
+import { configHasChanged } from '../config'
 import currentModal from '../current-modal'
 import styles from './Navbar.module.css'
 
@@ -19,6 +21,7 @@ function Navbar() {
       </a>
 
       <div className="position-relative" style={{ zIndex: '100' }}>
+        { configHasChanged.value && <ResetStyles />}
         <ThemeSwitch />
         <Button className="plain" onClick={toggleDownloadModal}>
           <span className="material-symbols-outlined me-1">download</span>{' '}

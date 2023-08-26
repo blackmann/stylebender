@@ -23,6 +23,7 @@ function useTheme() {
 
       localStorage.setItem('theme', value)
     })
+
   }, [])
 
   const switchTheme = React.useCallback(() => {

@@ -102,13 +102,12 @@ function Config() {
       <Fieldset label="Border Radius" inputId="input-border-radius">
         <UnitInput
           id="input-border-radius"
-          onChange={(e) => {
+          onChange={(e) =>
             setStyle(
               'input.borderRadius',
               (e.target as HTMLInputElement).value,
               true
             )
-          }
           }
           value={
             getStyle('input.borderRadius') ||
