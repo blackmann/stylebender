@@ -1,11 +1,11 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { configHasChanged, dark, light } from '../config'
 import Button from './Button'
 import DownloadModal from './DownloadModal'
 import Logo from './Logo'
 import ResetStyles from './ResetStyles'
 import ThemeSwitch from './ThemeSwitch'
 import clsx from 'clsx'
+import { configHasChanged } from '../config'
 import currentModal from '../current-modal'
 import styles from './Navbar.module.css'
 
